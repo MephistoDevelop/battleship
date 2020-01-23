@@ -1,0 +1,31 @@
+{
+  "name": "battleship",
+  "version": "1.0.0",
+  "description": "Battleship game made with Webpack and testing with Jest library",
+  "main": "index.js",
+  "dependencies": {
+    "browser-sync": "^2.26.7",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  },
+  "devDependencies": {
+    "browser-sync-webpack-plugin": "^2.2.2",
+    "webpack-dev-server": "^3.10.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit >1",
+    "build": "webpack --mode production",
+    "builddev": "webpack --mode development",
+    "start": "webpack-dev-server --mode development >--open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MephistoDevelop/battleship.git"
+  },
+  "author": "MephistoDevelop <inesherald@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MephistoDevelop/battleship/issues"
+  },
+  "homepage": "https://github.com/MephistoDevelop/battleship#readme"
+}
