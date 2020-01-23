@@ -10,10 +10,11 @@
   },
   "devDependencies": {
     "browser-sync-webpack-plugin": "^2.2.2",
+    "jest-webpack": "^0.5.1",
     "webpack-dev-server": "^3.10.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit >1",
+    "test": "jest-webpack",
     "build": "webpack --mode production",
     "builddev": "webpack --mode development",
     "start": "webpack-dev-server --mode development >--open"
