@@ -11,8 +11,8 @@ const ship = (length, name) => ({
   },
   hit: (shipArray, position) => {
     const newArray = shipArray;
-    newArray[position] = 1;
-    return shipArray;
+    newArray[position] = 'X';
+    return newArray;
   },
   isSunk: (battleship) => {
     battleship.forEach((index) => {
