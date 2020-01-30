@@ -1,10 +1,11 @@
 import ship from './ships';
 
 (() => {
-  const val = ship(3, 'Submarino');
-  const arr = val.fill_ship(val.Lengths);
-  val.shipArray[val.Name] = arr;
-  console.log(val.hit(val.shipArray[val.Name], 0));
-  console.log(val.hit(val.shipArray[val.Name], 1));
-  document.body.innerText = JSON.stringify(val) + '  Webpack !!';
+  const createdShip = ship(3, 'Submarino');
+  const arr = createdShip.fill_ship(createdShip.Lengths);
+  createdShip.shipArray[createdShip.Name] = arr;
+  console.log(createdShip.hit(createdShip.shipArray[createdShip.Name], 0));
+  console.log(createdShip.hit(createdShip.shipArray[createdShip.Name], 1));
+  console.log(createdShip.isSunk(createdShip.shipArray[createdShip.Name]));
+  document.body.innerText = JSON.stringify(createdShip) + '  Webpack !!';
 })();

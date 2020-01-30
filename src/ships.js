@@ -14,11 +14,18 @@ const ship = (length, name) => ({
     newArray[position] = 'X';
     return newArray;
   },
-  isSunk: (battleship) => {
-    battleship.forEach((index) => {
-      const isSunked = battleship[index] === 1;
-      return isSunked;
-    });
+  isSunk: (shipArr) => {
+    let isSunked = false;
+    for (let i = 0; i < shipArr.length; i += 1) {
+      if (shipArr[i] === 'X') {
+        isSunked = true;
+      } else {
+        isSunked = false;
+        break;
+      }
+    }
+
+    return isSunked;
   },
 });
 
