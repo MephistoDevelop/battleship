@@ -1,5 +1,5 @@
-const ship = require('./src/ship.js');
+const ship = require('../src/ships');
 
-tets('Check size of board', () => {
+it('Check size of board', () => {
   expect(true).toBe(true);
 });

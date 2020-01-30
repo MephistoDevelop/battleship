@@ -15,7 +15,10 @@ const ship = (length, name) => ({
     return shipArray;
   },
   isSunk: (battleship) => {
-    battleship.forEach((index) => index);
+    battleship.forEach((index) => {
+      const isSunked = battleship[index] === 1;
+      return isSunked;
+    });
   },
 });
 
