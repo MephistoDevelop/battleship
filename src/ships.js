@@ -1,11 +1,11 @@
 const ship = (length, name) => ({
   Name: name,
-  Length: length,
+  Lengths: length,
   shipArray: {},
-  fill_ship: (shipArray) => {
-    const newArray = shipArray;
-    for (let i = 0; i < shipArray.length - 1; i += 1) {
-      newArray[i] = 0;
+  fill_ship: (array) => {
+    const newArray = [];
+    for (let i = 0; i < array - 1; i += 1) {
+      newArray.push('O');
     }
     return newArray;
   },
@@ -22,4 +22,4 @@ const ship = (length, name) => ({
   },
 });
 
-export { ship };
+export default ship;

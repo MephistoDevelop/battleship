@@ -1,3 +1,8 @@
+import ship from './ships';
+
 (() => {
-  document.body.innerText = 'Hello Webpack !!';
+  const val = ship(3, 'Submarino');
+  const arr = val.fill_ship(val.Lengths);
+  val.shipArray[val.Name] = arr;
+  document.body.innerText = JSON.stringify(val) + '  Webpack !!';
 })();
