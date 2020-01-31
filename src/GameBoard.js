@@ -29,7 +29,7 @@ const gameBoard = () => ({
         return answer;
       };
 
-      if ((y + Ship.Lengths) < 10 && checkEmptyCells(newBoard)) {
+      if ((y + Ship.Lengths) < 10 < 10 && checkEmptyCells(newBoard)) {
         for (let i = 0; i < Ship.Lengths; i += 1) {
           newBoard[y][(x + i)] = `${Ship.Name}`;
         }

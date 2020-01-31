@@ -40,5 +40,5 @@ import gameBoard from './GameBoard';
   console.log('placedship Battleship: ' + board.placeShip(createdBattleShip, boardArr, 3, 2, true) + ' - ');
   console.log('placedship Cruiser: ' + board.placeShip(createdCruiser, boardArr, 3, 0, true) + ' - ');
   console.log('placedship Destroyer: ' + board.placeShip(createdDestroyer, boardArr, 8, 7, true) + ' - ');
-  console.log('placedship Carrier: ' + board.placeShip(createdShip, boardArr, 5, 4, true) + ' - ');
+  console.log('placedship Carrier: ' + board.placeShip(createdShip, boardArr, 5, 8, true) + ' - ');
 })();
