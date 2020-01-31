@@ -1,4 +1,5 @@
 import ship from './ships';
+import gameBoard from './GameBoard';
 
 (() => {
 
@@ -7,6 +8,8 @@ import ship from './ships';
   const createdShip3 = ship(3, 'Cruiser');
   const createdShip4 = ship(3, 'Submarine');
   const createdShip5 = ship(2, 'Destroyer');
+
+  let shipArr = createdShip.ships;
 
   const arr = createdShip.fill_ship(createdShip.Lengths);
   const arrBattleship = createdShip2.fill_ship(createdShip2.Lengths);
@@ -28,6 +31,12 @@ import ship from './ships';
   console.log(createdShip.hit(createdShip.ships, 0, createdShip5.Name));
   console.log(createdShip.hit(createdShip.ships, 1, createdShip5.Name));
   console.log(createdShip.hit(createdShip.ships, 2, createdShip5.Name));
-  console.log(createdShip.Name + 'hitted' + JSON.stringify(createdShip.ships));
-  console.log(createdShip.isSunk(createdShip.ships[createdShip5.Name]));
+  console.log(createdShip.Name + '  hitted  ' + JSON.stringify(createdShip.ships));
+  console.log(createdShip5.Name + ' is Sunked? ' + createdShip.isSunk(createdShip.ships[createdShip5.Name]));
+  const board = gameBoard();
+  let boardArr = board.drawBoard();
+  boardArr[0][1] = 'Works?';
+  console.log('im the  board:  ' + boardArr);
+  console.log('placedship: ' + board.placeShip(createdShip4, shipArr, boardArr, 0, 1) + ' - ');
+  console.log('placedship: ' + board.placeShip(createdShip5, shipArr, boardArr, 1, 2) + ' - ');
 })();
