@@ -10,11 +10,11 @@ const gameBoard = () => ({
     }
     return board;
   },
+
   placeShip: (ship, board, x, y, vertical = true) => {
     const Ship = ship;
     const newBoard = board;
     if (Ship.Name) {
-      console.log('Size!: ' + Ship.Lengths);
       const checkEmptyCells = (Board) => {
         let answer = false;
         for (let i = 0; i < Ship.Lengths; i += 1) {
@@ -28,6 +28,7 @@ const gameBoard = () => ({
         }
         return answer;
       };
+
       if ((y + Ship.Lengths) < 10 && checkEmptyCells(newBoard)) {
         for (let i = 0; i < Ship.Lengths; i += 1) {
           newBoard[y][(x + i)] = `${Ship.Name}`;
