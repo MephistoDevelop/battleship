@@ -10,14 +10,17 @@ const gameBoard = () => ({
     }
     return board;
   },
-  placeShip: (ship, ships, board, x, y) => {
+  placeShip: (ship, ships, board, x, y, vertical = true) => {
     const Ship = ship;
     if (Ship.Name) {
       console.log('Size!: ' + Ship.Lengths);
-      for (let i = 0; i < Ship.Lengths; i += 1) {
-        board[x][y + i] = `${Ship.Name}`;
+      if ((y + Ship.Lengths) < 10) {
+        for (let i = 0; i < Ship.Lengths; i += 1) {
+          //    board[x][y + i] = `${Ship.Name}`;
+        }
+      } else {
+        console.log('place your ship in a valid position');
       }
-
     }
     return `X: ${x} - Y: ${y}, ${JSON.stringify(board)} `;
   },
