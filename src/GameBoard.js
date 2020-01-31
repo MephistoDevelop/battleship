@@ -10,19 +10,33 @@ const gameBoard = () => ({
     }
     return board;
   },
-  placeShip: (ship, ships, board, x, y, vertical = true) => {
+  placeShip: (ship, board, x, y, vertical = true) => {
     const Ship = ship;
+    const newBoard = board;
     if (Ship.Name) {
       console.log('Size!: ' + Ship.Lengths);
-      if ((y + Ship.Lengths) < 10) {
+      const checkEmptyCells = (Board) => {
+        let answer = false;
         for (let i = 0; i < Ship.Lengths; i += 1) {
-          //    board[x][y + i] = `${Ship.Name}`;
+          //  console.log('answer: ' + answer + '  Board[x+' + i + '] : ' + Board[y][(x + i)]);
+          if (Board[y][(x + i)] === '-') {
+            answer = true;
+          } else {
+            answer = false;
+            break;
+          }
+        }
+        return answer;
+      };
+      if ((y + Ship.Lengths) < 10 && checkEmptyCells(newBoard)) {
+        for (let i = 0; i < Ship.Lengths; i += 1) {
+          newBoard[y][(x + i)] = `${Ship.Name}`;
         }
       } else {
         console.log('place your ship in a valid position');
       }
     }
-    return `X: ${x} - Y: ${y}, ${JSON.stringify(board)} `;
+    return `X: ${x} - Y: ${y}, ${JSON.stringify(newBoard)} `;
   },
 });
 export default gameBoard;
