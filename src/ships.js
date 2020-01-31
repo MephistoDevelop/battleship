@@ -1,19 +1,22 @@
 const ship = (length, name) => ({
   Name: name,
   Lengths: length,
-  shipArray: {},
+  ships: {},
   fill_ship: (array) => {
     const newArray = [];
-    for (let i = 0; i < array - 1; i += 1) {
+    for (let i = 0; i < array; i += 1) {
       newArray.push('O');
     }
     return newArray;
   },
-  hit: (shipArray, position) => {
-    const newArray = shipArray;
+
+  hit: (ships, position, shipName) => {
+    const Name = shipName;
+    const newArray = ships[Name];
     newArray[position] = 'X';
     return newArray;
   },
+
   isSunk: (shipArr) => {
     let isSunked = false;
     for (let i = 0; i < shipArr.length; i += 1) {
