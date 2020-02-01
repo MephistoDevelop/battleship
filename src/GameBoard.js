@@ -39,27 +39,39 @@ const gameBoard = () => ({
         console.log('place your ship in a valid position');
       }
     }
-    return `X: ${x} - Y: ${y}, ${JSON.stringify(newBoard)} `;
+    return `X: ${y} - Y: ${x}, ${JSON.stringify(newBoard)} `;
   },
 
   receiveAtack: (x, y, board, ships) => {
     const shipFactory = ships;
     let answer = '';
     const shipsArray = shipFactory.ships;
-    const isEmptyCell = board[x][y] === '-';
-    console.log('im board[' + x + '][' + y + ']: ' + board[x][y]);
+    const isEmptyCell = board[y][x] === '-';
+    console.log('im board on Position[' + y + '][' + x + ']:');// + board[x][y]);
     if (isEmptyCell) {
-      board[x][y] = 'X';
+      board[y][x] = 'X';
       answer = 'Failed on:  X: ' + x + ' Y: ' + y + 'Empty Cell? :' + isEmptyCell;
     } else {
       console.log(shipsArray);
-      const shipName = (board[x][y]).split('');
+      const shipName = (board[y][x]).split('');
       const name = (shipName.splice(0, shipName.length - 1)).join('');
       const hittedShipPosition = parseInt(shipName);
-      console.log('Final hit: ' + shipFactory.hit(shipsArray, hittedShipPosition, name));
-      answer = `${JSON.stringify(shipsArray)}- ${name} - ${hittedShipPosition}  Atacked on Pos; X: ${x}:   Y: ${y}:    Empty Cell ? : ${isEmptyCell}      ${board}`;
-
+      shipFactory.hit(shipsArray, hittedShipPosition, name);
+      board[y][x] = `${name}X`;
+      answer = `${JSON.stringify(shipsArray)}- ${name} - ${hittedShipPosition} \n Atacked on Pos; X: ${x}:   Y: ${y}:    Empty Cell ? : ${isEmptyCell}    \n BoardArr:  ${board}`;
     }
+    return answer;
+  },
+  checkShipsSunked: (shipObj) => {
+    let answer = false;
+    const Obj = shipObj;
+    const shipCruiser = Obj.ships.Cruiser;
+    const shipSubmarine = Obj.ships.Submarine;
+    const shipDestroyer = Obj.ships.Destroyer;
+    const shipCarrier = Obj.ships.Carrier;
+    const shipBattleship = Obj.ships.Battleship;
+
+    if (Obj.isSunk(shipCruiser) && Obj.isSunk(shipSubmarine) && Obj.isSunk(shipCarrier) && Obj.isSunk(shipDestroyer) && Obj.isSunk(shipBattleship)) answer = true;
     return answer;
   },
 });
