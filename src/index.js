@@ -55,5 +55,23 @@ import gameBoard from './GameBoard';
   'Received atack Submarine: ' + board.receiveAtack(1, 2, boardArr, createdShip);
   console.log('Received atack Submarine: ' + board.receiveAtack(2, 2, boardArr, createdShip));
 
+  //Battleship Attacks and sunked
+  'Received atack Submarine: ' + board.receiveAtack(3, 2, boardArr, createdShip);
+  'Received atack Submarine: ' + board.receiveAtack(4, 2, boardArr, createdShip);
+  'Received atack Submarine: ' + board.receiveAtack(5, 2, boardArr, createdShip);
+  console.log('Received atack Battleship: ' + board.receiveAtack(6, 2, boardArr, createdShip));
+
+  //Destroyer Attacks and sunked
+  'Received atack: ' + board.receiveAtack(6, 7, boardArr, createdShip);
+  console.log('Received atack Destroyer: ' + board.receiveAtack(7, 7, boardArr, createdShip));
+
+  //Carrier Attacks and sunked
+  'Received atack: ' + board.receiveAtack(5, 8, boardArr, createdShip);
+  'Received atack: ' + board.receiveAtack(6, 8, boardArr, createdShip);
+  'Received atack: ' + board.receiveAtack(7, 8, boardArr, createdShip);
+  'Received atack: ' + board.receiveAtack(8, 8, boardArr, createdShip);
+  console.log('Received atack: Carrier ' + board.receiveAtack(9, 8, boardArr, createdShip));
+
+
   console.log('Check Sunked Ships or Not:  ' + board.checkShipsSunked(createdShip));
 })();
