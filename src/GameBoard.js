@@ -45,7 +45,7 @@ const gameBoard = () => ({
   receiveAtack: (x, y, board, ships) => {
     const shipFactory = ships;
     let answer = '';
-    const shipsArray = ships;
+    const shipsArray = shipFactory.ships;
     const isEmptyCell = board[x][y] === '-';
     console.log('im board[' + x + '][' + y + ']: ' + board[x][y]);
     if (isEmptyCell) {
@@ -56,8 +56,9 @@ const gameBoard = () => ({
       const shipName = (board[x][y]).split('');
       const name = (shipName.splice(0, shipName.length - 1)).join('');
       const hittedShipPosition = parseInt(shipName);
-      //shipFactory.hit(shipsArray, hittedShipPosition, name);
-      answer = `${name} - ${hittedShipPosition}  Atacked on Pos; X: ${x}:   Y: ${y}:    Empty Cell ? : ${isEmptyCell}      ${board}`;
+      console.log('Final hit: ' + shipFactory.hit(shipsArray, hittedShipPosition, name));
+      answer = `${JSON.stringify(shipsArray)}- ${name} - ${hittedShipPosition}  Atacked on Pos; X: ${x}:   Y: ${y}:    Empty Cell ? : ${isEmptyCell}      ${board}`;
+
     }
     return answer;
   },
