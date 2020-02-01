@@ -73,5 +73,11 @@ import gameBoard from './GameBoard';
   console.log('Received atack: Carrier ' + board.receiveAtack(9, 8, boardArr, createdShip));
 
 
+  //missed Atacks
+  console.log('Received atack: Missed ' + board.receiveAtack(0, 1, boardArr, createdShip));
+  console.log('Received atack: Missed ' + board.receiveAtack(5, 4, boardArr, createdShip));
+  console.log('Received atack: Missed ' + board.receiveAtack(7, 5, boardArr, createdShip));
+  console.log('Board Array: ' + boardArr);
+
   console.log('Check Sunked Ships or Not:  ' + board.checkShipsSunked(createdShip));
 })();
