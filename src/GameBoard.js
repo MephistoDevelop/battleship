@@ -1,7 +1,7 @@
 import ship from './ships';
 
 const gameBoard = () => ({
-  drawBoard: () => {
+  drawBoardPlayer: () => {
     const board = [];
     for (let i = 0; i < 10; i += 1) {
       const arr = [];
@@ -47,12 +47,12 @@ const gameBoard = () => ({
     let answer = '';
     const shipsArray = shipFactory.ships;
     const isEmptyCell = board[y][x] === '-';
-    console.log('im board on Position[' + y + '][' + x + ']:');// + board[x][y]);
+    //console.log('im board on Position[' + y + '][' + x + ']:');// + board[x][y]);
     if (isEmptyCell) {
       board[y][x] = 'X';
       answer = 'Failed on:  X: ' + x + ' Y: ' + y + 'Empty Cell? :' + isEmptyCell;
     } else {
-      console.log(shipsArray);
+      // console.log(shipsArray);
       const shipName = (board[y][x]).split('');
       const name = (shipName.splice(0, shipName.length - 1)).join('');
       const hittedShipPosition = parseInt(shipName);
@@ -62,6 +62,7 @@ const gameBoard = () => ({
     }
     return answer;
   },
+
   checkShipsSunked: (shipObj) => {
     let answer = false;
     const Obj = shipObj;

@@ -1,27 +1,54 @@
 import ship from './ships';
 import gameBoard from './GameBoard';
+import Player from './players';
 
 (() => {
-
+  //Ships From Player
   const createdShip = ship(5, 'Carrier');
   const createdBattleShip = ship(4, 'Battleship');
   const createdCruiser = ship(3, 'Cruiser');
   const createdSubmarine = ship(3, 'Submarine');
   const createdDestroyer = ship(2, 'Destroyer');
 
-  let shipArr = createdShip.ships;
+  //Ships From Computer
+  const createdShipComputer = ship(5, 'Carrier');
+  const createdBattleShipComputer = ship(4, 'Battleship');
+  const createdCruiserComputer = ship(3, 'Cruiser');
+  const createdSubmarineComputer = ship(3, 'Submarine');
+  const createdDestroyerComputer = ship(2, 'Destroyer');
 
+
+  let shipArr = createdShip.ships;
+  let shipArrComputer = createdShipComputer.ships;
+
+  //Create arrays from every ship from player
   const arr = createdShip.fill_ship(createdShip.Lengths);
   const arrBattleship = createdBattleShip.fill_ship(createdBattleShip.Lengths);
   const arrCuiser = createdCruiser.fill_ship(createdCruiser.Lengths);
   const arrSubmarine = createdSubmarine.fill_ship(createdSubmarine.Lengths);
   const arrDestroyer = createdDestroyer.fill_ship(createdDestroyer.Lengths);
 
+
+  //Create arrays from every ship from Computer
+  const arrComputer = createdShipComputer.fill_ship(createdShipComputer.Lengths);
+  const arrBattleshipComputer = createdBattleShipComputer.fill_ship(createdBattleShipComputer.Lengths);
+  const arrCuiserComputer = createdCruiserComputer.fill_ship(createdCruiserComputer.Lengths);
+  const arrSubmarineComputer = createdSubmarineComputer.fill_ship(createdSubmarineComputer.Lengths);
+  const arrDestroyerComputer = createdDestroyerComputer.fill_ship(createdDestroyerComputer.Lengths);
+
+  //Push ship arrays on hash of ships from player
   createdShip.ships[createdShip.Name] = arr;
   createdShip.ships[createdBattleShip.Name] = arrBattleship;
   createdShip.ships[createdCruiser.Name] = arrCuiser;
   createdShip.ships[createdSubmarine.Name] = arrSubmarine;
   createdShip.ships[createdDestroyer.Name] = arrDestroyer;
+
+  //Push ship arrays on hash of ships from Computer
+  createdShipComputer.ships[createdShipComputer.Name] = arr;
+  createdShipComputer.ships[createdBattleShipComputer.Name] = arrBattleshipComputer;
+  createdShipComputer.ships[createdCruiserComputer.Name] = arrCuiserComputer;
+  createdShipComputer.ships[createdSubmarineComputer.Name] = arrSubmarineComputer;
+  createdShipComputer.ships[createdDestroyerComputer.Name] = arrDestroyerComputer;
 
   "Soy Arr: " + JSON.stringify(createdShip.ships);
   // createdShip.hit(createdShip.ships, 0, createdShip.Name);
@@ -34,50 +61,63 @@ import gameBoard from './GameBoard';
   // createdShip.Name + '  hitted  ' + JSON.stringify(createdShip.ships);
   // createdDestroyer.Name + ' is Sunked? ' + createdShip.isSunk(createdShip.ships[createdDestroyer.Name]);
 
+
   const board = gameBoard();
-  let boardArr = board.drawBoard();
-  console.log('im the  board:  ' + boardArr);
+  let boardArr = board.drawBoardPlayer();
+  const boardComputer = gameBoard();
+  let boardArrComputer = boardComputer.drawBoardPlayer();
+  //console.log('im the  board:  ' + boardArr);
   'placedship Submarine: ' + board.placeShip(createdSubmarine, boardArr, 0, 2, true) + ' - ';
   'placedship Battleship: ' + board.placeShip(createdBattleShip, boardArr, 3, 2, true) + ' - ';
   'placedship Cruiser: ' + board.placeShip(createdCruiser, boardArr, 3, 0, true) + ' - ';
   'placedship Destroyer: ' + board.placeShip(createdDestroyer, boardArr, 6, 7, true) + ' - ';
-  console.log('placedship Carrier: ' + board.placeShip(createdShip, boardArr, 5, 8, true) + ' - ');
+  'placedship Carrier: ' + board.placeShip(createdShip, boardArr, 5, 8, true);
   //console.log('Received atack: ' + board.receiveAtack(8, 7, boardArr, createdShip));
   //console.log('Received atack: ' + board.receiveAtack(2, 3, boardArr, createdShip));
 
   //Cruiser Attacks and sunked
   'Received atack: ' + board.receiveAtack(3, 0, boardArr, createdShip);
   'Received atack: ' + board.receiveAtack(4, 0, boardArr, createdShip);
-  console.log('Received atack: ' + board.receiveAtack(5, 0, boardArr, createdShip));
+  'Received atack: ' + board.receiveAtack(5, 0, boardArr, createdShip);
 
   //Submarine Attacks and sunked
   'Received atack Submarine: ' + board.receiveAtack(0, 2, boardArr, createdShip);
   'Received atack Submarine: ' + board.receiveAtack(1, 2, boardArr, createdShip);
-  console.log('Received atack Submarine: ' + board.receiveAtack(2, 2, boardArr, createdShip));
+  'Received atack Submarine: ' + board.receiveAtack(2, 2, boardArr, createdShip);
 
   //Battleship Attacks and sunked
   'Received atack Submarine: ' + board.receiveAtack(3, 2, boardArr, createdShip);
   'Received atack Submarine: ' + board.receiveAtack(4, 2, boardArr, createdShip);
   'Received atack Submarine: ' + board.receiveAtack(5, 2, boardArr, createdShip);
-  console.log('Received atack Battleship: ' + board.receiveAtack(6, 2, boardArr, createdShip));
+  'Received atack Battleship: ' + board.receiveAtack(6, 2, boardArr, createdShip);
 
   //Destroyer Attacks and sunked
   'Received atack: ' + board.receiveAtack(6, 7, boardArr, createdShip);
-  console.log('Received atack Destroyer: ' + board.receiveAtack(7, 7, boardArr, createdShip));
+  'Received atack Destroyer: ' + board.receiveAtack(7, 7, boardArr, createdShip);
 
   //Carrier Attacks and sunked
   'Received atack: ' + board.receiveAtack(5, 8, boardArr, createdShip);
   'Received atack: ' + board.receiveAtack(6, 8, boardArr, createdShip);
   'Received atack: ' + board.receiveAtack(7, 8, boardArr, createdShip);
   'Received atack: ' + board.receiveAtack(8, 8, boardArr, createdShip);
-  console.log('Received atack: Carrier ' + board.receiveAtack(9, 8, boardArr, createdShip));
+  'Received atack: Carrier ' + board.receiveAtack(9, 8, boardArr, createdShip);
 
 
   //missed Atacks
-  console.log('Received atack: Missed ' + board.receiveAtack(0, 1, boardArr, createdShip));
-  console.log('Received atack: Missed ' + board.receiveAtack(5, 4, boardArr, createdShip));
-  console.log('Received atack: Missed ' + board.receiveAtack(7, 5, boardArr, createdShip));
+  'Received atack: Missed ' + board.receiveAtack(0, 1, boardArr, createdShip);
+  'Received atack: Missed ' + board.receiveAtack(5, 4, boardArr, createdShip);
+  'Received atack: Missed ' + board.receiveAtack(7, 5, boardArr, createdShip);
   console.log('Board Array: ' + boardArr);
 
   console.log('Check Sunked Ships or Not:  ' + board.checkShipsSunked(createdShip));
+  //console.log('Board Computer' + boardArrComputer.toString()) + ':    :' + boardComputer.checkShipsSunked(createdShipComputer);
+
+  const player = Player('MephistoDevelop');
+  const PlayerArr = player.fillPlayerMoves([]);
+  console.log('Soy: ' + player.Name + '\n' + PlayerArr);
+
+  console.log(player.playerInit());
+
+  console.log(player.computerInit());
+
 })();
