@@ -11,6 +11,18 @@ const Player = (name) => ({
   computerBoard: {
     Board: [],
   },
+  Move: (Turn, x, y, board, createdShip) => {
+
+    if (Turn === 0) {
+      board.receiveAtack(x, y, board.Board, createdShip);
+      console.log(Turn + ' Player Turn, Atacked on: ' + x + ' - ' + y + '\n Player Board \n' + JSON.stringify(board.Board));
+      return 1;
+    } else {
+      board.receiveAtack(x, y, board.BoardComputer, createdShip);
+      console.log('Computer Turn, Atacked on: ' + x + ' - ' + y + '\n Computer Board \n' + JSON.stringify(board.computerBoard));
+      return 0;
+    }
+  },
   playerInit: () => {
     const createdShip = ship(5, 'Carrier');
     const createdBattleShip = ship(4, 'Battleship');

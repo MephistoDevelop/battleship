@@ -1,6 +1,8 @@
 import ship from './ships';
 
 const gameBoard = () => ({
+  Board: [],
+  BoardComputer: [],
   drawBoardPlayer: () => {
     const board = [];
     for (let i = 0; i < 10; i += 1) {
