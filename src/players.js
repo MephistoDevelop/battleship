@@ -19,7 +19,7 @@ const Player = (name) => ({
       return 1;
     } else {
       board.receiveAtack(x, y, board.BoardComputer, createdShip);
-      console.log('Computer Turn, Atacked on: ' + x + ' - ' + y + '\n Computer Board \n' + JSON.stringify(board.computerBoard));
+      console.log('Computer Turn, Atacked on: ' + x + ' - ' + y + '\n Computer Board \n' + JSON.stringify(board.BoardComputer));
       return 0;
     }
   },
@@ -80,7 +80,6 @@ const Player = (name) => ({
   fillPlayerMoves: (playerBoard) => {
     for (let i = 0; i < 100; i += 1) {
       playerBoard[i] = i + 1;
-      //  computerBoard[i] = i;
     }
     return playerBoard;
   },
