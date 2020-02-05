@@ -22,7 +22,7 @@ const gameBoard = () => ({
       const checkEmptyCells = (Board) => {
         let answer = false;
         for (let i = 0; i < Ship.Lengths; i += 1) {
-          //  console.log('answer: ' + answer + '  Board[x+' + i + '] : ' + Board[y][(x + i)]);
+          console.log('answer: ' + answer + '  Board[x+' + i + '] : ' + Board[y][(x + i)]);
           if (Board[y][(x + i)] === '-') {
             answer = true;
           } else {
@@ -45,7 +45,7 @@ const gameBoard = () => ({
   },
 
   receiveAtack: (x, y, board, ships) => {
-    const shipFactory = ships;
+    const shipFactory = ships[0];
     let answer = '';
     const shipsArray = shipFactory.ships;
     const isEmptyCell = board[y][x] === '-';

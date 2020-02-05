@@ -39,17 +39,24 @@ const doAttack = () => {
   } else { player.Turn = player.Move(player.Turn, x, y, board, computerShips); }
 };
 
-const placeShip = (Ships) => {
-  const choosenShip = Ships;
+const placeShip = (ShipsArray) => {
+  const x = parseInt(txtx.value, 10);
+  const y = parseInt(txty.value, 10);
+  const number = txtbox.value;
+  const shipPosition = parseInt(number, 10);
+  const choosenShip = ShipsArray[shipPosition];
+  console.log(`X: ${x} Y: ${y} , ShiPos: ${shipPosition} , ChoosenShip: ${JSON.stringify(choosenShip)}`);
+  console.log(board.placeShip(choosenShip, board.Board, x, y, true));
 };
 
 btnAtack.addEventListener('click', () => {
   doAttack();
 });
 btnPlace.addEventListener('click', () => {
-  placeShip();
+  placeShip(playerShips);
 });
 (() => {
+  //Game flow to understand the logic to initialize game,created ships ,place ships and hit a ships.
   // //Ships From Player
   // const createdShip = ship(5, 'Carrier');
   // const createdBattleShip = ship(4, 'Battleship');

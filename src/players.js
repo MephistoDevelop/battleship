@@ -48,7 +48,7 @@ const Player = (name) => ({
 
     console.log(`Soy PLayer Init function: ${JSON.stringify(createdShip.ships)}`);
 
-    return createdShip.ships;
+    return [createdShip, createdBattleShip, createdCruiser, createdSubmarine, createdDestroyer];
   },
   computerInit: () => {
     const createdShipComputer = ship(5, 'Carrier');
