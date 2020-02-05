@@ -9,9 +9,6 @@ const btnAtack = document.getElementById('btn-action');
 const btnPlace = document.getElementById('btn-place');
 const lblmessage = document.getElementById('messages');
 
-const x = txtx.value;
-const y = txty.value;
-
 
 const player = Player('MephistoDevelop');
 const PlayerArr = player.fillPlayerMoves([]);
@@ -26,9 +23,12 @@ board.Board = board.drawBoardPlayer();
 board.BoardComputer = board.drawBoardPlayer();
 //Print player and computer Board
 console.log(JSON.stringify(board));
-const doAction = () => {
+
+const doAttack = () => {
   console.log(`clicked me !! \n Box: ${txtbox.value}`);
   txtbox.value = '';
+  const x = txtx.value;
+  const y = txty.value;
   const turn = player.Turn;
   // /console.log(playerShips);
   console.log(`Soy Player.Turn: ${turn} - ${turn === 0}`);
@@ -43,8 +43,11 @@ const placeShip = (Ships) => {
   const choosenShip = Ships;
 };
 
+btnAtack.addEventListener('click', () => {
+  doAttack();
+});
 btnPlace.addEventListener('click', () => {
-
+  placeShip();
 });
 (() => {
   // //Ships From Player
@@ -155,8 +158,4 @@ btnPlace.addEventListener('click', () => {
 
   // console.log('Check Sunked Ships or Not:  ' + board.checkShipsSunked(createdShip));
   // console.log('Board Computer' + boardArrComputer.toString()) + ':    :' + boardComputer.checkShipsSunked(createdShipComputer);
-
-
-  const btn = document.getElementById('btn-action');
-  btn.onclick = doAction;
 })();
