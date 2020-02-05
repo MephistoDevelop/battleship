@@ -14,7 +14,7 @@ const Player = (name) => ({
   Move: (Turn, x, y, board, createdShip) => {
     if (Turn === 0) {
       board.receiveAtack(x, y, board.BoardComputer, createdShip);
-      console.log(`Player Turn, Atacked on: X:${x} - Y: ${y}\nTo  Computer Board \n${JSON.stringify(board.BoardComputer)}`);
+      console.log(`Player Turn, Atacked on: X:${x} - Y: ${y}\nTo  Computer Board \n ${JSON.stringify(board.BoardComputer)}`);
       return 1;
     }
     const ComputerMoveX = parseInt((0 + Math.random()) * (10 - 0), 10);

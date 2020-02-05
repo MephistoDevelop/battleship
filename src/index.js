@@ -62,14 +62,11 @@ btnPlace.addEventListener('click', () => {
   placeShip(playerShips);
 });
 checkBox.addEventListener('click', () => {
-  console.log('clcikead checck');
   if (check) {
-    console.log('No checked');
     checkBox.checked = false;
     check = false;
     vertical = false;
   } else {
-    console.log(' checked');
     checkBox.checked = true;
     check = true;
     vertical = true;
