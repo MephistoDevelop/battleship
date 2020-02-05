@@ -35,9 +35,11 @@ const doAttack = () => {
 
   if (turn === 0) {
     player.Turn = player.Move(player.Turn, x, y, board, playerShips);
+    lblmessage.innerText = 'Computer Turn';
     console.log(`Player Turn`);
   } else {
     player.Turn = player.Move(player.Turn, x, y, board, computerShips);
+    lblmessage.innerText = player.Name + 'Turn';
     console.log(`Computer.Turn: ${turn} - ${turn === 0}`);
   }
 };
