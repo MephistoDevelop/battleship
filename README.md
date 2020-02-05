@@ -38,7 +38,7 @@ in `package.json` file on the rules we are going to put this:
 
 ```
  "scripts": {
- "test": "echo \"Error: no test specified\" && exit >1",
+ "test": "jest-webpack",
  "build": "webpack --mode production",
  "builddev": "webpack --mode development",
  "start": "webpack-dev-server --mode development >--open"
@@ -100,6 +100,7 @@ To deploy the application and see it on the browser you can use npm to do that t
 `npm i -D webpack-dev-server`
 `npm i browser-sync --save`
 `npm install --save-dev browser-sync-webpack-plugin`
+`npm install --save-dev jest-webpack`
 `npm run build`
 ''
 

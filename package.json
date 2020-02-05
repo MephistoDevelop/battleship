@@ -5,15 +5,24 @@
   "main": "index.js",
   "dependencies": {
     "browser-sync": "^2.26.7",
-    "webpack": "^4.41.5",
-    "webpack-cli": "^3.3.10"
+    "webpack": "^4.41.5"
   },
   "devDependencies": {
+    "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "babel-jest": "^25.1.0",
     "browser-sync-webpack-plugin": "^2.2.2",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-loader": "^3.0.3",
+    "eslint-plugin-import": "^2.20.0",
+    "jest": "^25.1.0",
+    "jest-webpack": "^0.5.1",
+    "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.10.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit >1",
+    "test": "jest --watch",
     "build": "webpack --mode production",
     "builddev": "webpack --mode development",
     "start": "webpack-dev-server --mode development >--open"

@@ -5,10 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta property="og:title" content="Tic Tac Toe Game" />
+  <meta property="og:title" content="Battleship Game" />
   <meta property="og:description" content="A great page to play the classic Battleship Game" />
-  <meta property="og:image"
-    content="https://lh3.googleusercontent.com/d/186R5bGkabiuuQ_ZOjz37KQv9lK7Wg9UK=s220?authuser=0" />
+  <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/f/fd/Battleship_game.png" />
   <meta property="og:url" content="" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@MephistoDevelop" />
@@ -18,6 +17,14 @@
 </head>
 
 <body>
+  <div id="main-container">
+    <div id="messages">Messages</div>
+    <input type="text" id="text-action" placeholder="0:Carr 1:Battle 2:Sub 3:Cruis 4:Destro">
+    <input type="text" id="text-x" placeholder="X">
+    <input type="text" id="text-y" placeholder="Y"><br>
+    <button id="btn-action">Atack</button><br>
+    <button id="btn-place">Place Ship</button><input type="radio" id="checkbox">Vertical ?</input>
+  </div>
   <script src="main.js"></script>
 </body>
 
