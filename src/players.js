@@ -17,8 +17,10 @@ const Player = (name) => ({
       console.log(`Player Turn, Atacked on: X:${x} - Y: ${y}\nTo  Computer Board \n${JSON.stringify(board.BoardComputer)}`);
       return 1;
     }
-    board.receiveAtack(x, y, board.Board, createdShip);
-    console.log(`Computer Turn, Atacked on: X:${x} - Y: ${y}\n To Player Board \n${JSON.stringify(board.Board)}`);
+    const ComputerMoveX = parseInt((0 + Math.random()) * (10 - 0), 10);
+    const ComputerMoveY = parseInt((0 + Math.random()) * (10 - 0), 10);
+    board.receiveAtack(ComputerMoveX, ComputerMoveY, board.Board, createdShip);
+    console.log(`Computer Turn, Atacked on: X:${ComputerMoveX} - Y: ${ComputerMoveY}\n To Player Board \n${JSON.stringify(board.Board)}`);
     return 0;
   },
   playerInit: () => {
