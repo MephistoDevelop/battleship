@@ -19,7 +19,7 @@ const gameBoard = () => ({
     const Ship = ship;
     const newBoard = board;
     if (Ship.Name) {
-      const checkEmptyCells = (Board) => {
+      const checkEmptyHorizontalCells = (Board) => {
         let answer = false;
         for (let i = 0; i < Ship.Lengths; i += 1) {
           //console.log('answer: ' + answer + '  Board[x+' + i + '] : ' + Board[y][(x + i)]);
@@ -32,10 +32,26 @@ const gameBoard = () => ({
         }
         return answer;
       };
-
-      if ((x + Ship.Lengths) <= 10 && checkEmptyCells(newBoard)) {
+      const checkEmptyVerticalCells = (Board) => {
+        let answer = false;
+        for (let i = 0; i < Ship.Lengths; i += 1) {
+          //console.log('answer: ' + answer + '  Board[x+' + i + '] : ' + Board[y][(x + i)]);
+          if (Board[(y + i)][x] === '-') {
+            answer = true;
+          } else {
+            answer = false;
+            break;
+          }
+        }
+        return answer;
+      };
+      if ((x + Ship.Lengths) <= 10 && checkEmptyHorizontalCells(newBoard) && vertical === false) {
         for (let i = 0; i < Ship.Lengths; i += 1) {
           newBoard[y][(x + i)] = `${Ship.Name}${i}`;
+        }
+      } else if ((y + Ship.Lengths) <= 10 && checkEmptyVerticalCells(newBoard) && vertical === true) {
+        for (let i = 0; i < Ship.Lengths; i += 1) {
+          newBoard[(y + i)][x] = `${Ship.Name}${i}`;
         }
       } else {
         console.log('place your ship in a valid position');

@@ -2,6 +2,7 @@ import ship from './ships';
 import gameBoard from './GameBoard';
 import Player from './players';
 
+const checkBox = document.getElementById('checkbox');
 const txtbox = document.getElementById('text-action');
 const txtx = document.getElementById('text-x');
 const txty = document.getElementById('text-y');
@@ -9,7 +10,8 @@ const btnAtack = document.getElementById('btn-action');
 const btnPlace = document.getElementById('btn-place');
 const lblmessage = document.getElementById('messages');
 
-
+let check = false;
+let vertical = false;
 const player = Player('MephistoDevelop');
 const PlayerArr = player.fillPlayerMoves([]);
 // console.log('Soy: ' + player.Name + '\n' + PlayerArr);
@@ -50,7 +52,7 @@ const placeShip = (ShipsArray) => {
   const shipPosition = parseInt(number, 10);
   const choosenShip = ShipsArray[shipPosition];
   console.log(`X: ${x} Y: ${y} , ShiPos: ${shipPosition} , ChoosenShip: ${JSON.stringify(choosenShip)}`);
-  console.log(board.placeShip(choosenShip, board.Board, x, y, true));
+  console.log(board.placeShip(choosenShip, board.Board, x, y, vertical));
 };
 
 btnAtack.addEventListener('click', () => {
@@ -58,6 +60,20 @@ btnAtack.addEventListener('click', () => {
 });
 btnPlace.addEventListener('click', () => {
   placeShip(playerShips);
+});
+checkBox.addEventListener('click', () => {
+  console.log('clcikead checck');
+  if (check) {
+    console.log('No checked');
+    checkBox.checked = false;
+    check = false;
+    vertical = false;
+  } else {
+    console.log(' checked');
+    checkBox.checked = true;
+    check = true;
+    vertical = true;
+  }
 });
 (() => {
   //Game flow to understand the logic to initialize game,created ships ,place ships and hit a ships.
