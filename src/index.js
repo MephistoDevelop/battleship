@@ -20,7 +20,7 @@ const board = gameBoard();
 
 
 board.Board = board.drawBoardPlayer();
-board.BoardComputer = board.drawBoardPlayer();
+board.BoardComputer = computerShips[5];
 //Print player and computer Board
 console.log(JSON.stringify(board));
 
@@ -68,10 +68,7 @@ btnPlace.addEventListener('click', () => {
   // const createdSubmarine = ship(3, 'Submarine');
   // const createdDestroyer = ship(2, 'Destroyer');
 
-  // //Ships From Computer
-  // const createdShipComputer = ship(5, 'Carrier');
-  // const createdBattleShipComputer = ship(4, 'Battleship');
-  // const createdCruiserComputer = ship(3, 'Cruiser');
+  // //Ships From Computer0
   // const createdSubmarineComputer = ship(3, 'Submarine');
   // const createdDestroyerComputer = ship(2, 'Destroyer');
 

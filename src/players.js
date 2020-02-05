@@ -73,9 +73,19 @@ const Player = (name) => ({
     createdShipComputer.ships[createdSubmarine.Name] = arrSubmarine;
     createdShipComputer.ships[createdDestroyer.Name] = arrDestroyer;
 
+    const board = gameBoard();
+    const boardArr = board.drawBoardPlayer();
+
+    //console.log('im the  board:  ' + boardArr);
+    'placedship Submarine: ' + board.placeShip(createdSubmarine, boardArr, 0, 2, true) + ' - ';
+    'placedship Battleship: ' + board.placeShip(createdBattleShip, boardArr, 3, 2, true) + ' - ';
+    'placedship Cruiser: ' + board.placeShip(createdCruiser, boardArr, 3, 0, true) + ' - ';
+    'placedship Destroyer: ' + board.placeShip(createdDestroyer, boardArr, 6, 7, true) + ' - ';
+    'placedship Carrier: ' + board.placeShip(createdShipComputer, boardArr, 5, 8, true);
+
     console.log(`Soy Computer Init function: ${JSON.stringify(createdShipComputer.ships)}`);
 
-    return [createdShipComputer, createdBattleShip, createdCruiser, createdSubmarine, createdDestroyer];
+    return [createdShipComputer, createdBattleShip, createdCruiser, createdSubmarine, createdDestroyer, boardArr];
   },
   fillPlayerMoves: (playerBoard) => {
     for (let i = 0; i < 100; i += 1) {
