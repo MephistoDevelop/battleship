@@ -2,13 +2,21 @@ import ship from './ships';
 import gameBoard from './GameBoard';
 import Player from './players';
 
+const txtbox = document.getElementById('text-action');
 const txtx = document.getElementById('text-x');
 const txty = document.getElementById('text-y');
+const btnAtack = document.getElementById('btn-action');
+const btnPlace = document.getElementById('btn-place');
+const lblmessage = document.getElementById('messages');
+
+const x = txtx.value;
+const y = txty.value;
+
 
 const player = Player('MephistoDevelop');
 const PlayerArr = player.fillPlayerMoves([]);
-//console.log('Soy: ' + player.Name + '\n' + PlayerArr);
-
+// console.log('Soy: ' + player.Name + '\n' + PlayerArr);
+lblmessage.innerText = `${player.Name} Turn`;
 const playerShips = player.playerInit();
 const computerShips = player.computerInit();
 const board = gameBoard();
@@ -16,23 +24,28 @@ const board = gameBoard();
 
 board.Board = board.drawBoardPlayer();
 board.BoardComputer = board.drawBoardPlayer();
-
+//Print player and computer Board
+console.log(JSON.stringify(board));
 const doAction = () => {
-  const ex = txtx.value;
-  const yay = txty.value;
-  const txtbox = document.getElementById('text-action');
-  console.log('clicked me !! \n Box: ' + txtbox.value);
+  console.log(`clicked me !! \n Box: ${txtbox.value}`);
   txtbox.value = '';
   const turn = player.Turn;
-  ///console.log(playerShips);
+  // /console.log(playerShips);
   console.log(`Soy Player.Turn: ${turn} - ${turn === 0}`);
 
   if (turn === 0) {
-    player.Turn = player.Move(player.Turn, ex, yay, board, playerShips);
-    console.log('Soy Player.Turn cero: ' + player.Turn);
-  } else { player.Turn = player.Move(player.Turn, ex, yay, board, computerShips); }
-
+    player.Turn = player.Move(player.Turn, x, y, board, playerShips);
+    console.log(`Soy Player.Turn cero: ${player.Turn}`);
+  } else { player.Turn = player.Move(player.Turn, x, y, board, computerShips); }
 };
+
+const placeShip = (Ships) => {
+  const choosenShip = Ships;
+};
+
+btnPlace.addEventListener('click', () => {
+
+});
 (() => {
   // //Ships From Player
   // const createdShip = ship(5, 'Carrier');
@@ -141,7 +154,7 @@ const doAction = () => {
   // console.log('Board Array: ' + boardArr);
 
   // console.log('Check Sunked Ships or Not:  ' + board.checkShipsSunked(createdShip));
-  //console.log('Board Computer' + boardArrComputer.toString()) + ':    :' + boardComputer.checkShipsSunked(createdShipComputer);
+  // console.log('Board Computer' + boardArrComputer.toString()) + ':    :' + boardComputer.checkShipsSunked(createdShipComputer);
 
 
   const btn = document.getElementById('btn-action');
