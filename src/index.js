@@ -31,12 +31,15 @@ const doAttack = () => {
   const y = txty.value;
   const turn = player.Turn;
   // /console.log(playerShips);
-  console.log(`Soy Player.Turn: ${turn} - ${turn === 0}`);
+
 
   if (turn === 0) {
     player.Turn = player.Move(player.Turn, x, y, board, playerShips);
-    console.log(`Soy Player.Turn cero: ${player.Turn}`);
-  } else { player.Turn = player.Move(player.Turn, x, y, board, computerShips); }
+    console.log(`Player Turn`);
+  } else {
+    player.Turn = player.Move(player.Turn, x, y, board, computerShips);
+    console.log(`Computer.Turn: ${turn} - ${turn === 0}`);
+  }
 };
 
 const placeShip = (ShipsArray) => {
