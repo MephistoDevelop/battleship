@@ -9,7 +9,7 @@
     grid-template-rows: repeat(10, 50px);
     grid-template-columns: repeat(10, 50px);
   }
-  
+
   .box {
     cursor: pointer;
     display: flex;
@@ -19,4 +19,7 @@
     background-color: rgb(19, 63, 21);
     color: white;
     font-size: 70px;
+  }
+  .box:hover{
+    opacity:0.5;
   }
