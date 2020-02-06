@@ -18,7 +18,8 @@ const display = (() => {
       const x = boxs[i].getAttribute('data-position-x');
       const y = boxs[i].getAttribute('data-position-y');
       boxs[i].addEventListener('click', () => {
-        boxs[i].style.backgroundImage = "url('./img/ex.png')";
+        if (i % 2 === 0) boxs[i].style.backgroundImage = "url('./img/hole.png')";
+        else boxs[i].style.backgroundImage = "url('./img/ex.png')";
         clickEvent(x, y);
       });
     }
@@ -28,8 +29,6 @@ const display = (() => {
     message.innerText = `Cell: X: ${x} - Y:${y} Clicked`;
     console.log(x + ' - ' + y);
   };
-
-
   return { render };
 })();
 
