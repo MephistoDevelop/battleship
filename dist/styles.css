@@ -1,7 +1,8 @@
 .board {
+    margin-top: 25px;
     display: flex;
     justify-content: space-between;
-    padding: 0 65px;
+    padding: 0 85px;
 }
 .grid-container {
     display: grid;
