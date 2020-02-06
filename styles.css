@@ -19,6 +19,8 @@
     background-color: rgb(19, 63, 21);
     color: white;
     font-size: 70px;
+    /* background-image: url(./img/ex.png); */
+    background-size: cover;
   }
   .box:hover{
     opacity:0.5;
