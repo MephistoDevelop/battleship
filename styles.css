@@ -1,18 +1,21 @@
 .board {
     display: flex;
+    justify-content: space-between;
+    padding: 0 65px;
 }
 .grid-container {
     display: grid;
-    grid-template-rows: 120px 120px 120px;
-    grid-template-columns: 120px 120px 120px;
+    grid-template-rows: repeat(10, 50px);
+    grid-template-columns: repeat(10, 50px);
   }
   
   .box {
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     border: 2px solid rgb(143, 141, 141);
-    background-color: black;
+    background-color: rgb(19, 63, 21);
     color: white;
     font-size: 70px;
   }
