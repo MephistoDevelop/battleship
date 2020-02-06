@@ -1,5 +1,6 @@
-const display = (() => {
+import Player from './players';
 
+const display = (() => {
   const render = () => {
     const human = document.querySelector('.human');
     const computer = document.querySelector('.computer');
@@ -14,21 +15,36 @@ const display = (() => {
     human.innerHTML = board;
     computer.innerHTML = board;
     const boxs = document.getElementsByClassName('box');
-    for (let i = 0; i < boxs.length; i += 1) {
+    const lblmessage = document.getElementById('messages');
+    const player = Player('MephistoDevelop');
+    const playerShips = player.playerInit();
+    const computerShips = player.computerInit();
+    let turn = player.Turn;
+
+
+    for (let i = (boxs.length / 2); i < boxs.length; i += 1) {
       const x = boxs[i].getAttribute('data-position-x');
       const y = boxs[i].getAttribute('data-position-y');
+      // eslint-disable-next-line no-loop-func
+
       boxs[i].addEventListener('click', () => {
+
+        if (turn === 0) {
+          //player.Turn = player.Move(player.Turn, x, y, board, playerShips);
+          lblmessage.innerText = 'Computer Turn';
+          turn = 1;
+        } else {
+          //player.Turn = player.Move(player.Turn, x, y, board, computerShips);
+          lblmessage.innerText = `${player.Name} Turn`;
+          console.log(`Computer Turn: ${turn} - ${turn === 0}`);
+        }
         if (i % 2 === 0) boxs[i].style.backgroundImage = "url('./img/hole.png')";
         else boxs[i].style.backgroundImage = "url('./img/ex.png')";
-        clickEvent(x, y);
+        console.log(`${x} - ${y}`);
       });
     }
   };
-  const clickEvent = (x, y) => {
-    const message = document.getElementById('messages');
-    message.innerText = `Cell: X: ${x} - Y:${y} Clicked`;
-    console.log(x + ' - ' + y);
-  };
+
   return { render };
 })();
 
