@@ -3,13 +3,12 @@ const display = (() => {
     const human = document.querySelector('.human');
     const computer = document.querySelector('.computer');
     let board = '';
-    for (let i = 0; i < 100; i += 1) {
-        for (let x = 0; x < 10; x += 1) {
-            for (let y = 0; y < 10; y += 1) {
-                board += `<div data-position-x=${x} data-position-y=${y} class="box"></div>`;
-            }
+    for (let x = 0; x < 10; x += 1) {
+        for (let y = 0; y < 10; y += 1) {
+            board += `<div data-position-x=${x} data-position-y=${y} class="box"></div>`;
         }
     }
+    
     human.innerHTML = board;
     computer.innerHTML = board;
   }
