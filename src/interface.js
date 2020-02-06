@@ -18,6 +18,7 @@ const display = (() => {
       const x = boxs[i].getAttribute('data-position-x');
       const y = boxs[i].getAttribute('data-position-y');
       boxs[i].addEventListener('click', () => {
+        boxs[i].style.backgroundImage = "url('./img/ex.png')";
         clickEvent(x, y);
       });
     }
@@ -29,7 +30,7 @@ const display = (() => {
   };
 
 
-  return { render }
+  return { render };
 })();
 
 export default display;
