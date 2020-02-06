@@ -1,10 +1,18 @@
 .message {
     background-color: rgba(187, 133, 32, 0.411);
     color: black;
-    padding: 10px;
-    width: 50%;
+    padding: 1px;
+    width: 40%;
+    text-align: center;
     margin: auto;
-    
+    font-size: 18px;
+    color: green;   
+}
+.messageText {
+    font-size: 20px;
+}
+.null {
+    color:grey
 }
 .board {
     margin-top: 25px;

@@ -1,6 +1,5 @@
 const display = (() => {
-  const render = () => {  
-    const board = document.querySelector('.board');
+  const render = () => {
     const human = document.querySelector('.human');
     const computer = document.querySelector('.computer');
     const message = document.querySelector('.messageText');
@@ -10,7 +9,6 @@ const display = (() => {
             board += `<div data-position-x=${x} data-position-y=${y} class="box"></div>`;
         }
     }
-    
     human.innerHTML = board;
     computer.innerHTML = board;
     let turn = 'Player turn'
