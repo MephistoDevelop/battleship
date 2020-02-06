@@ -1,3 +1,11 @@
+.message {
+    background-color: rgba(187, 133, 32, 0.411);
+    color: black;
+    padding: 10px;
+    width: 50%;
+    margin: auto;
+    
+}
 .board {
     margin-top: 25px;
     display: flex;
