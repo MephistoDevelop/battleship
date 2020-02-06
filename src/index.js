@@ -6,6 +6,7 @@ const checkBox = document.getElementById('checkbox');
 const txtbox = document.getElementById('text-action');
 const txtx = document.getElementById('text-x');
 const txty = document.getElementById('text-y');
+const btnstart = document.getElementById('btn-start');
 const btnAtack = document.getElementById('btn-action');
 const btnPlace = document.getElementById('btn-place');
 const lblmessage = document.getElementById('messages');
@@ -13,21 +14,11 @@ const lblmessage = document.getElementById('messages');
 let check = false;
 let vertical = false;
 const player = Player('MephistoDevelop');
-const PlayerArr = player.fillPlayerMoves([]);
-// console.log('Soy: ' + player.Name + '\n' + PlayerArr);
-lblmessage.innerText = `${player.Name} Turn`;
-const playerShips = player.playerInit();
-const computerShips = player.computerInit();
 const board = gameBoard();
-
-
-board.Board = board.drawBoardPlayer();
-board.BoardComputer = computerShips[5];
-//Print player and computer Board
-console.log(JSON.stringify(board));
+const playerShips = null;
+const computerShips = null;
 
 const doAttack = () => {
-  console.log(`clicked me !! \n Box: ${txtbox.value}`);
   txtbox.value = '';
   const x = txtx.value;
   const y = txty.value;
@@ -54,7 +45,23 @@ const placeShip = (ShipsArray) => {
   console.log(`X: ${x} Y: ${y} , ShiPos: ${shipPosition} , ChoosenShip: ${JSON.stringify(choosenShip)}`);
   console.log(board.placeShip(choosenShip, board.Board, x, y, vertical));
 };
+btnstart.addEventListener('click', () => {
+  console.log('Started Game');
 
+  const PlayerArr = player.fillPlayerMoves([]);
+  // console.log('Soy: ' + player.Name + '\n' + PlayerArr);
+  lblmessage.innerText = `${player.Name} Turn`;
+  const playerShips = player.playerInit();
+  const computerShips = player.computerInit();
+  const board = gameBoard();
+
+
+  board.Board = board.drawBoardPlayer();
+  board.BoardComputer = computerShips[5];
+  //Print player and computer Board
+  console.log(JSON.stringify(board));
+
+});
 btnAtack.addEventListener('click', () => {
   doAttack();
 });

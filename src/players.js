@@ -75,14 +75,26 @@ const Player = (name) => ({
 
     const board = gameBoard();
     const boardArr = board.drawBoardPlayer();
-
-    //console.log('im the  board:  ' + boardArr);
-    'placedship Submarine: ' + board.placeShip(createdSubmarine, boardArr, 0, 2, true) + ' - ';
-    'placedship Battleship: ' + board.placeShip(createdBattleShip, boardArr, 3, 2, true) + ' - ';
-    'placedship Cruiser: ' + board.placeShip(createdCruiser, boardArr, 3, 0, true) + ' - ';
-    'placedship Destroyer: ' + board.placeShip(createdDestroyer, boardArr, 6, 7, true) + ' - ';
-    'placedship Carrier: ' + board.placeShip(createdShipComputer, boardArr, 5, 8, true);
-
+    const positionedShips = [
+      {
+        Submarine: [0, 2, true],
+        Battleship: [3, 2, true],
+        Cruiser: [5, 1, false],
+        Destroyer: [0, 0, false],
+        Carrier: [0, 8, false],
+      }, {
+        Submarine: [0, 0, true],
+        Battleship: [3, 2, true],
+        Cruiser: [3, 0, true],
+        Destroyer: [3, 0, true],
+        Carrier: [5, 8, true],
+      }];
+    // console.log('im the  board:  ' + boardArr);
+    `placedship Submarine: ${board.placeShip(createdSubmarine, boardArr, positionedShips[0].Submarine[0], positionedShips[0].Submarine[1], positionedShips[0].Submarine[2])} - `;
+    `placedship Battleship: ${board.placeShip(createdBattleShip, boardArr, positionedShips[0].Battleship[0], positionedShips[0].Battleship[1], positionedShips[0].Battleship[2])} - `;
+    `placedship Battleship: ${board.placeShip(createdCruiser, boardArr, positionedShips[0].Cruiser[0], positionedShips[0].Cruiser[1], positionedShips[0].Cruiser[2])} - `;
+    `placedship Battleship: ${board.placeShip(createdDestroyer, boardArr, positionedShips[0].Destroyer[0], positionedShips[0].Destroyer[1], positionedShips[0].Destroyer[2])} - `;
+    `placedship Battleship: ${board.placeShip(createdShipComputer, boardArr, positionedShips[0].Carrier[0], positionedShips[0].Carrier[1], positionedShips[0].Carrier[2])} - `;
     console.log(`Soy Computer Init function: ${JSON.stringify(createdShipComputer.ships)}`);
 
     return [createdShipComputer, createdBattleShip, createdCruiser, createdSubmarine, createdDestroyer, boardArr];
