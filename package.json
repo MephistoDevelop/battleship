@@ -4,8 +4,7 @@
   "description": "Battleship game made with Webpack and testing with Jest library",
   "main": "index.js",
   "dependencies": {
-    "browser-sync": "^2.26.7",
-    "webpack": "^4.41.5"
+    "browser-sync": "^2.26.7"
   },
   "devDependencies": {
     "@babel/core": "^7.8.3",
@@ -18,6 +17,7 @@
     "eslint-plugin-import": "^2.20.0",
     "jest": "^25.1.0",
     "jest-webpack": "^0.5.1",
+    "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.10.1"
   },

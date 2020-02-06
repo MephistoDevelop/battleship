@@ -1,0 +1,18 @@
+.board {
+    display: flex;
+}
+.grid-container {
+    display: grid;
+    grid-template-rows: 120px 120px 120px;
+    grid-template-columns: 120px 120px 120px;
+  }
+  
+  .box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgb(143, 141, 141);
+    background-color: black;
+    color: white;
+    font-size: 70px;
+  }

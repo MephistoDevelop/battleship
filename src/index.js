@@ -1,7 +1,8 @@
 import ship from './ships';
 import gameBoard from './GameBoard';
 import Player from './players';
-
+import display from './interface';
+display.render();
 const checkBox = document.getElementById('checkbox');
 const txtbox = document.getElementById('text-action');
 const txtx = document.getElementById('text-x');
