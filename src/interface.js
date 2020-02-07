@@ -85,8 +85,8 @@ const display = (() => {
       for (let y = 0; y < 10; y += 1) {
         if (board[x][y] !== '-') {
           const number = parseInt(`${x}${y}`, 10);
-          boxs[number].innerText = board[x][y];
-          boxs[number].style.opacity = '0.5';
+          boxs[number + 100].innerText = board[x][y];
+          boxs[number + 100].style.opacity = '0.5';
           // console.log(`Im renderships on X: ${x} - Y: ${y} !! \n${board[x][y]}`);
         }
       }
