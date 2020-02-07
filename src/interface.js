@@ -36,11 +36,17 @@ const display = (() => {
           player.Turn = player.Move(player.Turn, x, y, board, playerShips);
           lblmessage.innerText = `${Player.Name} Turn ${JSON.stringify(playerShips)}`;
           turn = 1;
-          const computerCoordinatesAtack = player.Move(player.Turn, x, y, board, computerShips);
-          lblmessage.innerText = `${player.Name} Turn`;
-          const number = parseInt(`${computerCoordinatesAtack[0]}${computerCoordinatesAtack[1]}`, 10);
-          boxs[number].style.backgroundImage = "url('./img/ex.png')"
-          turn = 0;
+          setTimeout(function () {
+
+            const computerCoordinatesAtack = player.Move(player.Turn, 0, 0, board, computerShips);
+            lblmessage.innerText = `${player.Name} Turn`;
+            const number = parseInt(`${computerCoordinatesAtack[0]}${computerCoordinatesAtack[1]}`, 10);
+            console.log('Soy number:' + number);
+            boxs[number].style.backgroundImage = "url('./img/ex.png')"
+            turn = 0;
+
+          }, 1500);
+
 
         } else {
 
