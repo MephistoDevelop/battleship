@@ -68,15 +68,21 @@ const gameBoard = () => ({
     //console.log('im board on Position[' + y + '][' + x + ']:');// + board[x][y]);
     if (isEmptyCell) {
       board[y][x] = 'X';
-      answer = 'Failed on:  X: ' + x + ' Y: ' + y + 'Empty Cell? :' + isEmptyCell;
+      //answer = 'Failed on:  X: ' + x + ' Y: ' + y + 'Empty Cell? :' + isEmptyCell;
+      answer = false;
     } else {
       // console.log(shipsArray);
       const shipName = (board[y][x]).split('');
       const name = (shipName.splice(0, shipName.length - 1)).join('');
-      const hittedShipPosition = parseInt(shipName);
-      shipFactory.hit(shipsArray, hittedShipPosition, name);
-      board[y][x] = `${name}X`;
-      answer = `${JSON.stringify(shipsArray)}- ${name} - ${hittedShipPosition} \n Atacked on Pos; X: ${x}:   Y: ${y}:    Empty Cell ? : ${isEmptyCell}    \n BoardArr:  ${board}`;
+      if (name !== '') {
+        const hittedShipPosition = parseInt(shipName);
+        console.log(`im hit name: ${JSON.stringify(name)}`);
+        shipFactory.hit(shipsArray, hittedShipPosition, name);
+        board[y][x] = `${name}X`;
+        //answer = `${JSON.stringify(shipsArray)}- ${name} - ${hittedShipPosition} \n Atacked on Pos; X: ${x}:   Y: ${y}:    Empty Cell ? : ${isEmptyCell}    \n BoardArr:  ${board}`;
+        answer = true;
+      }
+
     }
     return answer;
   },

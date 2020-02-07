@@ -8,20 +8,19 @@ const Player = (name) => ({
     name,
     Board: [],
   },
-  computerBoard: {
-    Board: [],
-  },
+  computerMoves: [],
   Move: (Turn, x, y, board, createdShip) => {
+    let hit = false;
     if (Turn === 0) {
-      board.receiveAtack(x, y, board.BoardComputer, createdShip);
+      hit = board.receiveAtack(x, y, board.BoardComputer, createdShip);
       console.log(`Player Turn, Atacked on: X:${x} - Y: ${y}\nTo  Computer Board \n ${JSON.stringify(board.BoardComputer)}`);
-      return 1;
+      return [1, hit];
     }
     const ComputerMoveX = parseInt((0 + Math.random()) * (10 - 0), 10);
     const ComputerMoveY = parseInt((0 + Math.random()) * (10 - 0), 10);
-    board.receiveAtack(ComputerMoveX, ComputerMoveY, board.Board, createdShip);
+    hit = board.receiveAtack(ComputerMoveX, ComputerMoveY, board.Board, createdShip);
     console.log(`Computer Turn, Atacked on: X:${ComputerMoveX} - Y: ${ComputerMoveY}\n To Player Board \n${JSON.stringify(board.Board)}`);
-    return [ComputerMoveX, ComputerMoveY];
+    return [ComputerMoveX, ComputerMoveY, hit];
   },
   playerInit: () => {
     const createdShip = ship(5, 'Carrier');
@@ -48,7 +47,7 @@ const Player = (name) => ({
 
     console.log(`Soy PLayer Init function: ${JSON.stringify(createdShip.ships)}`);
 
-    return [createdShip, createdBattleShip, createdCruiser, createdSubmarine];
+    return [createdShip, createdBattleShip, createdCruiser, createdSubmarine, createdDestroyer];
   },
   computerInit: () => {
     const createdShipComputer = ship(5, 'Carrier');

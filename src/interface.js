@@ -15,6 +15,7 @@ const display = (() => {
     const board = gameBoard();
     let check = false;
     let vertical = false;
+    let computerMovs = [];
     for (let x = 0; x < 10; x += 1) {
       for (let y = 0; y < 10; y += 1) {
         boardUI += `<div data-position-x=${x} data-position-y=${y} class="box" id="box${x}${y}"></div>`;
@@ -39,24 +40,40 @@ const display = (() => {
       // eslint-disable-next-line no-loop-func
 
       boxs[i].addEventListener('click', () => {
+        console.log('im turn' + turn);
         if (turn === 0) {
-          player.Turn = player.Move(player.Turn, x, y, board, playerShips);
+          player.Turn = 0;
+          const hit = player.Move(player.Turn, x, y, board, playerShips)[1];
           lblmessage.innerText = `${Player.Name} Turn ${JSON.stringify(playerShips)}`;
-          turn = 1;
+          player.Turn = 1;
+          if (hit) boxs[i].style.backgroundImage = "url('./img/hole.png')";
+          else boxs[i].style.backgroundImage = "url('./img/ex.png')";
+
           setTimeout(() => {
-            const computerCoordinatesAtack = player.Move(player.Turn, 0, 0, board, computerShips);
+            let computerCoordinatesAtack = player.Move(player.Turn, 0, 0, board, computerShips);
             // lblmessage.innerText = `${player.Name} Turn`;
-            const number = parseInt(`${computerCoordinatesAtack[0]}${computerCoordinatesAtack[1]}`, 10);
-            console.log(`Soy number:${number}`);
+            let number = parseInt(`${computerCoordinatesAtack[0]}${computerCoordinatesAtack[1]}`, 10);
+            console.log(`Exist onarray?:${player.computerMoves.includes(number)}`);
+            while (player.computerMoves.includes(number)) {
+              console.log('repetead number');
+              computerCoordinatesAtack = player.Move(player.Turn, 0, 0, board, computerShips);
+              number = parseInt(`${computerCoordinatesAtack[0]}${computerCoordinatesAtack[1]}`, 10);
+              if (!player.computerMoves.includes(number)) {
+                player.computerMoves.push(number);
+                boxs[number].style.backgroundImage = "url('./img/ex.png')";
+                player.Turn = 0;
+                break;
+              }
+            }
+            player.computerMoves.push(number);
             boxs[number].style.backgroundImage = "url('./img/ex.png')";
-            turn = 0;
-          }, 1500);
+            player.Turn = 0;
+          }, 800);
         } else {
 
           //  console.log(`Computer Turn: ${turn} - ${turn === 0}`);
         }
-        if (i % 2 === 0) boxs[i].style.backgroundImage = "url('./img/hole.png')";
-        else boxs[i].style.backgroundImage = "url('./img/ex.png')";
+        console.log(player.computerMoves);
         //  console.log(`${x} - ${y} \n ${JSON.stringify(playerShips)} \n Computer Ships: \n ${computerShips} `);
       });
     }
