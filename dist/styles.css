@@ -1,7 +1,4 @@
-[type="radio"]:not(:checked){
-  opacity: 1;
-  position: relative;
-}
+
 .board {
     margin-top: 25px;
     display: flex;

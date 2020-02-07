@@ -13,7 +13,8 @@ const display = (() => {
     const txty = document.getElementById('text-y');
     let boardUI = '';
     const board = gameBoard();
-
+    let check = false;
+    let vertical = false;
     for (let x = 0; x < 10; x += 1) {
       for (let y = 0; y < 10; y += 1) {
         boardUI += `<div data-position-x=${x} data-position-y=${y} class="box" id="box${x}${y}"></div>`;
@@ -63,7 +64,19 @@ const display = (() => {
     btnPlaceShip.addEventListener('click', () => {
       console.log('Placed clicked');
       const choosenShipNumber = parseInt(txtbox.value, 10);
-      displayShipPlayer(boxs, txtx, txty, txtbox, playerShips, choosenShipNumber);
+      displayShipPlayer(boxs, txtx, txty, txtbox, playerShips, choosenShipNumber, vertical);
+    });
+
+    checkBox.addEventListener('click', () => {
+      if (check) {
+        checkBox.checked = false;
+        check = false;
+        vertical = false;
+      } else {
+        checkBox.checked = true;
+        check = true;
+        vertical = true;
+      }
     });
   };
 
@@ -80,7 +93,7 @@ const display = (() => {
     }
   };
 
-  const displayShipPlayer = (boxs, txtx, txty, txtbox, ShipsArray, number) => {
+  const displayShipPlayer = (boxs, txtx, txty, txtbox, ShipsArray, number, vertical) => {
     const x = parseInt(txtx.value, 10);
     const y = parseInt(txty.value, 10);
     console.log(`Choosen number: ${number}\n on: ${ShipsArray[number].Name}`);
@@ -88,9 +101,14 @@ const display = (() => {
     const choosenShip = ShipsArray[number];
     const size = ShipsArray[number].Lengths;
     for (let i = 0; i < size; i += 1) {
-      const newnumber = parseInt(`${x}${y + i}`, 10);
-      boxs[newnumber + 100].innerText = ShipsArray[number].Name;
-      boxs[newnumber + 100].style.opacity = '0.7';
+      let newnumber = 0;
+      if (vertical) {
+        newnumber = parseInt(`${y + i}${x}`, 10);
+      } else {
+        newnumber = parseInt(`${y}${x + i}`, 10);
+      }
+      boxs[newnumber].innerText = ShipsArray[number].Name;
+      boxs[newnumber].style.opacity = '0.5';
     }
     console.log(`im X: ${x} Y: ${y} : Choosen: ${JSON.stringify(ShipsArray)}`);
   };
