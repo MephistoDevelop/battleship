@@ -22,7 +22,15 @@
   <div class="row">
     <div id="main-container">
       <div id="messages">Messages</div>
-      <input type="text" id="text-action" placeholder="0:Carr 1:Battle 2:Sub 3:Cruis 4:Destro">
+      <select id="text-action">
+        <option value=null class="null">Choose your option</option>
+        <option value="0">Carrier</option>
+        <option value="1">Battleship</option>
+        <option value="2">Submarin</option>
+        <option value="3">Cruiser</option>
+        <option value="4">Destroyer</option>
+      </select>
+
       <input type="text" id="text-x" placeholder="X">
       <input type="text" id="text-y" placeholder="Y"><br>
       <button id="btn-action">Atack</button><br>
