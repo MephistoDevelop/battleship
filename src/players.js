@@ -21,7 +21,7 @@ const Player = (name) => ({
     const ComputerMoveY = parseInt((0 + Math.random()) * (10 - 0), 10);
     board.receiveAtack(ComputerMoveX, ComputerMoveY, board.Board, createdShip);
     console.log(`Computer Turn, Atacked on: X:${ComputerMoveX} - Y: ${ComputerMoveY}\n To Player Board \n${JSON.stringify(board.Board)}`);
-    return 0;
+    return [ComputerMoveX, ComputerMoveY];
   },
   playerInit: () => {
     const createdShip = ship(5, 'Carrier');
