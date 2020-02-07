@@ -2,30 +2,31 @@ import ship from './ships';
 import gameBoard from './GameBoard';
 import Player from './players';
 import ui from './interface';
+
 ui.render();
-const checkBox = document.getElementById('checkbox');
-const txtbox = document.getElementById('text-action');
-const txtx = document.getElementById('text-x');
-const txty = document.getElementById('text-y');
-const btnAtack = document.getElementById('btn-action');
-const btnPlace = document.getElementById('btn-place');
-const lblmessage = document.getElementById('messages');
+// const checkBox = document.getElementById('checkbox');
+// const txtbox = document.getElementById('text-action');
+// const txtx = document.getElementById('text-x');
+// const txty = document.getElementById('text-y');
+// const btnAtack = document.getElementById('btn-action');
+// const btnPlace = document.getElementById('btn-place');
+// const lblmessage = document.getElementById('messages');
 
-let check = false;
-let vertical = false;
-const player = Player('MephistoDevelop');
-const PlayerArr = player.fillPlayerMoves([]);
-// console.log('Soy: ' + player.Name + '\n' + PlayerArr);
-lblmessage.innerText = `${player.Name} Turn`;
-const playerShips = player.playerInit();
-const computerShips = player.computerInit();
-const board = gameBoard();
+// let check = false;
+// let vertical = false;
+// const player = Player('MephistoDevelop');
+// const PlayerArr = player.fillPlayerMoves([]);
+// // console.log('Soy: ' + player.Name + '\n' + PlayerArr);
+// lblmessage.innerText = `${player.Name} Turn`;
+// const playerShips = player.playerInit();
+// const computerShips = player.computerInit();
+// const board = gameBoard();
 
 
-board.Board = board.drawBoardPlayer();
-board.BoardComputer = computerShips[5];
-//Print player and computer Board
-console.log(JSON.stringify(board));
+// board.Board = board.drawBoardPlayer();
+// board.BoardComputer = computerShips[5];
+// //Print player and computer Board
+// console.log(JSON.stringify(board));
 
 const doAttack = () => {
   console.log(`clicked me !! \n Box: ${txtbox.value}`);
@@ -56,23 +57,23 @@ const placeShip = (ShipsArray) => {
   console.log(board.placeShip(choosenShip, board.Board, x, y, vertical));
 };
 
-btnAtack.addEventListener('click', () => {
-  doAttack();
-});
-btnPlace.addEventListener('click', () => {
-  placeShip(playerShips);
-});
-checkBox.addEventListener('click', () => {
-  if (check) {
-    checkBox.checked = false;
-    check = false;
-    vertical = false;
-  } else {
-    checkBox.checked = true;
-    check = true;
-    vertical = true;
-  }
-});
+// btnAtack.addEventListener('click', () => {
+//   doAttack();
+// });
+// btnPlace.addEventListener('click', () => {
+//   placeShip(playerShips);
+// });
+// checkBox.addEventListener('click', () => {
+//   if (check) {
+//     checkBox.checked = false;
+//     check = false;
+//     vertical = false;
+//   } else {
+//     checkBox.checked = true;
+//     check = true;
+//     vertical = true;
+//   }
+// });
 (() => {
   //Game flow to understand the logic to initialize game,created ships ,place ships and hit a ships.
   // //Ships From Player
