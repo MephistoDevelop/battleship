@@ -6,6 +6,11 @@ const display = (() => {
   const render = () => {
     const human = document.querySelector('.human');
     const computer = document.querySelector('.computer');
+    const btnPlaceShip = document.getElementById('btn-place');
+    const checkBox = document.getElementById('checkbox');
+    const txtbox = document.getElementById('text-action');
+    const txtx = document.getElementById('text-x');
+    const txty = document.getElementById('text-y');
     let boardUI = '';
     const board = gameBoard();
 
@@ -54,6 +59,12 @@ const display = (() => {
         //  console.log(`${x} - ${y} \n ${JSON.stringify(playerShips)} \n Computer Ships: \n ${computerShips} `);
       });
     }
+
+    btnPlaceShip.addEventListener('click', () => {
+      console.log('Placed clicked');
+      const choosenShipNumber = parseInt(txtbox.value, 10);
+      displayShipPlayer(boxs, txtx, txty, txtbox, playerShips, choosenShipNumber);
+    });
   };
 
   const renderships = (board, boxs) => {
@@ -62,10 +73,26 @@ const display = (() => {
         if (board[x][y] !== '-') {
           const number = parseInt(`${x}${y}`, 10);
           boxs[number].innerText = board[x][y];
+          boxs[number].style.opacity = '0.5';
           // console.log(`Im renderships on X: ${x} - Y: ${y} !! \n${board[x][y]}`);
         }
       }
     }
+  };
+
+  const displayShipPlayer = (boxs, txtx, txty, txtbox, ShipsArray, number) => {
+    const x = parseInt(txtx.value, 10);
+    const y = parseInt(txty.value, 10);
+    console.log(`Choosen number: ${number}\n on: ${ShipsArray[number].Name}`);
+
+    const choosenShip = ShipsArray[number];
+    const size = ShipsArray[number].Lengths;
+    for (let i = 0; i < size; i += 1) {
+      const newnumber = parseInt(`${x}${y + i}`, 10);
+      boxs[newnumber + 100].innerText = ShipsArray[number].Name;
+      boxs[newnumber + 100].style.opacity = '0.7';
+    }
+    console.log(`im X: ${x} Y: ${y} : Choosen: ${JSON.stringify(ShipsArray)}`);
   };
 
   return { render };
