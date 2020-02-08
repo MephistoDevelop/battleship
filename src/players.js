@@ -12,14 +12,14 @@ const Player = (name) => ({
   Move: (Turn, x, y, board, createdShip) => {
     let hit = false;
     if (Turn === 0) {
-      hit = board.receiveAtack(x, y, board.BoardComputer, createdShip);
-      console.log(`Player Turn, Atacked on: X:${x} - Y: ${y}\nTo  Computer Board \n ${JSON.stringify(board.BoardComputer)}`);
+      hit = board.receiveAtack(y, x, board.BoardComputer, createdShip);
+      console.log(`Player Turn, Atacked on: X:${y} - Y: ${x}\nTo  Computer Board \n ${JSON.stringify(board.BoardComputer)}`);
       return [1, hit];
     }
     const ComputerMoveX = parseInt((0 + Math.random()) * (10 - 0), 10);
     const ComputerMoveY = parseInt((0 + Math.random()) * (10 - 0), 10);
     hit = board.receiveAtack(ComputerMoveX, ComputerMoveY, board.Board, createdShip);
-    console.log(`Computer Turn, Atacked on: X:${ComputerMoveX} - Y: ${ComputerMoveY}\n To Player Board \n${JSON.stringify(board.Board)}`);
+    console.log(`Computer Turn, Atacked on: X:${ComputerMoveY} - Y: ${ComputerMoveY}\n To Player Board \n${JSON.stringify(board.Board)}`);
     return [ComputerMoveX, ComputerMoveY, hit];
   },
   playerInit: () => {

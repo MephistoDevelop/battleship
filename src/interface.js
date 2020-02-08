@@ -7,6 +7,7 @@ const display = (() => {
     const human = document.querySelector('.human');
     const computer = document.querySelector('.computer');
     const btnPlaceShip = document.getElementById('btn-place');
+    const btnRandom = document.getElementById('btn-random');
     const checkBox = document.getElementById('checkbox');
     const txtbox = document.getElementById('text-action');
     const txtx = document.getElementById('text-x');
@@ -32,7 +33,7 @@ const display = (() => {
     let turn = player.Turn;
     board.Board = board.drawBoardPlayer();
     board.BoardComputer = computerShips[5];
-
+    let hit = false;
     renderships(board.BoardComputer, boxs);
     for (let i = (boxs.length / 2); i < boxs.length; i += 1) {
       const x = boxs[i].getAttribute('data-position-x');
@@ -43,7 +44,7 @@ const display = (() => {
         console.log('im turn' + turn);
         if (turn === 0) {
           player.Turn = 0;
-          const hit = player.Move(player.Turn, x, y, board, playerShips)[1];
+          hit = player.Move(player.Turn, x, y, board, playerShips)[1];
           lblmessage.innerText = `${Player.Name} Turn ${JSON.stringify(playerShips)}`;
           player.Turn = 1;
           if (hit) boxs[i].style.backgroundImage = "url('./img/hole.png')";
@@ -51,24 +52,30 @@ const display = (() => {
 
           setTimeout(() => {
             let computerCoordinatesAtack = player.Move(player.Turn, 0, 0, board, computerShips);
-            // lblmessage.innerText = `${player.Name} Turn`;
             let number = parseInt(`${computerCoordinatesAtack[0]}${computerCoordinatesAtack[1]}`, 10);
-            console.log(`Exist onarray?:${player.computerMoves.includes(number)}`);
-            while (player.computerMoves.includes(number)) {
-              console.log('repetead number');
-              computerCoordinatesAtack = player.Move(player.Turn, 0, 0, board, computerShips);
-              number = parseInt(`${computerCoordinatesAtack[0]}${computerCoordinatesAtack[1]}`, 10);
-              if (!player.computerMoves.includes(number)) {
-                player.computerMoves.push(number);
-                boxs[number].style.backgroundImage = "url('./img/ex.png')";
-                player.Turn = 0;
-                break;
+            hit = computerCoordinatesAtack[2];
+
+            if (player.computerMoves.includes(number)) {
+              while (player.computerMoves.includes(number)) {
+                computerCoordinatesAtack = player.Move(player.Turn, 0, 0, board, computerShips);
+                number = parseInt(`${computerCoordinatesAtack[0]}${computerCoordinatesAtack[1]}`, 10);
+                hit = computerCoordinatesAtack[2];
+                if (!player.computerMoves.includes(number)) {
+                  hit = computerCoordinatesAtack[2];
+                  player.computerMoves.push(number);
+                  if (hit) boxs[i].style.backgroundImage = "url('./img/hole.png')";
+                  else boxs[i].style.backgroundImage = "url('./img/ex.png')";
+                  player.Turn = 0;
+                  break;
+                }
               }
+            } else {
+              console.log('New Number generated..' + number);
+              player.computerMoves.push(number);
+              boxs[number].style.backgroundImage = "url('./img/ex.png')";
+              player.Turn = 0;
             }
-            player.computerMoves.push(number);
-            boxs[number].style.backgroundImage = "url('./img/ex.png')";
-            player.Turn = 0;
-          }, 800);
+          }, 500);
         } else {
 
           //  console.log(`Computer Turn: ${turn} - ${turn === 0}`);
@@ -95,6 +102,20 @@ const display = (() => {
         vertical = true;
       }
     });
+
+    btnRandom.addEventListener('click', () => {
+      displayShipPlayer(boxs, 1, 1, txtbox, playerShips, 0, false);
+      board.placeShip(playerShips[0], board.Board, 1, 1);
+      displayShipPlayer(boxs, 8, 2, txtbox, playerShips, 1, true);
+      board.placeShip(playerShips[1], board.Board, 8, 2, true);
+      displayShipPlayer(boxs, 1, 3, txtbox, playerShips, 2, true);
+      board.placeShip(playerShips[2], board.Board, 1, 3, true);
+      displayShipPlayer(boxs, 3, 7, txtbox, playerShips, 3, false);
+      board.placeShip(playerShips[3], board.Board, 3, 7, false);
+      displayShipPlayer(boxs, 7, 8, txtbox, playerShips, 4, false);
+      board.placeShip(playerShips[4], board.Board, 7, 8, false);
+      console.log(`PlayerBoard \n ${JSON.stringify(board)}`);
+    });
   };
 
   const renderships = (board, boxs) => {
@@ -111,8 +132,8 @@ const display = (() => {
   };
 
   const displayShipPlayer = (boxs, txtx, txty, txtbox, ShipsArray, number, vertical) => {
-    const x = parseInt(txtx.value, 10);
-    const y = parseInt(txty.value, 10);
+    const x = parseInt(txtx.value, 10) || txtx;
+    const y = parseInt(txty.value, 10) || txty;
     console.log(`Choosen number: ${number}\n on: ${ShipsArray[number].Name}`);
 
     const choosenShip = ShipsArray[number];
