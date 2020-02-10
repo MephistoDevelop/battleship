@@ -45,7 +45,7 @@ const display = (() => {
         if (turn === 0) {
           player.Turn = 0;
           hit = player.Move(player.Turn, x, y, board, playerShips)[1];
-          lblmessage.innerText = `${Player.Name} Turn ${JSON.stringify(playerShips)}`;
+          lblmessage.innerText = `${Player.Name} Turn ${turn}`;
           player.Turn = 1;
           if (hit) boxs[i].style.backgroundImage = "url('./img/hole.png')";
           else boxs[i].style.backgroundImage = "url('./img/ex.png')";
@@ -56,26 +56,28 @@ const display = (() => {
             hit = computerCoordinatesAtack[2];
 
             if (player.computerMoves.includes(number)) {
-              while (player.computerMoves.includes(number)) {
-                computerCoordinatesAtack = player.Move(player.Turn, 0, 0, board, computerShips);
-                number = parseInt(`${computerCoordinatesAtack[0]}${computerCoordinatesAtack[1]}`, 10);
-                hit = computerCoordinatesAtack[2];
-                if (!player.computerMoves.includes(number)) {
-                  hit = computerCoordinatesAtack[2];
-                  player.computerMoves.push(number);
-                  if (hit) boxs[i].style.backgroundImage = "url('./img/hole.png')";
-                  else boxs[i].style.backgroundImage = "url('./img/ex.png')";
-                  player.Turn = 0;
-                  break;
-                }
-              }
+              // while (player.computerMoves.includes(number)) {
+              //   //       computerCoordinatesAtack = player.Move(player.Turn, 0, 0, board, computerShips);
+              //   //     number = parseInt(`${computerCoordinatesAtack[0]}${computerCoordinatesAtack[1]}`, 10);
+              //   //   hit = computerCoordinatesAtack[2];
+              //   if (!player.computerMoves.includes(number)) {
+              //     //   hit = computerCoordinatesAtack[2];
+              //     // player.computerMoves.push(number);
+
+              //     player.Turn = 0;
+              //     break;
+              //   }
+              player.Turn = 0;
+              // }
+              if (hit) boxs[i].style.backgroundImage = "url('./img/hole.png')";
+              else boxs[i].style.backgroundImage = "url('./img/ex.png')";
             } else {
               console.log('New Number generated..' + number);
               player.computerMoves.push(number);
               boxs[number].style.backgroundImage = "url('./img/ex.png')";
               player.Turn = 0;
             }
-          }, 500);
+          }, 300);
         } else {
 
           //  console.log(`Computer Turn: ${turn} - ${turn === 0}`);
