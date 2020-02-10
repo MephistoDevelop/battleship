@@ -51,8 +51,6 @@ const display = (() => {
           if (hit) {
             boxs[i].style.backgroundImage = "url('./img/hole.png')";
             boxs[i].style.backgroundColor = 'rgba(26, 63, 40,0.7)';
-            //boxs[i].innerText = board[x][y];
-            console.log(`Hit true: ${board[x][y]}`);
           } else boxs[i].style.backgroundImage = "url('./img/ex.png')";
 
           setTimeout(() => {
@@ -66,17 +64,14 @@ const display = (() => {
               boxs[number].style.backgroundColor = 'rgba(26, 63, 40,0.7 )';
             }
             else boxs[number].style.backgroundImage = "url('./img/ex.png')";
-            //console.log('New Number generated..' + number);
             player.computerMoves.push(number);
           }, 300);
         }
         console.log(player.computerMoves);
-        //  console.log(`${x} - ${y} \n ${JSON.stringify(playerShips)} \n Computer Ships: \n ${computerShips} `);
       });
     }
 
     btnPlaceShip.addEventListener('click', () => {
-      console.log('Placed clicked');
       const choosenShipNumber = parseInt(txtbox.value, 10);
       displayShipPlayer(boxs, txtx, txty, txtbox, playerShips, choosenShipNumber, vertical);
     });
