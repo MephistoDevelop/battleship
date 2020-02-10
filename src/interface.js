@@ -48,12 +48,15 @@ const display = (() => {
           lblmessage.innerText = `${Player.Name} Turn ${turn}`;
           player.Turn = 1;
 
-          if (hit) boxs[i].style.backgroundImage = "url('./img/hole.png')";
+          if (hit) {
+            boxs[i].style.backgroundImage = "url('./img/hole.png')";
+            boxs[i].style.opacity = '1';
+          }
           else boxs[i].style.backgroundImage = "url('./img/ex.png')";
 
           setTimeout(() => {
             let computerCoordinatesAtack = player.Move(player.Turn, 0, 0, board, computerShips);
-            let number = parseInt(`${computerCoordinatesAtack[0]}${computerCoordinatesAtack[1]}`, 10);
+            let number = parseInt(`${computerCoordinatesAtack[1]}${computerCoordinatesAtack[0]}`, 10);
             hit = computerCoordinatesAtack[2];
 
             // if (player.computerMoves.includes(number)) {
@@ -70,13 +73,13 @@ const display = (() => {
             //   }
             player.Turn = 0;
             // }
-            if (hit) boxs[i].style.backgroundImage = "url('./img/hole.png')";
-            else boxs[i].style.backgroundImage = "url('./img/ex.png')";
+            boxs[number].style.opacity = '1';
+            if (hit) boxs[number].style.backgroundImage = "url('./img/hole.png')";
+            else boxs[number].style.backgroundImage = "url('./img/ex.png')";
             console.log('New Number generated..' + number);
             player.computerMoves.push(number);
-            boxs[number].style.backgroundImage = "url('./img/ex.png')";
+            //     boxs[number].style.backgroundImage = "url('./img/ex.png')";
             player.Turn = 0;
-
           }, 300);
         } else {
 
