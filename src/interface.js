@@ -50,40 +50,25 @@ const display = (() => {
 
           if (hit) {
             boxs[i].style.backgroundImage = "url('./img/hole.png')";
-            boxs[i].style.opacity = '1';
-          }
-          else boxs[i].style.backgroundImage = "url('./img/ex.png')";
+            boxs[i].style.backgroundColor = 'rgba(26, 63, 40,0.7)';
+            //boxs[i].innerText = board[x][y];
+            console.log(`Hit true: ${board[x][y]}`);
+          } else boxs[i].style.backgroundImage = "url('./img/ex.png')";
 
           setTimeout(() => {
-            let computerCoordinatesAtack = player.Move(player.Turn, 0, 0, board, computerShips);
-            let number = parseInt(`${computerCoordinatesAtack[1]}${computerCoordinatesAtack[0]}`, 10);
+            const computerCoordinatesAtack = player.Move(player.Turn, 0, 0, board, computerShips);
+            const number = parseInt(`${computerCoordinatesAtack[1]}${computerCoordinatesAtack[0]}`, 10);
             hit = computerCoordinatesAtack[2];
-
-            // if (player.computerMoves.includes(number)) {
-            // while (player.computerMoves.includes(number)) {
-            //   //       computerCoordinatesAtack = player.Move(player.Turn, 0, 0, board, computerShips);
-            //   //     number = parseInt(`${computerCoordinatesAtack[0]}${computerCoordinatesAtack[1]}`, 10);
-            //   //   hit = computerCoordinatesAtack[2];
-            //   if (!player.computerMoves.includes(number)) {
-            //     //   hit = computerCoordinatesAtack[2];
-            //     // player.computerMoves.push(number);
-
-            //     player.Turn = 0;
-            //     break;
-            //   }
             player.Turn = 0;
-            // }
             boxs[number].style.opacity = '1';
-            if (hit) boxs[number].style.backgroundImage = "url('./img/hole.png')";
+            if (hit) {
+              boxs[number].style.backgroundImage = "url('./img/hole.png')";
+              boxs[number].style.backgroundColor = 'rgba(26, 63, 40,0.7 )';
+            }
             else boxs[number].style.backgroundImage = "url('./img/ex.png')";
-            console.log('New Number generated..' + number);
+            //console.log('New Number generated..' + number);
             player.computerMoves.push(number);
-            //     boxs[number].style.backgroundImage = "url('./img/ex.png')";
-            player.Turn = 0;
           }, 300);
-        } else {
-
-          //  console.log(`Computer Turn: ${turn} - ${turn === 0}`);
         }
         console.log(player.computerMoves);
         //  console.log(`${x} - ${y} \n ${JSON.stringify(playerShips)} \n Computer Ships: \n ${computerShips} `);
@@ -128,8 +113,9 @@ const display = (() => {
       for (let y = 0; y < 10; y += 1) {
         if (board[x][y] !== '-') {
           const number = parseInt(`${x}${y}`, 10);
-          boxs[number + 100].innerText = board[x][y];
-          boxs[number + 100].style.opacity = '0.5';
+          //  boxs[number + 100].innerText = board[x][y];
+          //  boxs[number + 100].style.backgroundColor = ' rgba(26, 63, 40,0.7 )';
+
           // console.log(`Im renderships on X: ${x} - Y: ${y} !! \n${board[x][y]}`);
         }
       }
@@ -151,7 +137,7 @@ const display = (() => {
         newnumber = parseInt(`${y}${x + i}`, 10);
       }
       boxs[newnumber].innerText = ShipsArray[number].Name;
-      boxs[newnumber].style.opacity = '0.5';
+      boxs[newnumber].style.backgroundColor = ' rgba(26, 63, 40,0.7 )';
     }
     console.log(`im X: ${x} Y: ${y} : Choosen: ${JSON.stringify(ShipsArray)}`);
   };
