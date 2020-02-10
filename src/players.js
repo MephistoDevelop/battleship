@@ -32,7 +32,7 @@ const Player = (name) => ({
     } else {
       //   Moves.push(number);
       hit = board.receiveAtack(ComputerMoveX, ComputerMoveY, board.Board, createdShip);
-      console.log(`Computer Turn,Moves: ${Moves}  Atacked on: X:${ComputerMoveY} - Y: ${ComputerMoveY}\n To Player Board \n${JSON.stringify(board.Board)}`);
+      console.log(`Computer Turn,Moves: ${Moves}  Atacked on: X:${ComputerMoveX} - Y: ${ComputerMoveY}\n To Player Board \n${JSON.stringify(board.Board)}`);
     }
 
 
