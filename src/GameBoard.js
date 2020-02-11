@@ -22,7 +22,6 @@ const gameBoard = () => ({
       const checkEmptyHorizontalCells = (Board) => {
         let answer = false;
         for (let i = 0; i < Ship.Lengths; i += 1) {
-          //console.log('answer: ' + answer + '  Board[x+' + i + '] : ' + Board[y][(x + i)]);
           if (Board[y][(x + i)] === '-') {
             answer = true;
           } else {
@@ -65,10 +64,8 @@ const gameBoard = () => ({
     let answer = '';
     const shipsArray = shipFactory.ships;
     const isEmptyCell = board[y][x] === '-';
-    //console.log('im board on Position[' + y + '][' + x + ']:');// + board[x][y]);
     if (isEmptyCell) {
       board[y][x] = 'X';
-      //answer = 'Failed on:  X: ' + x + ' Y: ' + y + 'Empty Cell? :' + isEmptyCell;
       answer = false;
     } else {
       // console.log(shipsArray);
@@ -79,7 +76,6 @@ const gameBoard = () => ({
         console.log(`im hit name: ${JSON.stringify(name)}`);
         shipFactory.hit(shipsArray, hittedShipPosition, name);
         board[y][x] = `${name}X`;
-        //answer = `${JSON.stringify(shipsArray)}- ${name} - ${hittedShipPosition} \n Atacked on Pos; X: ${x}:   Y: ${y}:    Empty Cell ? : ${isEmptyCell}    \n BoardArr:  ${board}`;
         answer = true;
       }
 
