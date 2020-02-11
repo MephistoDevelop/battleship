@@ -24,8 +24,6 @@ const display = (() => {
       }
     }
 
-
-
     human.innerHTML = boardUI;
     computer.innerHTML = boardUI;
     const boxs = document.getElementsByClassName('box');
@@ -119,6 +117,14 @@ const display = (() => {
           console.log(player.computerMoves);
         });
       }
+
+      const message = document.getElementById('messages');
+      message.innerHTML = 'Game Started , atack computer Board';
+      message.style.backgroundColor = 'rgba(0,255,0,0.6)';
+      setTimeout(() => {
+        message.innerHTML = '';
+        message.style.backgroundColor = 'white';
+      }, 3000);
     });
   };
 
@@ -138,30 +144,40 @@ const display = (() => {
   };
 
   const displayShipPlayer = (boxs, txtx, txty, txtbox, ShipsArray, number, vertical) => {
-    const x = parseInt(txtx.value, 10) || txtx;
-    const y = parseInt(txty.value, 10) || txty;
+    try {
+      const x = parseInt(txtx.value, 10) || txtx;
+      const y = parseInt(txty.value, 10) || txty;
 
-    console.log(`Choosen number: ${number}\n on: ${ShipsArray[number].Name}`);
+      console.log(`Choosen number: ${number}\n on: ${ShipsArray[number].Name}`);
 
-    const choosenShip = ShipsArray[number];
-    const size = ShipsArray[number].Lengths;
-    for (let i = 0; i < size; i += 1) {
-      let newnumber = 0;
-      if (vertical) {
-        newnumber = parseInt(`${y + i}${x}`, 10);
-      } else {
-        newnumber = parseInt(`${y}${x + i}`, 10);
+      const choosenShip = ShipsArray[number];
+      const size = ShipsArray[number].Lengths;
+      for (let i = 0; i < size; i += 1) {
+        let newnumber = 0;
+        if (vertical) {
+          newnumber = parseInt(`${y + i}${x}`, 10);
+        } else {
+          newnumber = parseInt(`${y}${x + i}`, 10);
+        }
+        boxs[newnumber].innerText = ShipsArray[number].Name;
+        if (ShipsArray[number].Name === 'Submarine') boxs[newnumber].style.backgroundColor = `rgba(226, 63, 40,1 )`;
+        if (ShipsArray[number].Name === 'Destroyer') boxs[newnumber].style.backgroundColor = `rgba(26, 63, 180,1 )`;
+        if (ShipsArray[number].Name === 'Cruiser') boxs[newnumber].style.backgroundColor = `rgba(26, 233, 20,1 )`;
+        if (ShipsArray[number].Name === 'Carrier') boxs[newnumber].style.backgroundColor = `rgba(216, 146, 49,1 )`;
+        if (ShipsArray[number].Name === 'Battleship') boxs[newnumber].style.backgroundColor = `rgba(132, 104, 106,1 )`;
+        //boxs[newnumber].style.backgroundColor = `rgba(${color}, ${color2}, ${color3},1)`;
       }
-      boxs[newnumber].innerText = ShipsArray[number].Name;
-      if (ShipsArray[number].Name === 'Submarine') boxs[newnumber].style.backgroundColor = `rgba(226, 63, 40,1 )`;
-      if (ShipsArray[number].Name === 'Destroyer') boxs[newnumber].style.backgroundColor = `rgba(26, 63, 180,1 )`;
-      if (ShipsArray[number].Name === 'Cruiser') boxs[newnumber].style.backgroundColor = `rgba(26, 233, 20,1 )`;
-      if (ShipsArray[number].Name === 'Carrier') boxs[newnumber].style.backgroundColor = `rgba(216, 146, 49,1 )`;
-      if (ShipsArray[number].Name === 'Battleship') boxs[newnumber].style.backgroundColor = `rgba(132, 104, 106,1 )`;
-      //boxs[newnumber].style.backgroundColor = `rgba(${color}, ${color2}, ${color3},1)`;
-    }
 
-    console.log(`im X: ${x} Y: ${y} : Choosen: ${JSON.stringify(ShipsArray)}`);
+      console.log(`im X: ${x} Y: ${y} : Choosen: ${JSON.stringify(ShipsArray)}`);
+    } catch (error) {
+      const message = document.getElementById('messages');
+      message.innerHTML = 'Place your ships in a valid position and press Start Game';
+      message.style.backgroundColor = 'rgba(255,0,0,0.7)';
+      setTimeout(() => {
+        message.innerHTML = '';
+        message.style.backgroundColor = 'white';
+      }, 3000);
+    }
   };
 
   return { render };
