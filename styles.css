@@ -27,3 +27,18 @@
   .box:hover{
     opacity:0.5;
   }
+  .computer-box {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgb(143, 141, 141);
+    background-color: rgba(26, 63, 40,1 );
+    color: white;
+    font-size: 12px;
+    /* background-image: url(./img/ex.png); */
+    background-size: cover;
+  }
+  .computer-box:hover{
+    opacity:0.5;
+  }
