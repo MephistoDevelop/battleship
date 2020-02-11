@@ -7,6 +7,7 @@ const display = (() => {
     const human = document.querySelector('.human');
     const computer = document.querySelector('.computer');
     const btnPlaceShip = document.getElementById('btn-place');
+    const btnStart = document.getElementById('btn-start');
     const btnRandom = document.getElementById('btn-random');
     const checkBox = document.getElementById('checkbox');
     const txtbox = document.getElementById('text-action');
@@ -37,54 +38,11 @@ const display = (() => {
     board.BoardComputer = computerShips[5];
     let hit = false;
 
-        
-    for (let i=0; i < 100; i += 1){
-      let x = Math.floor(i/10);
-      let y = i%10;
-      boxs[i].innerText = `${x}-${y}`
-    }
-    
-    renderships(board.BoardComputer, boxs);
-    for (let i = (boxs.length / 2); i < boxs.length; i += 1) {
-      const x = boxs[i].getAttribute('data-position-x');
-      const y = boxs[i].getAttribute('data-position-y');
-      // eslint-disable-next-line no-loop-func
 
-      boxs[i].addEventListener('click', () => {
-        console.log('im turn' + turn);
-        if (turn === 0) {
-          player.Turn = 0;
-          hit = player.Move(player.Turn, x, y, board, playerShips)[1];
-          lblmessage.innerText = `${Player.Name} Turn ${turn}`;
-          player.Turn = 1;
-
-          if (hit) {
-            const number = parseInt(`${x}${y}`, 10);
-            // if (board.BoardComputer[] === 'Submarine') boxs[newnumber].style.backgroundColor = `rgba(226, 63, 40,1 )`;
-            // if (ShipsArray[number].Name === 'Destroyer') boxs[newnumber].style.backgroundColor = `rgba(26, 63, 180,1 )`;
-            // if (ShipsArray[number].Name === 'Cruiser') boxs[newnumber].style.backgroundColor = `rgba(26, 233, 20,1 )`;
-            // if (ShipsArray[number].Name === 'Carrier') boxs[newnumber].style.backgroundColor = `rgba(216, 146, 49,1 )`;
-            // if (ShipsArray[number].Name === 'Battleship') boxs[newnumber].style.backgroundColor = `rgba(132, 104, 106,1 )`;
-            boxs[i].style.backgroundImage = "url('./img/hole.png')";
-            boxs[i].style.backgroundColor = 'rgba(225, 28, 28,1)';
-          } else boxs[i].style.backgroundImage = "url('./img/ex.png')";
-
-          setTimeout(() => {
-            const computerCoordinatesAtack = player.Move(player.Turn, 0, 0, board, computerShips);
-            const number = parseInt(`${computerCoordinatesAtack[1]}${computerCoordinatesAtack[0]}`, 10);
-            hit = computerCoordinatesAtack[2];
-            player.Turn = 0;
-            boxs[number].style.opacity = '1';
-            if (hit) {
-              boxs[number].style.backgroundImage = "url('./img/hole.png')";
-              boxs[number].style.backgroundColor = 'rgba(26, 63, 40,0.7 )';
-            }
-            else boxs[number].style.backgroundImage = "url('./img/ex.png')";
-            player.computerMoves.push(number);
-          }, 300);
-        }
-        console.log(player.computerMoves);
-      });
+    for (let i = 0; i < 100; i += 1) {
+      let x = Math.floor(i / 10);
+      let y = i % 10;
+      boxs[i].innerText = `${x}-${y}`;
     }
 
     btnPlaceShip.addEventListener('click', () => {
@@ -116,6 +74,51 @@ const display = (() => {
       displayShipPlayer(boxs, 7, 8, txtbox, playerShips, 4, false);
       board.placeShip(playerShips[4], board.Board, 7, 8, false);
       console.log(`PlayerBoard \n ${JSON.stringify(board)}`);
+    });
+
+    btnStart.addEventListener('click', () => {
+      renderships(board.BoardComputer, boxs);
+      for (let i = (boxs.length / 2); i < boxs.length; i += 1) {
+        const x = boxs[i].getAttribute('data-position-x');
+        const y = boxs[i].getAttribute('data-position-y');
+        // eslint-disable-next-line no-loop-func
+
+        boxs[i].addEventListener('click', () => {
+          console.log('im turn' + turn);
+          if (turn === 0) {
+            player.Turn = 0;
+            hit = player.Move(player.Turn, x, y, board, playerShips)[1];
+            lblmessage.innerText = `${Player.Name} Turn ${turn}`;
+            player.Turn = 1;
+
+            if (hit) {
+              const number = parseInt(`${x}${y}`, 10);
+              // if (board.BoardComputer[] === 'Submarine') boxs[newnumber].style.backgroundColor = `rgba(226, 63, 40,1 )`;
+              // if (ShipsArray[number].Name === 'Destroyer') boxs[newnumber].style.backgroundColor = `rgba(26, 63, 180,1 )`;
+              // if (ShipsArray[number].Name === 'Cruiser') boxs[newnumber].style.backgroundColor = `rgba(26, 233, 20,1 )`;
+              // if (ShipsArray[number].Name === 'Carrier') boxs[newnumber].style.backgroundColor = `rgba(216, 146, 49,1 )`;
+              // if (ShipsArray[number].Name === 'Battleship') boxs[newnumber].style.backgroundColor = `rgba(132, 104, 106,1 )`;
+              boxs[i].style.backgroundImage = "url('./img/hole.png')";
+              boxs[i].style.backgroundColor = 'rgba(225, 28, 28,1)';
+            } else boxs[i].style.backgroundImage = "url('./img/ex.png')";
+
+            setTimeout(() => {
+              const computerCoordinatesAtack = player.Move(player.Turn, 0, 0, board, computerShips);
+              const number = parseInt(`${computerCoordinatesAtack[1]}${computerCoordinatesAtack[0]}`, 10);
+              hit = computerCoordinatesAtack[2];
+              player.Turn = 0;
+              boxs[number].style.opacity = '1';
+              if (hit) {
+                boxs[number].style.backgroundImage = "url('./img/hole.png')";
+                boxs[number].style.backgroundColor = 'rgba(26, 63, 40,0.7 )';
+              }
+              else boxs[number].style.backgroundImage = "url('./img/ex.png')";
+              player.computerMoves.push(number);
+            }, 300);
+          }
+          console.log(player.computerMoves);
+        });
+      }
     });
   };
 
