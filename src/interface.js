@@ -23,6 +23,8 @@ const display = (() => {
       }
     }
 
+
+
     human.innerHTML = boardUI;
     computer.innerHTML = boardUI;
     const boxs = document.getElementsByClassName('box');
@@ -34,6 +36,14 @@ const display = (() => {
     board.Board = board.drawBoardPlayer();
     board.BoardComputer = computerShips[5];
     let hit = false;
+
+        
+    for (let i=0; i < 100; i += 1){
+      let x = Math.floor(i/10);
+      let y = i%10;
+      boxs[i].innerText = `${x}-${y}`
+    }
+    
     renderships(board.BoardComputer, boxs);
     for (let i = (boxs.length / 2); i < boxs.length; i += 1) {
       const x = boxs[i].getAttribute('data-position-x');
