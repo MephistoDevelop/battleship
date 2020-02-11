@@ -25,27 +25,29 @@
         BATTLESHIP GAME
       </div>
       <div id="messages">Messages</div>
-      <div id="start-container"></div>
-      <div id="form-container">
-        <div id="select-container">
-          <select id="text-action">
-            <option value=null class="null">Choose Ship</option>
-            <option value="0">Carrier</option>
-            <option value="1">Battleship</option>
-            <option value="3">Submarin</option>
-            <option value="2">Cruiser</option>
-            <option value="4">Destroyer</option>
-          </select>
+      <div id="content-hide">
+        <div id="form-container">
+          <div id="select-container">
+            <select id="text-action">
+              <option value=null class="null">Choose Ship</option>
+              <option value="0">Carrier</option>
+              <option value="1">Battleship</option>
+              <option value="3">Submarin</option>
+              <option value="2">Cruiser</option>
+              <option value="4">Destroyer</option>
+            </select>
+          </div>
+          <div>
+            <input type="text" id="text-y" placeholder="X">
+            <input type="text" id="text-x" placeholder="Y"><br>
+          </div>
         </div>
-        <div>
-          <input type="text" id="text-y" placeholder="X">
-          <input type="text" id="text-x" placeholder="Y"><br>
+        <div id="buttons-container">
+          <button id="btn-place">Place Ship</button><input type="radio" id="checkbox"> Vertical ?</input> <button
+            id="btn-random">Place Random</button>
         </div>
       </div>
-      <div id="buttons-container">
-        <button id="btn-place">Place Ship</button><input type="radio" id="checkbox"> Vertical ?</input> <button
-          id="btn-random">Place Random</button>
-      </div>
+      <div id="start-container"><button id="btn-start">Start Game</button></div>
     </div>
 
     <div class="board">

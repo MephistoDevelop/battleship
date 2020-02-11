@@ -66,3 +66,7 @@
     font-weight: 700;
     text-align: center;
   }
+  #start-container{
+    display: flex;
+    justify-content: center;
+  }
