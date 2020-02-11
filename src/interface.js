@@ -49,8 +49,14 @@ const display = (() => {
           player.Turn = 1;
 
           if (hit) {
+            const number = parseInt(`${x}${y}`, 10);
+            // if (board.BoardComputer[] === 'Submarine') boxs[newnumber].style.backgroundColor = `rgba(226, 63, 40,1 )`;
+            // if (ShipsArray[number].Name === 'Destroyer') boxs[newnumber].style.backgroundColor = `rgba(26, 63, 180,1 )`;
+            // if (ShipsArray[number].Name === 'Cruiser') boxs[newnumber].style.backgroundColor = `rgba(26, 233, 20,1 )`;
+            // if (ShipsArray[number].Name === 'Carrier') boxs[newnumber].style.backgroundColor = `rgba(216, 146, 49,1 )`;
+            // if (ShipsArray[number].Name === 'Battleship') boxs[newnumber].style.backgroundColor = `rgba(132, 104, 106,1 )`;
             boxs[i].style.backgroundImage = "url('./img/hole.png')";
-            boxs[i].style.backgroundColor = 'rgba(26, 63, 40,0.7)';
+            boxs[i].style.backgroundColor = 'rgba(225, 28, 28,1)';
           } else boxs[i].style.backgroundImage = "url('./img/ex.png')";
 
           setTimeout(() => {
@@ -108,8 +114,9 @@ const display = (() => {
       for (let y = 0; y < 10; y += 1) {
         if (board[x][y] !== '-') {
           const number = parseInt(`${x}${y}`, 10);
+
           //  boxs[number + 100].innerText = board[x][y];
-          //  boxs[number + 100].style.backgroundColor = ' rgba(26, 63, 40,0.7 )';
+          boxs[number + 100].style.backgroundColor = ' rgba(26, 63, 40,0.7 )';
 
           // console.log(`Im renderships on X: ${x} - Y: ${y} !! \n${board[x][y]}`);
         }
@@ -120,6 +127,7 @@ const display = (() => {
   const displayShipPlayer = (boxs, txtx, txty, txtbox, ShipsArray, number, vertical) => {
     const x = parseInt(txtx.value, 10) || txtx;
     const y = parseInt(txty.value, 10) || txty;
+
     console.log(`Choosen number: ${number}\n on: ${ShipsArray[number].Name}`);
 
     const choosenShip = ShipsArray[number];
@@ -132,8 +140,14 @@ const display = (() => {
         newnumber = parseInt(`${y}${x + i}`, 10);
       }
       boxs[newnumber].innerText = ShipsArray[number].Name;
-      boxs[newnumber].style.backgroundColor = ' rgba(26, 63, 40,0.7 )';
+      if (ShipsArray[number].Name === 'Submarine') boxs[newnumber].style.backgroundColor = `rgba(226, 63, 40,1 )`;
+      if (ShipsArray[number].Name === 'Destroyer') boxs[newnumber].style.backgroundColor = `rgba(26, 63, 180,1 )`;
+      if (ShipsArray[number].Name === 'Cruiser') boxs[newnumber].style.backgroundColor = `rgba(26, 233, 20,1 )`;
+      if (ShipsArray[number].Name === 'Carrier') boxs[newnumber].style.backgroundColor = `rgba(216, 146, 49,1 )`;
+      if (ShipsArray[number].Name === 'Battleship') boxs[newnumber].style.backgroundColor = `rgba(132, 104, 106,1 )`;
+      //boxs[newnumber].style.backgroundColor = `rgba(${color}, ${color2}, ${color3},1)`;
     }
+
     console.log(`im X: ${x} Y: ${y} : Choosen: ${JSON.stringify(ShipsArray)}`);
   };
 
