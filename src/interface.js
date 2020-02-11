@@ -13,6 +13,7 @@ const display = (() => {
     const txtbox = document.getElementById('text-action');
     const txtx = document.getElementById('text-x');
     const txty = document.getElementById('text-y');
+    const message = document.getElementById('messages');
     let boardUI = '';
     const board = gameBoard();
     let check = false;
@@ -36,6 +37,9 @@ const display = (() => {
     board.BoardComputer = computerShips[5];
     let hit = false;
 
+
+    message.innerHTML = 'Place your Ships and Press Start';
+    message.style.backgroundColor = 'rgba(0,0,255,0.3)';
 
     for (let i = 0; i < 100; i += 1) {
       let x = Math.floor(i / 10);
@@ -118,7 +122,6 @@ const display = (() => {
         });
       }
 
-      const message = document.getElementById('messages');
       message.innerHTML = 'Game Started , atack computer Board';
       message.style.backgroundColor = 'rgba(0,255,0,0.6)';
       setTimeout(() => {
