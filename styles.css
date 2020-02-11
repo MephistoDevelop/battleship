@@ -42,3 +42,27 @@
   .computer-box:hover{
     opacity:0.5;
   }
+
+  #main-container{
+    display: flex;
+    flex-direction: column;
+  }
+  #form-container{
+    display: flex;
+    align-items: center;
+    margin: 1%;
+    flex-direction: column;
+  }
+  #buttons-container{
+    display: flex;
+    justify-content: center;
+    margin: 1%;
+  }
+  #messages{
+    text-align: center;
+  }
+  #tittle-header{
+    font-size:28px;
+    font-weight: 700;
+    text-align: center;
+  }
