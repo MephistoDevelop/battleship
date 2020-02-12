@@ -37,7 +37,6 @@ const display = (() => {
     board.BoardComputer = computerShips[5];
     let hit = false;
 
-
     message.innerHTML = 'Place your Ships and Press Start';
     message.style.backgroundColor = 'rgba(0,0,255,0.3)';
 
@@ -49,7 +48,15 @@ const display = (() => {
 
     btnPlaceShip.addEventListener('click', () => {
       const choosenShipNumber = parseInt(txtbox.value, 10);
-      displayShipPlayer(boxs, txtx, txty, txtbox, playerShips, choosenShipNumber, vertical);
+      displayShipPlayer(
+        boxs,
+        txtx,
+        txty,
+        txtbox,
+        playerShips,
+        choosenShipNumber,
+        vertical
+      );
     });
 
     checkBox.addEventListener('click', () => {
@@ -80,7 +87,7 @@ const display = (() => {
 
     btnStart.addEventListener('click', () => {
       renderships(board.BoardComputer, boxs);
-      for (let i = (boxs.length / 2); i < boxs.length; i += 1) {
+      for (let i = boxs.length / 2; i < boxs.length; i += 1) {
         const x = boxs[i].getAttribute('data-position-x');
         const y = boxs[i].getAttribute('data-position-y');
         // eslint-disable-next-line no-loop-func
@@ -105,16 +112,24 @@ const display = (() => {
             } else boxs[i].style.backgroundImage = "url('./img/ex.png')";
 
             setTimeout(() => {
-              const computerCoordinatesAtack = player.Move(player.Turn, 0, 0, board, computerShips);
-              const number = parseInt(`${computerCoordinatesAtack[1]}${computerCoordinatesAtack[0]}`, 10);
+              const computerCoordinatesAtack = player.Move(
+                player.Turn,
+                0,
+                0,
+                board,
+                computerShips
+              );
+              const number = parseInt(
+                `${computerCoordinatesAtack[1]}${computerCoordinatesAtack[0]}`,
+                10
+              );
               hit = computerCoordinatesAtack[2];
               player.Turn = 0;
               boxs[number].style.opacity = '1';
               if (hit) {
                 boxs[number].style.backgroundImage = "url('./img/hole.png')";
                 boxs[number].style.backgroundColor = 'rgba(26, 63, 40,0.7 )';
-              }
-              else boxs[number].style.backgroundImage = "url('./img/ex.png')";
+              } else boxs[number].style.backgroundImage = "url('./img/ex.png')";
               player.computerMoves.push(number);
             }, 300);
           }
@@ -146,35 +161,55 @@ const display = (() => {
     }
   };
 
-  const displayShipPlayer = (boxs, txtx, txty, txtbox, ShipsArray, number, vertical) => {
+  const displayShipPlayer = (
+    boxs,
+    txtx,
+    txty,
+    txtbox,
+    ShipsArray,
+    number,
+    vertical
+  ) => {
     try {
-      const x = parseInt(txtx.value, 10) || txtx;
-      const y = parseInt(txty.value, 10) || txty;
+      const x = parseInt(txtx.value, 10) || parseInt(txtx.value);
+      const y = parseInt(txty.value, 10) || parseInt(txty.value);
 
       console.log(`Choosen number: ${number}\n on: ${ShipsArray[number].Name}`);
 
       const choosenShip = ShipsArray[number];
       const size = ShipsArray[number].Lengths;
+
       for (let i = 0; i < size; i += 1) {
         let newnumber = 0;
         if (vertical) {
-          newnumber = parseInt(`${y + i}${x}`, 10);
+          newnumber = parseInt(`${y + i}${x}`);
         } else {
-          newnumber = parseInt(`${y}${x + i}`, 10);
+          newnumber = parseInt(`${y}${x + i}`);
+          console.log(`Im new number ${newnumber} X:${x}  Y:${y}`);
         }
+
         boxs[newnumber].innerText = ShipsArray[number].Name;
-        if (ShipsArray[number].Name === 'Submarine') boxs[newnumber].style.backgroundColor = `rgba(226, 63, 40,1 )`;
-        if (ShipsArray[number].Name === 'Destroyer') boxs[newnumber].style.backgroundColor = `rgba(26, 63, 180,1 )`;
-        if (ShipsArray[number].Name === 'Cruiser') boxs[newnumber].style.backgroundColor = `rgba(26, 233, 20,1 )`;
-        if (ShipsArray[number].Name === 'Carrier') boxs[newnumber].style.backgroundColor = `rgba(216, 146, 49,1 )`;
-        if (ShipsArray[number].Name === 'Battleship') boxs[newnumber].style.backgroundColor = `rgba(132, 104, 106,1 )`;
+        if (ShipsArray[number].Name === 'Submarine')
+          boxs[newnumber].style.backgroundColor = `rgba(226, 63, 40,1 )`;
+        if (ShipsArray[number].Name === 'Destroyer')
+          boxs[newnumber].style.backgroundColor = `rgba(26, 63, 180,1 )`;
+        if (ShipsArray[number].Name === 'Cruiser')
+          boxs[newnumber].style.backgroundColor = `rgba(26, 233, 20,1 )`;
+        if (ShipsArray[number].Name === 'Carrier')
+          boxs[newnumber].style.backgroundColor = `rgba(216, 146, 49,1 )`;
+        if (ShipsArray[number].Name === 'Battleship')
+          boxs[newnumber].style.backgroundColor = `rgba(132, 104, 106,1 )`;
         //boxs[newnumber].style.backgroundColor = `rgba(${color}, ${color2}, ${color3},1)`;
       }
 
-      console.log(`im X: ${x} Y: ${y} : Choosen: ${JSON.stringify(ShipsArray)}`);
+      console.log(
+        `im X: ${x} Y: ${y} : Choosen: ${JSON.stringify(ShipsArray)}`
+      );
     } catch (error) {
       const message = document.getElementById('messages');
-      message.innerHTML = 'Place your ships in a valid position and press Start Game';
+      message.innerHTML =
+        'Place your ships in a valid position and press Start Game' +
+        error.message;
       message.style.backgroundColor = 'rgba(255,0,0,0.7)';
       setTimeout(() => {
         message.innerHTML = '';
