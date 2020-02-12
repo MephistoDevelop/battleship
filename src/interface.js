@@ -143,6 +143,7 @@ const display = (() => {
         message.innerHTML = '';
         message.style.backgroundColor = 'transparent';
       }, 3000);
+      document.getElementById('content-hide').className = 'hide';
     });
   };
 
@@ -171,8 +172,8 @@ const display = (() => {
     vertical
   ) => {
     try {
-      const x = parseInt(txtx.value, 10) || parseInt(txtx.value);
-      const y = parseInt(txty.value, 10) || parseInt(txty.value);
+      const x = parseInt(txtx.value, 10) || txtx;
+      const y = parseInt(txty.value, 10) || txty;
 
       console.log(`Choosen number: ${number}\n on: ${ShipsArray[number].Name}`);
 
@@ -185,9 +186,11 @@ const display = (() => {
           newnumber = parseInt(`${y + i}${x}`);
         } else {
           newnumber = parseInt(`${y}${x + i}`);
-          console.log(`Im new number ${newnumber} X:${x}  Y:${y}`);
+          console.log(`Im new number ${newnumber}`);
         }
-
+        console.log(
+          `Im Size: ${size} i: ${i} newNumber : ${newnumber} \n Vertical: ${vertical}`
+        );
         boxs[newnumber].innerText = ShipsArray[number].Name;
         if (ShipsArray[number].Name === 'Submarine')
           boxs[newnumber].style.backgroundColor = `rgba(226, 63, 40,1 )`;
