@@ -126,7 +126,7 @@ const display = (() => {
       message.style.backgroundColor = 'rgba(0,255,0,0.6)';
       setTimeout(() => {
         message.innerHTML = '';
-        message.style.backgroundColor = 'white';
+        message.style.backgroundColor = 'transparent';
       }, 3000);
     });
   };
@@ -178,7 +178,7 @@ const display = (() => {
       message.style.backgroundColor = 'rgba(255,0,0,0.7)';
       setTimeout(() => {
         message.innerHTML = '';
-        message.style.backgroundColor = 'white';
+        message.style.backgroundColor = 'transparent';
       }, 3000);
     }
   };
