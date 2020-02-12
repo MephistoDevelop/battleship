@@ -6,9 +6,11 @@ test('length of ship',() => {
   expect(shipElem.Lengths).toBe(2);
 });
 
-test('hit the ship',() => {
+test('hit the ship', () => {
   const name = shipElem.Name;
-  const ships = shipElem.ships;
-  shipElem.hit(ships,0,name);
-  expect(ships[name]).toBe(['X']);
+  const shipArray = shipElem.ships;
+  const arr = shipElem.fill_ship(shipElem.Lengths);
+  shipElem.ships[name] = arr;
+  shipElem.hit(shipArray, 0, name);
+  expect(shipArray[name]).toStrictEqual(['X', 'O']);
 });
