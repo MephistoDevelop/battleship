@@ -1,15 +1,15 @@
 import ship from '../src/ships';
-import Player from '../src/players';
+import gameBoard from '../src/GameBoard';
 
-
-// test('hit the position', () => {
-
-//   expect(ships.Lengths).toBe(2);
-//   const turnOf = Player('MephistoDevelop');
-//   const ships = ship(2,'Destroyer');
-// })
-
+const shipElem = ship(2, 'Destroyer');
+const board = gameBoard.drawBoardPlayer;
+// const position = parseInt(board[2]).split('');
 test('length of ship',() => {
-  const shipElem = ship(2, 'Destroyer');
-  expect(shipElem.length).toBe(2);
+  expect(shipElem.Lengths).toBe(2);
+});
+
+test('hit the ship',() => {
+  // shipElem.hit(shipElem.ships,  0, shipElem.Name);
+  // expect(shipElem.isSunked).toBe(false);
+  gameBoard.receiveAtack(1, 1, board, shipElem.ships)
 });
