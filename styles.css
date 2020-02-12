@@ -27,6 +27,7 @@ input[type='text'] {
   display: grid;
   grid-template-rows: repeat(10, 45px);
   grid-template-columns: repeat(10, 45px);
+  margin: 5px 0px 20px 0;
 }
 
 .box {
@@ -102,4 +103,30 @@ input[type='text'] {
 
 .show {
   display: initial;
+}
+.row {
+  min-width: 485px;
+}
+@media screen and (min-width: 910px) {
+  .board {
+    min-width: 920px;
+    grid-template-rows: repeat(10, 10px) !important;
+    grid-template-columns: repeat(10, 10px) !important;
+  }
+}
+@media screen and (min-width: 500px) and (max-width: 900px) {
+  .board {
+    grid-template-rows: repeat(10, 10px);
+    grid-template-columns: repeat(10, 10px);
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media screen and (min-width: 0px) and (max-width: 499px) {
+  .board {
+    grid-template-rows: repeat(10, 10px) !important;
+    grid-template-columns: repeat(10, 10px) !important;
+    flex-direction: column;
+    align-items: center;
+  }
 }
