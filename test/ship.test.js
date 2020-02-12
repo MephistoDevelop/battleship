@@ -1,5 +1,15 @@
-const ship = require('../src/ships');
+import ship from '../src/ships';
+import Player from '../src/players';
 
-it('Check size of board', () => {
-  expect(true).toBe(true);
+
+// test('hit the position', () => {
+
+//   expect(ships.Lengths).toBe(2);
+//   const turnOf = Player('MephistoDevelop');
+//   const ships = ship(2,'Destroyer');
+// })
+
+test('length of ship',() => {
+  const shipElem = ship(2, 'Destroyer');
+  expect(shipElem.length).toBe(2);
 });
