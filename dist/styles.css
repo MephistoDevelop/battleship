@@ -1,4 +1,8 @@
 
+body{
+     background-image: url(./img/background.jpg);
+     background-size: cover;
+}
 .board {
     margin-top: 25px;
     display: flex;
