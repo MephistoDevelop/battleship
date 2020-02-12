@@ -7,6 +7,7 @@ const display = (() => {
     const human = document.querySelector('.human');
     const computer = document.querySelector('.computer');
     const btnPlaceShip = document.getElementById('btn-place');
+    const btnClean = document.getElementById('btn-clean');
     const btnStart = document.getElementById('btn-start');
     const btnRandom = document.getElementById('btn-random');
     const checkBox = document.getElementById('checkbox');
@@ -74,6 +75,7 @@ const display = (() => {
     });
 
     btnRandom.addEventListener('click', () => {
+      cleanBoard();
       displayShipPlayer(boxs, 1, 1, txtbox, playerShips, 0, false);
       board.placeShip(playerShips[0], board.Board, 1, 1);
       displayShipPlayer(boxs, 8, 2, txtbox, playerShips, 1, true);
@@ -147,6 +149,22 @@ const display = (() => {
       }, 3000);
       document.getElementById('content-hide').className = 'hide';
     });
+
+    btnClean.addEventListener('click', () => {
+      cleanBoard();
+    });
+
+    const cleanBoard = () => {
+      txty.value = '';
+      txtx.value = '';
+      txtbox.selected = 0;
+      for (let i = 0; i < 100; i += 1) {
+        let x = Math.floor(i / 10);
+        let y = i % 10;
+        boxs[i].innerText = `${x}-${y}`;
+        boxs[i].style.backgroundColor = 'rgba(26, 63, 40, 1)';
+      }
+    };
   };
 
   const renderships = (board, boxs) => {
