@@ -1,4 +1,18 @@
 
+body{
+  color: whitesmoke;
+  font-weight: 800;;
+     background-image: url(./img/background.jpg);
+     background-size: cover;
+     background-repeat: no-repeat;
+}
+select{
+text-align: center;
+}
+input[type=text]{
+  width:65px;
+  text-align: center;
+}
 .board {
     margin-top: 25px;
     display: flex;
@@ -26,4 +40,52 @@
   }
   .box:hover{
     opacity:0.5;
+  }
+  .computer-box {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgb(143, 141, 141);
+    background-color: rgba(26, 63, 40,1 );
+    color: white;
+    font-size: 12px;
+    /* background-image: url(./img/ex.png); */
+    background-size: cover;
+  }
+  .computer-box:hover{
+    opacity:0.5;
+  }
+
+  #main-container{
+    display: flex;
+    flex-direction: column;
+  }
+  #form-container{
+    display: flex;
+    align-items: center;
+    margin: 1%;
+    flex-direction: column;
+  }
+  #buttons-container{
+    display: flex;
+    justify-content: center;
+    margin: 1%;
+    align-items: baseline;
+  }
+  #messages{
+    text-align: center;
+    font-size: 18px;
+    padding:5px;
+    color: whitesmoke;
+  }
+  #tittle-header{
+    color: whitesmoke;
+    font-size:28px;
+    font-weight: 700;
+    text-align: center;
+  }
+  #start-container{
+    display: flex;
+    justify-content: center;
   }

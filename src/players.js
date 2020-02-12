@@ -9,9 +9,11 @@ const Player = (name) => ({
     let hit = false;
 
     if (Turn === 0) {
+      console.log(`CEll: X:${x} Y: ${y}   ${board.BoardComputer[y][x]}`);
       hit = board.receiveAtack(y, x, board.BoardComputer, createdShip);
       console.log(`Player Turn, Atacked on: X:${y} - Y: ${x}\nTo  Computer Board \n ${JSON.stringify(board.BoardComputer)}`);
       return [1, hit];
+
     }
     let ComputerMoveX = parseInt((0 + Math.random()) * (10 - 0), 10);
     let ComputerMoveY = parseInt((0 + Math.random()) * (10 - 0), 10);
