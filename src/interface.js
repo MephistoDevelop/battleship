@@ -57,6 +57,8 @@ const display = (() => {
         choosenShipNumber,
         vertical
       );
+      txtx.innerText = '';
+      txty.innerText = '';
     });
 
     checkBox.addEventListener('click', () => {
