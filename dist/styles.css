@@ -107,10 +107,10 @@ input[type='text'] {
 .row {
   min-width: 485px;
 }
-@media screen and (min-width: 901px) {
+@media screen and (min-width: 901px) and (max-width: 1150px) {
   .board {
     min-width: 920px;
-    margin: 0 8%;
+    margin: 0;
   }
 }
 @media screen and (min-width: 600px) and (max-width: 900px) {
