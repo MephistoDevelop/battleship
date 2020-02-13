@@ -110,9 +110,7 @@ input[type='text'] {
 @media screen and (min-width: 901px) {
   .board {
     min-width: 920px;
-    margin: 0 2%;
-    grid-template-rows: repeat(10, 10px) !important;
-    grid-template-columns: repeat(10, 10px) !important;
+    margin: 0 8%;
   }
 }
 @media screen and (min-width: 600px) and (max-width: 900px) {
