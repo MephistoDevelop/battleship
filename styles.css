@@ -107,26 +107,37 @@ input[type='text'] {
 .row {
   min-width: 485px;
 }
-@media screen and (min-width: 910px) {
+@media screen and (min-width: 901px) {
   .board {
     min-width: 920px;
+    margin: 0 2%;
     grid-template-rows: repeat(10, 10px) !important;
     grid-template-columns: repeat(10, 10px) !important;
   }
 }
-@media screen and (min-width: 500px) and (max-width: 900px) {
+@media screen and (min-width: 600px) and (max-width: 900px) {
   .board {
     grid-template-rows: repeat(10, 10px);
     grid-template-columns: repeat(10, 10px);
     flex-direction: column;
     align-items: center;
   }
+  .grid-container {
+    display: grid;
+  }
 }
-@media screen and (min-width: 0px) and (max-width: 499px) {
+@media screen and (min-width: 0px) and (max-width: 599px) {
   .board {
-    grid-template-rows: repeat(10, 10px) !important;
-    grid-template-columns: repeat(10, 10px) !important;
     flex-direction: column;
     align-items: center;
+  }
+  .grid-container {
+    display: grid;
+    grid-template-rows: repeat(10, 30px);
+    grid-template-columns: repeat(10, 30px);
+    margin: 5px 0px 25px 0;
+  }
+  .row {
+    min-width: 280px;
   }
 }
