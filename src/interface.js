@@ -195,7 +195,9 @@ const display = (() => {
       const x = parseInt(txtx.value, 10) || txtx;
       const y = parseInt(txty.value, 10) || txty;
 
-      console.log(`Choosen number: ${number}\n on: ${ShipsArray[number].Name}`);
+      console.log(
+        `X:${x} Y:${y}Choosen number: ${number}\n on: ${ShipsArray[number].Name}`
+      );
 
       const choosenShip = ShipsArray[number];
       const size = ShipsArray[number].Lengths;
@@ -203,10 +205,12 @@ const display = (() => {
       for (let i = 0; i < size; i += 1) {
         let newnumber = 0;
         if (vertical) {
-          newnumber = parseInt(`${y + i}${x}`);
+          if (y === 0) newnumber = i;
+          else newnumber = parseInt(`${y + i}${x}`);
         } else {
-          newnumber = parseInt(`${y}${x + i}`);
-          console.log(`Im new number ${newnumber}`);
+          if (y === 0) newnumber = i;
+          else newnumber = parseInt(`${y}${x + i}`);
+          console.log(`Im new number ${y.value}${x.value} ${newnumber}`);
         }
         console.log(
           `Im Size: ${size} i: ${i} newNumber : ${newnumber} \n Vertical: ${vertical}`
