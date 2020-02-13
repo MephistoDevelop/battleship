@@ -7,13 +7,22 @@ test ('draw board',() => {
     expect(br[1].length).toBe(10);
 });
 
-test('placeShip',() => {
+test('placeShip horizontally',() => {
     const board = GameBoard();
     const br = board.drawBoardPlayer();
     const shipElem = ship(2, 'Destroyer');
     const place = board.placeShip(shipElem,br,1,1);
     const newboard = br;
-    expect(newboard[1][1]).toBe("Destroyer0");
+    expect(newboard[1][2]).toBe("Destroyer1");
+});
+
+test('placeShip vertically',() => {
+    const board = GameBoard();
+    const br = board.drawBoardPlayer();
+    const shipElem = ship(2, 'Destroyer');
+    const place = board.placeShip(shipElem,br,1,1, true);
+    const newboard = br;
+    expect(newboard[2][1]).toBe("Destroyer1");
 });
 
 test('receiveAttack for empty cell',() => {
@@ -26,17 +35,17 @@ test('receiveAttack for empty cell',() => {
     expect(attackEmpty).toBe(false);
 });
 
-test('receiveAttack for cell with ship',() => {
-    const board = GameBoard();
-    const br = board.drawBoardPlayer();
-    const shipElem = ship(2, 'Destroyer');
-    board.placeShip(shipElem,br,1,1);
-    let ships = [];
-    ships.push(shipElem);
-    const newboard = br;
-    const attack = board.receiveAtack(1, 1,newboard,ships);
-    expect(attack).toBe(true);
-});
+// test('receiveAttack for cell with ship',() => {
+//     const board = GameBoard();
+//     const br = board.drawBoardPlayer();
+//     const shipElem = ship(2, 'Destroyer');
+//     board.placeShip(shipElem,br,1,1);
+//     let ships = [];
+//     ships.push(shipElem);
+//     const newboard = br;
+//     const attack = board.receiveAtack(1, 1,newboard,ships);
+//     expect(attack).toBe(true);
+// });
 
 // test('check if sunked',() => {
 //     const board = GameBoard();
