@@ -56,7 +56,8 @@ const display = (() => {
         txtbox,
         playerShips,
         choosenShipNumber,
-        vertical
+        vertical,
+        board
       );
       txtx.innerText = '';
       txty.innerText = '';
@@ -189,14 +190,17 @@ const display = (() => {
     txtbox,
     ShipsArray,
     number,
-    vertical
+    vertical,
+    board
   ) => {
     try {
       const x = parseInt(txtx.value, 10) || txtx;
       const y = parseInt(txty.value, 10) || txty;
-
+      board.placeShip(ShipsArray[number], board.Board, x, y, vertical);
       console.log(
-        `X:${x} Y:${y}Choosen number: ${number}\n on: ${ShipsArray[number].Name}`
+        `X:${x} Y:${y}Choosen number: ${number}\n on: ${
+          ShipsArray[number].Name
+        }\n an  Boards: \n ${JSON.stringify(board.Board)}`
       );
 
       const choosenShip = ShipsArray[number];
@@ -210,11 +214,11 @@ const display = (() => {
         } else {
           if (y === 0) newnumber = i;
           else newnumber = parseInt(`${y}${x + i}`);
-          console.log(`Im new number ${y.value}${x.value} ${newnumber}`);
+          // console.log(`Im new number ${y.value}${x.value} ${newnumber}`);
         }
-        console.log(
-          `Im Size: ${size} i: ${i} newNumber : ${newnumber} \n Vertical: ${vertical}`
-        );
+        // console.log(
+        //   `Im Size: ${size} i: ${i} newNumber : ${newnumber} \n Vertical: ${vertical}`
+        // );
         boxs[newnumber].innerText = ShipsArray[number].Name;
         if (ShipsArray[number].Name === 'Submarine')
           boxs[newnumber].style.backgroundColor = `rgba(226, 63, 40,1 )`;
@@ -229,9 +233,9 @@ const display = (() => {
         //boxs[newnumber].style.backgroundColor = `rgba(${color}, ${color2}, ${color3},1)`;
       }
 
-      console.log(
-        `im X: ${x} Y: ${y} : Choosen: ${JSON.stringify(ShipsArray)}`
-      );
+      // console.log(
+      //   `im X: ${x} Y: ${y} : Choosen: ${JSON.stringify(ShipsArray)}`
+      // );
     } catch (error) {
       const message = document.getElementById('messages');
       message.innerHTML =
