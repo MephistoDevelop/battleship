@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable no-loop-func */
 import Player from './players';
 import gameBoard from './GameBoard';
@@ -20,6 +21,7 @@ const display = (() => {
     let check = false;
     let vertical = false;
     let computerMovs = [];
+
     for (let x = 0; x < 10; x += 1) {
       for (let y = 0; y < 10; y += 1) {
         boardUI += `<div data-position-x=${x} data-position-y=${y} class="box" id="box${x}${y}"></div>`;
@@ -33,7 +35,7 @@ const display = (() => {
     const player = Player('MephistoDevelop');
     const playerShips = player.playerInit();
     const computerShips = player.computerInit();
-    let turn = player.Turn;
+    const turn = player.Turn;
     board.Board = board.drawBoardPlayer();
     board.BoardComputer = computerShips[5];
     let hit = false;
@@ -159,6 +161,7 @@ const display = (() => {
       txty.value = '';
       txtx.value = '';
       txtbox.selected = 0;
+      board.Board = board.drawBoardPlayer();
       for (let i = 0; i < 100; i += 1) {
         let x = Math.floor(i / 10);
         let y = i % 10;
@@ -196,43 +199,46 @@ const display = (() => {
     try {
       const x = parseInt(txtx.value, 10) || txtx;
       const y = parseInt(txty.value, 10) || txty;
-      board.placeShip(ShipsArray[number], board.Board, x, y, vertical);
-      console.log(
-        `X:${x} Y:${y} \n on: ${
-          ShipsArray[number].Name
-        }\n an  Boards: \n ${JSON.stringify(board.Board)}`
-      );
+      if (!board.placeShip(ShipsArray[number], board.Board, x, y, vertical)) {
+        message.style.backgroundColor = `rgba(255, 3, 0,0.5 )`;
+        message.innerHTML = 'PLace Your Ship in a Valid Position';
+      } else {
+        console.log(
+          `X:${x} Y:${y} \n on: ${
+            ShipsArray[number].Name
+          }\n an  Boards: \n ${JSON.stringify(board.Board)}`
+        );
 
-      const choosenShip = ShipsArray[number];
-      const size = ShipsArray[number].Lengths;
+        const choosenShip = ShipsArray[number];
+        const size = ShipsArray[number].Lengths;
 
-      for (let i = 0; i < size; i += 1) {
-        let newnumber = 0;
-        if (vertical) {
-          if (y === 0) newnumber = i;
-          else newnumber = parseInt(`${y + i}${x}`);
-        } else {
-          if (y === 0) newnumber = i;
-          else newnumber = parseInt(`${y}${x + i}`);
-          // console.log(`Im new number ${y.value}${x.value} ${newnumber}`);
+        for (let i = 0; i < size; i += 1) {
+          let newnumber = 0;
+          if (vertical) {
+            if (y === 0) newnumber = i;
+            else newnumber = parseInt(`${y + i}${x}`);
+          } else {
+            if (y === 0) newnumber = i;
+            else newnumber = parseInt(`${y}${x + i}`);
+            // console.log(`Im new number ${y.value}${x.value} ${newnumber}`);
+          }
+          // console.log(
+          //   `Im Size: ${size} i: ${i} newNumber : ${newnumber} \n Vertical: ${vertical}`
+          // );
+          boxs[newnumber].innerText = ShipsArray[number].Name;
+          if (ShipsArray[number].Name === 'Submarine')
+            boxs[newnumber].style.backgroundColor = `rgba(226, 63, 40,1 )`;
+          if (ShipsArray[number].Name === 'Destroyer')
+            boxs[newnumber].style.backgroundColor = `rgba(26, 63, 180,1 )`;
+          if (ShipsArray[number].Name === 'Cruiser')
+            boxs[newnumber].style.backgroundColor = `rgba(26, 233, 20,1 )`;
+          if (ShipsArray[number].Name === 'Carrier')
+            boxs[newnumber].style.backgroundColor = `rgba(216, 146, 49,1 )`;
+          if (ShipsArray[number].Name === 'Battleship')
+            boxs[newnumber].style.backgroundColor = `rgba(132, 104, 106,1 )`;
+          //boxs[newnumber].style.backgroundColor = `rgba(${color}, ${color2}, ${color3},1)`;
         }
-        // console.log(
-        //   `Im Size: ${size} i: ${i} newNumber : ${newnumber} \n Vertical: ${vertical}`
-        // );
-        boxs[newnumber].innerText = ShipsArray[number].Name;
-        if (ShipsArray[number].Name === 'Submarine')
-          boxs[newnumber].style.backgroundColor = `rgba(226, 63, 40,1 )`;
-        if (ShipsArray[number].Name === 'Destroyer')
-          boxs[newnumber].style.backgroundColor = `rgba(26, 63, 180,1 )`;
-        if (ShipsArray[number].Name === 'Cruiser')
-          boxs[newnumber].style.backgroundColor = `rgba(26, 233, 20,1 )`;
-        if (ShipsArray[number].Name === 'Carrier')
-          boxs[newnumber].style.backgroundColor = `rgba(216, 146, 49,1 )`;
-        if (ShipsArray[number].Name === 'Battleship')
-          boxs[newnumber].style.backgroundColor = `rgba(132, 104, 106,1 )`;
-        //boxs[newnumber].style.backgroundColor = `rgba(${color}, ${color2}, ${color3},1)`;
       }
-
       console.log(
         `im X: ${x} Y: ${y} : Choosen: ${JSON.stringify(ShipsArray)}`
       );
