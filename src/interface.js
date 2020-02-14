@@ -200,7 +200,8 @@ const display = (() => {
       const y = parseInt(txty.value, 10) || txty;
       if (!board.placeShip(ShipsArray[number], board.Board, x, y, vertical)) {
         message.style.backgroundColor = `rgba(255, 3, 0,0.5 )`;
-        message.innerHTML = 'PLace Your Ship in a Valid Position';
+        message.innerHTML =
+          'Place Your Ship in a Valid Position and it would be unique';
       } else {
         const choosenShip = ShipsArray[number];
         const size = ShipsArray[number].Lengths;
@@ -229,7 +230,6 @@ const display = (() => {
             boxs[newnumber].style.backgroundColor = `rgba(216, 146, 49,1 )`;
           if (ShipsArray[number].Name === 'Battleship')
             boxs[newnumber].style.backgroundColor = `rgba(132, 104, 106,1 )`;
-          //boxs[newnumber].style.backgroundColor = `rgba(${color}, ${color2}, ${color3},1)`;
         }
         message.style.backgroundColor = `rgba(0, 255, 0,0.5 )`;
         message.innerHTML = `Ship  ${ShipsArray[number].Name} placed on X:${x} Y:${y}:`;
@@ -250,8 +250,7 @@ const display = (() => {
     } catch (error) {
       const message = document.getElementById('messages');
       message.innerHTML =
-        'Place your ships in a valid position and press Start Game' +
-        error.message;
+        'Place your ships  and press Start Game' + error.message;
       message.style.backgroundColor = 'rgba(255,0,0,0.7)';
       setTimeout(() => {
         message.innerHTML = '';
