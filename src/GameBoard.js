@@ -22,7 +22,7 @@ const gameBoard = () => ({
       const checkEmptyHorizontalCells = (Board) => {
         let answer = false;
         for (let i = 0; i < Ship.Lengths; i += 1) {
-          if (Board[y][(x + i)] === '-') {
+          if (Board[y][x + i] === '-') {
             answer = true;
           } else {
             answer = false;
@@ -35,7 +35,7 @@ const gameBoard = () => ({
         let answer = false;
         for (let i = 0; i < Ship.Lengths; i += 1) {
           //console.log('answer: ' + answer + '  Board[x+' + i + '] : ' + Board[y][(x + i)]);
-          if (Board[(y + i)][x] === '-') {
+          if (Board[y + i][x] === '-') {
             answer = true;
           } else {
             answer = false;
@@ -44,16 +44,25 @@ const gameBoard = () => ({
         }
         return answer;
       };
-      if ((x + Ship.Lengths) <= 10 && checkEmptyHorizontalCells(newBoard) && vertical === false) {
+      if (
+        x + Ship.Lengths <= 10 &&
+        checkEmptyHorizontalCells(newBoard) &&
+        vertical === false
+      ) {
         for (let i = 0; i < Ship.Lengths; i += 1) {
-          newBoard[y][(x + i)] = `${Ship.Name}${i}`;
+          newBoard[y][x + i] = `${Ship.Name}${i}`;
         }
-      } else if ((y + Ship.Lengths) <= 10 && checkEmptyVerticalCells(newBoard) && vertical === true) {
+      } else if (
+        y + Ship.Lengths <= 10 &&
+        checkEmptyVerticalCells(newBoard) &&
+        vertical === true
+      ) {
         for (let i = 0; i < Ship.Lengths; i += 1) {
-          newBoard[(y + i)][x] = `${Ship.Name}${i}`;
+          newBoard[y + i][x] = `${Ship.Name}${i}`;
         }
       } else {
         console.log('place your ship in a valid position');
+        return false;
       }
     }
     return `X: ${y} - Y: ${x}, ${JSON.stringify(newBoard)} `;
@@ -69,8 +78,8 @@ const gameBoard = () => ({
       answer = false;
     } else {
       // console.log(shipsArray);
-      const shipName = (board[y][x]).split('');
-      const name = (shipName.splice(0, shipName.length - 1)).join('');
+      const shipName = board[y][x].split('');
+      const name = shipName.splice(0, shipName.length - 1).join('');
       if (name !== '') {
         const hittedShipPosition = parseInt(shipName);
         console.log(`im hit name: ${JSON.stringify(name)}`);
@@ -78,7 +87,6 @@ const gameBoard = () => ({
         board[y][x] = `${name}X`;
         answer = true;
       }
-
     }
     return answer;
   },
@@ -92,7 +100,14 @@ const gameBoard = () => ({
     const shipCarrier = Obj.ships.Carrier;
     const shipBattleship = Obj.ships.Battleship;
 
-    if (Obj.isSunk(shipCruiser) && Obj.isSunk(shipSubmarine) && Obj.isSunk(shipCarrier) && Obj.isSunk(shipDestroyer) && Obj.isSunk(shipBattleship)) answer = true;
+    if (
+      Obj.isSunk(shipCruiser) &&
+      Obj.isSunk(shipSubmarine) &&
+      Obj.isSunk(shipCarrier) &&
+      Obj.isSunk(shipDestroyer) &&
+      Obj.isSunk(shipBattleship)
+    )
+      answer = true;
     return answer;
   },
 });
