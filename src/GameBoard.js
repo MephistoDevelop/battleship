@@ -73,6 +73,7 @@ const gameBoard = () => ({
           }
         } else {
           console.log('place your ship in a valid position');
+
         }
       }
     }
