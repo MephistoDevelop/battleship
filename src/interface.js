@@ -56,7 +56,8 @@ const display = (() => {
         txtbox,
         playerShips,
         choosenShipNumber,
-        vertical
+        vertical,
+        board
       );
       txtx.innerText = '';
       txty.innerText = '';
@@ -76,15 +77,15 @@ const display = (() => {
 
     btnRandom.addEventListener('click', () => {
       cleanBoard();
-      displayShipPlayer(boxs, 1, 1, txtbox, playerShips, 0, false);
+      displayShipPlayer(boxs, 1, 1, txtbox, playerShips, 0, false, board);
       board.placeShip(playerShips[0], board.Board, 1, 1);
-      displayShipPlayer(boxs, 8, 2, txtbox, playerShips, 1, true);
+      displayShipPlayer(boxs, 8, 2, txtbox, playerShips, 1, true, board);
       board.placeShip(playerShips[1], board.Board, 8, 2, true);
-      displayShipPlayer(boxs, 1, 3, txtbox, playerShips, 2, true);
+      displayShipPlayer(boxs, 1, 3, txtbox, playerShips, 2, true, board);
       board.placeShip(playerShips[2], board.Board, 1, 3, true);
-      displayShipPlayer(boxs, 3, 7, txtbox, playerShips, 3, false);
+      displayShipPlayer(boxs, 3, 7, txtbox, playerShips, 3, false, board);
       board.placeShip(playerShips[3], board.Board, 3, 7, false);
-      displayShipPlayer(boxs, 7, 8, txtbox, playerShips, 4, false);
+      displayShipPlayer(boxs, 7, 8, txtbox, playerShips, 4, false, board);
       board.placeShip(playerShips[4], board.Board, 7, 8, false);
       console.log(`PlayerBoard \n ${JSON.stringify(board)}`);
     });
@@ -189,14 +190,17 @@ const display = (() => {
     txtbox,
     ShipsArray,
     number,
-    vertical
+    vertical,
+    board
   ) => {
     try {
       const x = parseInt(txtx.value, 10) || txtx;
       const y = parseInt(txty.value, 10) || txty;
-
+      board.placeShip(ShipsArray[number], board.Board, x, y, vertical);
       console.log(
-        `X:${x} Y:${y}Choosen number: ${number}\n on: ${ShipsArray[number].Name}`
+        `X:${x} Y:${y} \n on: ${
+          ShipsArray[number].Name
+        }\n an  Boards: \n ${JSON.stringify(board.Board)}`
       );
 
       const choosenShip = ShipsArray[number];
@@ -210,11 +214,11 @@ const display = (() => {
         } else {
           if (y === 0) newnumber = i;
           else newnumber = parseInt(`${y}${x + i}`);
-          console.log(`Im new number ${y.value}${x.value} ${newnumber}`);
+          // console.log(`Im new number ${y.value}${x.value} ${newnumber}`);
         }
-        console.log(
-          `Im Size: ${size} i: ${i} newNumber : ${newnumber} \n Vertical: ${vertical}`
-        );
+        // console.log(
+        //   `Im Size: ${size} i: ${i} newNumber : ${newnumber} \n Vertical: ${vertical}`
+        // );
         boxs[newnumber].innerText = ShipsArray[number].Name;
         if (ShipsArray[number].Name === 'Submarine')
           boxs[newnumber].style.backgroundColor = `rgba(226, 63, 40,1 )`;
