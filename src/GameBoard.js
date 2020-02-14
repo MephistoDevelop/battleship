@@ -30,7 +30,6 @@ const gameBoard = () => ({
       if (existShiponBoard) {
         return false;
       } else {
-        console.log(`Im Ship: ${Ship.Name}`);
         const checkEmptyHorizontalCells = (Board) => {
           let answer = false;
           for (let i = 0; i < Ship.Lengths; i += 1) {
@@ -74,7 +73,7 @@ const gameBoard = () => ({
           }
         } else {
           console.log('place your ship in a valid position');
-          return false;
+
         }
       }
     }

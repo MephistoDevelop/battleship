@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable no-loop-func */
 import Player from './players';
 import gameBoard from './GameBoard';
@@ -20,6 +21,7 @@ const display = (() => {
     let check = false;
     let vertical = false;
     let computerMovs = [];
+
     for (let x = 0; x < 10; x += 1) {
       for (let y = 0; y < 10; y += 1) {
         boardUI += `<div data-position-x=${x} data-position-y=${y} class="box" id="box${x}${y}"></div>`;
@@ -33,7 +35,7 @@ const display = (() => {
     const player = Player('MephistoDevelop');
     const playerShips = player.playerInit();
     const computerShips = player.computerInit();
-    let turn = player.Turn;
+    const turn = player.Turn;
     board.Board = board.drawBoardPlayer();
     board.BoardComputer = computerShips[5];
     let hit = false;
@@ -57,8 +59,7 @@ const display = (() => {
         playerShips,
         choosenShipNumber,
         vertical,
-        board,
-        message
+        board
       );
       txtx.innerText = '';
       txty.innerText = '';
@@ -78,15 +79,15 @@ const display = (() => {
 
     btnRandom.addEventListener('click', () => {
       cleanBoard();
-      displayShipPlayer(boxs, 1, 1, txtbox, playerShips, 0, false);
+      displayShipPlayer(boxs, 1, 1, txtbox, playerShips, 0, false, board);
       board.placeShip(playerShips[0], board.Board, 1, 1);
-      displayShipPlayer(boxs, 8, 2, txtbox, playerShips, 1, true);
+      displayShipPlayer(boxs, 8, 2, txtbox, playerShips, 1, true, board);
       board.placeShip(playerShips[1], board.Board, 8, 2, true);
-      displayShipPlayer(boxs, 1, 3, txtbox, playerShips, 2, true);
+      displayShipPlayer(boxs, 1, 3, txtbox, playerShips, 2, true, board);
       board.placeShip(playerShips[2], board.Board, 1, 3, true);
-      displayShipPlayer(boxs, 3, 7, txtbox, playerShips, 3, false);
+      displayShipPlayer(boxs, 3, 7, txtbox, playerShips, 3, false, board);
       board.placeShip(playerShips[3], board.Board, 3, 7, false);
-      displayShipPlayer(boxs, 7, 8, txtbox, playerShips, 4, false);
+      displayShipPlayer(boxs, 7, 8, txtbox, playerShips, 4, false, board);
       board.placeShip(playerShips[4], board.Board, 7, 8, false);
       console.log(`PlayerBoard \n ${JSON.stringify(board)}`);
     });
@@ -160,6 +161,7 @@ const display = (() => {
       txty.value = '';
       txtx.value = '';
       txtbox.selected = 0;
+      board.Board = board.drawBoardPlayer();
       for (let i = 0; i < 100; i += 1) {
         let x = Math.floor(i / 10);
         let y = i % 10;
@@ -192,19 +194,24 @@ const display = (() => {
     ShipsArray,
     number,
     vertical,
-    board,
-    message
+    board
   ) => {
     try {
       const x = parseInt(txtx.value, 10) || txtx;
       const y = parseInt(txty.value, 10) || txty;
       if (!board.placeShip(ShipsArray[number], board.Board, x, y, vertical)) {
         message.style.backgroundColor = `rgba(255, 3, 0,0.5 )`;
-        message.innerHTML =
-          'Place Your Ship in a Valid Position and it would be unique';
+        message.innerHTML = 'PLace Your Ship in a Valid Position';
       } else {
+        console.log(
+          `X:${x} Y:${y} \n on: ${
+            ShipsArray[number].Name
+          }\n an  Boards: \n ${JSON.stringify(board.Board)}`
+        );
+
         const choosenShip = ShipsArray[number];
         const size = ShipsArray[number].Lengths;
+
 
         for (let i = 0; i < size; i += 1) {
           let newnumber = 0;
@@ -230,13 +237,9 @@ const display = (() => {
             boxs[newnumber].style.backgroundColor = `rgba(216, 146, 49,1 )`;
           if (ShipsArray[number].Name === 'Battleship')
             boxs[newnumber].style.backgroundColor = `rgba(132, 104, 106,1 )`;
+          //boxs[newnumber].style.backgroundColor = `rgba(${color}, ${color2}, ${color3},1)`;
         }
-        message.style.backgroundColor = `rgba(0, 255, 0,0.5 )`;
-        message.innerHTML = `Ship  ${ShipsArray[number].Name} placed on X:${x} Y:${y}:`;
-        setTimeout(() => {
-          message.innerHTML = '';
-          message.style.backgroundColor = 'transparent';
-        }, 4000);
+
       }
       console.log(
         `X:${x} Y:${y}Choosen number: ${number}\n on: ${
