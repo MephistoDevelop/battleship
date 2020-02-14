@@ -20,6 +20,7 @@ const display = (() => {
     const board = gameBoard();
     let check = false;
     let vertical = false;
+    let winner = false;
     let computerMovs = [];
 
     for (let x = 0; x < 10; x += 1) {
@@ -48,6 +49,32 @@ const display = (() => {
       let y = i % 10;
       boxs[i].innerText = `${x}-${y}`;
     }
+
+    const checkWinner = (turn) => {
+      let name = '';
+
+      if (turn === 0) {
+        name = player.Name;
+        if (board.checkShipsSunked(playerShips[0])) {
+          message.innerText = `Game Finished !! ${name} Wins`;
+          message.style.backgroundColor = 'rgba(0,255,0,0.6)';
+          winner = true;
+          for (let i = boxs.length / 2; i < boxs.length; i += 1) {
+            boxs[i].click = '';
+          }
+        }
+      } else {
+        name = 'Computer';
+        if (board.checkShipsSunked(computerShips[0])) {
+          message.innerText = `Game Finished !! ${name} Wins`;
+          message.style.backgroundColor = 'rgba(0,255,0,0.6)';
+          winner = true;
+          for (let i = boxs.length / 2; i < boxs.length; i += 1) {
+            boxs[i].click = '';
+          }
+        }
+      }
+    };
 
     btnPlaceShip.addEventListener('click', () => {
       const choosenShipNumber = parseInt(txtbox.value, 10);
@@ -104,7 +131,15 @@ const display = (() => {
           if (turn === 0) {
             player.Turn = 0;
             hit = player.Move(player.Turn, x, y, board, playerShips)[1];
-            lblmessage.innerText = `${Player.Name} Turn ${turn}`;
+            checkWinner(turn);
+            if (!winner) {
+              lblmessage.innerText = `Computer Turn`;
+              setTimeout(() => {
+                lblmessage.innerText = `${player.Name} Turn`;
+                lblmessage.style.backgroundColor = 'rgba(0,255,0,0.6)';
+              }, 1000);
+            }
+
             player.Turn = 1;
 
             if (hit) {
@@ -131,6 +166,7 @@ const display = (() => {
                 10
               );
               hit = computerCoordinatesAtack[2];
+              checkWinner(turn);
               player.Turn = 0;
               boxs[number].style.opacity = '1';
               if (hit) {
@@ -138,18 +174,14 @@ const display = (() => {
                 boxs[number].style.backgroundColor = 'rgba(26, 63, 40,0.7 )';
               } else boxs[number].style.backgroundImage = "url('./img/ex.png')";
               player.computerMoves.push(number);
-            }, 300);
+            }, 600);
           }
-          console.log(player.computerMoves);
         });
       }
 
       message.innerHTML = 'Game Started , atack computer Board';
       message.style.backgroundColor = 'rgba(0,255,0,0.6)';
-      setTimeout(() => {
-        message.innerHTML = '';
-        message.style.backgroundColor = 'transparent';
-      }, 3000);
+
       document.getElementById('content-hide').className = 'hide';
     });
 
@@ -212,7 +244,6 @@ const display = (() => {
         const choosenShip = ShipsArray[number];
         const size = ShipsArray[number].Lengths;
 
-
         for (let i = 0; i < size; i += 1) {
           let newnumber = 0;
           if (vertical) {
@@ -239,7 +270,6 @@ const display = (() => {
             boxs[newnumber].style.backgroundColor = `rgba(132, 104, 106,1 )`;
           //boxs[newnumber].style.backgroundColor = `rgba(${color}, ${color2}, ${color3},1)`;
         }
-
       }
       console.log(
         `X:${x} Y:${y}Choosen number: ${number}\n on: ${
