@@ -28,7 +28,6 @@ const display = (() => {
         boardUI += `<div data-position-x=${x} data-position-y=${y} class="box" id="box${x}${y}"></div>`;
       }
     }
-
     human.innerHTML = boardUI;
     computer.innerHTML = boardUI;
     const boxs = document.getElementsByClassName('box');
@@ -62,6 +61,7 @@ const display = (() => {
           for (let i = boxs.length / 2; i < boxs.length; i += 1) {
             boxs[i].click = '';
           }
+          return winner
         }
       } else {
         name = 'Computer';
@@ -72,6 +72,7 @@ const display = (() => {
           for (let i = boxs.length / 2; i < boxs.length; i += 1) {
             boxs[i].click = '';
           }
+          return winner;
         }
       }
     };
@@ -139,6 +140,11 @@ const display = (() => {
                 lblmessage.style.backgroundColor = 'rgba(0,255,0,0.6)';
               }, 1000);
             }
+            if(winner) {
+              document.querySelector('.board').style.pointerEvents = 'none';
+            }
+
+            
 
             player.Turn = 1;
 
