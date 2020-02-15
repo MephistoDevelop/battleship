@@ -55,7 +55,7 @@ const display = (() => {
       if (turn === 0) {
         name = player.Name;
         if (board.checkShipsSunked(playerShips[0])) {
-          message.innerText = `Game Finished !! ${name} Wins`;
+          message.innerHTML = `Game Finished !! ${name} Wins. Wait few seconds to start new game`;
           message.style.backgroundColor = 'rgba(0,255,0,0.6)';
           winner = true;
           for (let i = boxs.length / 2; i < boxs.length; i += 1) {
@@ -128,6 +128,7 @@ const display = (() => {
         // eslint-disable-next-line no-loop-func
 
         boxs[i].addEventListener('click', () => {
+        
           console.log('im turn' + turn);
           if (turn === 0) {
             player.Turn = 0;
@@ -142,22 +143,19 @@ const display = (() => {
             }
             if(winner) {
               document.querySelector('.board').style.pointerEvents = 'none';
+              setTimeout(window.location.reload.bind(window.location), 3000);
             }
 
-            
 
             player.Turn = 1;
 
             if (hit) {
               const number = parseInt(`${x}${y}`, 10);
-              // if (board.BoardComputer[] === 'Submarine') boxs[newnumber].style.backgroundColor = `rgba(226, 63, 40,1 )`;
-              // if (ShipsArray[number].Name === 'Destroyer') boxs[newnumber].style.backgroundColor = `rgba(26, 63, 180,1 )`;
-              // if (ShipsArray[number].Name === 'Cruiser') boxs[newnumber].style.backgroundColor = `rgba(26, 233, 20,1 )`;
-              // if (ShipsArray[number].Name === 'Carrier') boxs[newnumber].style.backgroundColor = `rgba(216, 146, 49,1 )`;
-              // if (ShipsArray[number].Name === 'Battleship') boxs[newnumber].style.backgroundColor = `rgba(132, 104, 106,1 )`;
               boxs[i].style.backgroundImage = "url('./img/hole.png')";
               boxs[i].style.backgroundColor = 'rgba(225, 28, 28,1)';
-            } else boxs[i].style.backgroundImage = "url('./img/ex.png')";
+            } else {
+              boxs[i].style.backgroundImage = "url('./img/ex.png')";
+            };
 
             setTimeout(() => {
               const computerCoordinatesAtack = player.Move(
@@ -216,7 +214,7 @@ const display = (() => {
           const number = parseInt(`${x}${y}`, 10);
 
           //  boxs[number + 100].innerText = board[x][y];
-          boxs[number + 100].style.backgroundColor = ' rgba(26, 63, 40,0.7 )';
+          boxs[number + 100].style.backgroundColor = ' rgba(26, 63, 40,1 )';
 
           // console.log(`Im renderships on X: ${x} - Y: ${y} !! \n${board[x][y]}`);
         }
