@@ -116,7 +116,7 @@ const display = (() => {
       board.placeShip(playerShips[3], board.Board, 3, 7, false);
       displayShipPlayer(boxs, 7, 8, txtbox, playerShips, 4, false, board);
       board.placeShip(playerShips[4], board.Board, 7, 8, false);
-      console.log(`PlayerBoard \n ${JSON.stringify(board)}`);
+      //console.log(`PlayerBoard \n ${JSON.stringify(board)}`);
     });
 
     btnStart.addEventListener('click', () => {
@@ -127,7 +127,7 @@ const display = (() => {
         // eslint-disable-next-line no-loop-func
 
         boxs[i].addEventListener('click', () => {
-          console.log('im turn' + turn);
+          //console.log('im turn' + turn);
           if (turn === 0) {
             player.Turn = 0;
             hit = player.Move(player.Turn, x, y, board, playerShips)[1];
@@ -235,11 +235,11 @@ const display = (() => {
         message.style.backgroundColor = `rgba(255, 3, 0,0.5 )`;
         message.innerHTML = 'PLace Your Ship in a Valid Position';
       } else {
-        console.log(
-          `X:${x} Y:${y} \n on: ${
-            ShipsArray[number].Name
-          }\n an  Boards: \n ${JSON.stringify(board.Board)}`
-        );
+        // console.log(
+        //   `X:${x} Y:${y} \n on: ${
+        //     ShipsArray[number].Name
+        //   }\n an  Boards: \n ${JSON.stringify(board.Board)}`
+        // );
 
         const choosenShip = ShipsArray[number];
         const size = ShipsArray[number].Lengths;
@@ -271,11 +271,11 @@ const display = (() => {
           //boxs[newnumber].style.backgroundColor = `rgba(${color}, ${color2}, ${color3},1)`;
         }
       }
-      console.log(
-        `X:${x} Y:${y}Choosen number: ${number}\n on: ${
-          ShipsArray[number].Name
-        }\n an  Boards: \n ${JSON.stringify(board.Board)}`
-      );
+      // console.log(
+      //   `X:${x} Y:${y}Choosen number: ${number}\n on: ${
+      //     ShipsArray[number].Name
+      //   }\n an  Boards: \n ${JSON.stringify(board.Board)}`
+      // );
 
       // console.log(
       //   `im X: ${x} Y: ${y} : Choosen: ${JSON.stringify(ShipsArray)}`
