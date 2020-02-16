@@ -132,7 +132,7 @@ const display = (() => {
         const x = boxs[i].getAttribute('data-position-x');
         const y = boxs[i].getAttribute('data-position-y');
         // eslint-disable-next-line no-loop-func
-        boxs[i].addEventListener('click', () => {
+        boxs[i].addEventListener('click', (e) => {
           if (turn === 0) {
             player.Turn = 0;
             hit = player.Move(player.Turn, x, y, board, playerShips)[1];
@@ -147,6 +147,10 @@ const display = (() => {
             if(winner) {
               document.querySelector('.board').style.pointerEvents = 'none';
               setTimeout(window.location.reload.bind(window.location), 3000);
+            }
+
+            if (boxs[i].style.backgroundImage !== 'none') {
+              boxs[i].style.pointerEvents= 'none';
             }
 
 

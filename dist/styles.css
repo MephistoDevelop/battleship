@@ -1,5 +1,5 @@
 body {
-  color: whitesmoke;
+  color: red;
   font-weight: 800;
   background-image: url(./img/background.jpg);
   background-size: cover;
@@ -33,6 +33,7 @@ input[type='text'] {
   justify-content: space-between;
   padding: 0 5px;
   margin: 0 10%;
+  color:red;
 }
 .grid-container {
   display: grid;
