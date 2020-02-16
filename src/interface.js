@@ -49,6 +49,14 @@ const display = (() => {
       boxs[i].innerText = `${x}-${y}`;
     }
 
+    // const unclick = () => {
+    //   for (let i=0;i<200;i+=1){
+    //     if boxs[i].style.backgroundImage !== 'none' {
+    //       boxs[i].style.pointerEvents='none';
+    //     }
+    //   }
+    // }
+
     const checkWinner = (turn) => {
       let name = '';
 
@@ -61,7 +69,6 @@ const display = (() => {
           for (let i = boxs.length / 2; i < boxs.length; i += 1) {
             boxs[i].click = '';
           }
-          return winner
         }
       } else {
         name = 'Computer';
@@ -69,10 +76,9 @@ const display = (() => {
           message.innerText = `Game Finished !! ${name} Wins`;
           message.style.backgroundColor = 'rgba(0,255,0,0.6)';
           winner = true;
-          for (let i = boxs.length / 2; i < boxs.length; i += 1) {
+          for (let i = 0; i < boxs.length/2; i += 1) {
             boxs[i].click = '';
           }
-          return winner;
         }
       }
     };
@@ -126,10 +132,7 @@ const display = (() => {
         const x = boxs[i].getAttribute('data-position-x');
         const y = boxs[i].getAttribute('data-position-y');
         // eslint-disable-next-line no-loop-func
-
         boxs[i].addEventListener('click', () => {
-        
-          console.log('im turn' + turn);
           if (turn === 0) {
             player.Turn = 0;
             hit = player.Move(player.Turn, x, y, board, playerShips)[1];
@@ -214,7 +217,7 @@ const display = (() => {
           const number = parseInt(`${x}${y}`, 10);
 
           //  boxs[number + 100].innerText = board[x][y];
-          boxs[number + 100].style.backgroundColor = ' rgba(26, 63, 40,1 )';
+          boxs[number + 100].style.backgroundColor = ' rgba(26, 63, 40,.98 )';
 
           // console.log(`Im renderships on X: ${x} - Y: ${y} !! \n${board[x][y]}`);
         }
