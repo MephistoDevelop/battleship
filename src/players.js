@@ -30,7 +30,7 @@ const Player = (name) => ({
             ComputerMoveX,
             ComputerMoveY,
             board.Board,
-            createdShip,
+            createdShip
           );
 
           break;
@@ -42,7 +42,7 @@ const Player = (name) => ({
         ComputerMoveX,
         ComputerMoveY,
         board.Board,
-        createdShip,
+        createdShip
       );
     }
 
@@ -57,7 +57,9 @@ const Player = (name) => ({
 
     // Create arrays from every ship from player
     const arr = createdShip.fill_ship(createdShip.Lengths);
-    const arrBattleship = createdBattleShip.fill_ship(createdBattleShip.Lengths);
+    const arrBattleship = createdBattleShip.fill_ship(
+      createdBattleShip.Lengths
+    );
     const arrCuiser = createdCruiser.fill_ship(createdCruiser.Lengths);
     const arrSubmarine = createdSubmarine.fill_ship(createdSubmarine.Lengths);
     const arrDestroyer = createdDestroyer.fill_ship(createdDestroyer.Lengths);
@@ -86,7 +88,9 @@ const Player = (name) => ({
 
     // Create arrays from every ship from player
     const arr = createdShipComputer.fill_ship(createdShipComputer.Lengths);
-    const arrBattleship = createdBattleShip.fill_ship(createdBattleShip.Lengths);
+    const arrBattleship = createdBattleShip.fill_ship(
+      createdBattleShip.Lengths
+    );
     const arrCuiser = createdCruiser.fill_ship(createdCruiser.Lengths);
     const arrSubmarine = createdSubmarine.fill_ship(createdSubmarine.Lengths);
     const arrDestroyer = createdDestroyer.fill_ship(createdDestroyer.Lengths);
@@ -101,41 +105,11 @@ const Player = (name) => ({
     const board = gameBoard();
     const boardArr = board.drawBoardPlayer();
 
-    const shipPlaced1 = `placedship Submarine: ${board.placeShip(
-      createdSubmarine,
-      boardArr,
-      1,
-      2,
-      true,
-    )} - `;
-    board.placeShip(
-      createdBattleShip,
-      boardArr,
-      5,
-      1,
-      false,
-    );
-    board.placeShip(
-      createdCruiser,
-      boardArr,
-      2,
-      6,
-      true,
-    );
-    board.placeShip(
-      createdDestroyer,
-      boardArr,
-      6,
-      6,
-      false,
-    );
-    board.placeShip(
-      createdShipComputer,
-      boardArr,
-      4,
-      3,
-      false,
-    );
+    board.placeShip(createdSubmarine, boardArr, 1, 2, true);
+    board.placeShip(createdBattleShip, boardArr, 5, 1, false);
+    board.placeShip(createdCruiser, boardArr, 2, 6, true);
+    board.placeShip(createdDestroyer, boardArr, 6, 6, false);
+    board.placeShip(createdShipComputer, boardArr, 4, 3, false);
 
     return [
       createdShipComputer,
