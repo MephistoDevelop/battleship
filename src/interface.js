@@ -14,11 +14,13 @@ const display = (() => {
     const btnRandom = document.getElementById('btn-random');
     const checkBox = document.getElementById('checkbox');
     const txtbox = document.getElementById('text-action');
+    const txtname = document.getElementById('txt-name');
     const txtx = document.getElementById('text-x');
     const txty = document.getElementById('text-y');
     const message = document.getElementById('messages');
     btnReStart.className = 'hide';
     let boardUI = '';
+    let name = 'Player 1';
     const board = gameBoard();
     let check = false;
     let vertical = false;
@@ -34,7 +36,7 @@ const display = (() => {
     computer.innerHTML = boardUI;
     const boxs = document.getElementsByClassName('box');
     const lblmessage = document.getElementById('messages');
-    let player = Player('MephistoDevelop');
+    let player = Player(name);
     let playerShips = player.playerInit();
     let computerShips = player.computerInit();
     const turn = player.Turn;
@@ -129,7 +131,7 @@ const display = (() => {
     });
 
     btnStart.addEventListener('click', () => {
-      if (checkStartInit()) {
+      if (checkStartInit() && txtname.value !== '') {
         btnReStart.classList.remove('hide');
         btnStart.className = 'hide';
         startGame();
@@ -154,7 +156,15 @@ const display = (() => {
       board.Board = board.drawBoardPlayer();
       board.BoardComputer = board.drawBoardPlayer();
       board.BoardComputer = computerShips[5];
+      boardUI = '';
       console.log('Board Cleaned');
+      for (let x = 0; x < 10; x += 1) {
+        for (let y = 0; y < 10; y += 1) {
+          boardUI += `<div data-position-x=${x} data-position-y=${y} class="box" id="box${x}${y}"></div>`;
+        }
+      }
+      human.innerHTML = boardUI;
+      computer.innerHTML = boardUI;
       for (let i = 0; i < 100; i += 1) {
         const x = Math.floor(i / 10);
         const y = i % 10;
@@ -191,6 +201,8 @@ const display = (() => {
     const startGame = () => {
       console.log(`Start Clicked `);
       if (checkStartInit()) {
+        name = txtname.value;
+
         renderships(board.BoardComputer, boxs);
         for (let i = boxs.length / 2; i < boxs.length; i += 1) {
           const x = boxs[i].getAttribute('data-position-x');
@@ -259,7 +271,8 @@ const display = (() => {
         message.style.backgroundColor = 'rgba(0,255,0,0.6)';
         document.getElementById('content-hide').className = 'hide';
       } else {
-        message.innerHTML = 'Place your ships and then press Start';
+        message.innerHTML =
+          'Write your name Place your ships and then press Start';
         message.style.backgroundColor = 'rgba(255,0,0,0.6)';
       }
     };
