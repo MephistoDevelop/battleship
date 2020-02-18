@@ -108,34 +108,34 @@ const Player = (name) => ({
       2,
       true,
     )} - `;
-    const shipPlaced2 = `placedship Battleship: ${board.placeShip(
+    board.placeShip(
       createdBattleShip,
       boardArr,
       5,
       1,
       false,
-    )} - `;
-    const shipPlaced3 = `placedship Cruiser: ${board.placeShip(
+    );
+    board.placeShip(
       createdCruiser,
       boardArr,
       2,
       6,
       true,
-    )} - `;
-    const shipPlaced4 = `placedship Destroyer: ${board.placeShip(
+    );
+    board.placeShip(
       createdDestroyer,
       boardArr,
       6,
       6,
       false,
-    )} - `;
-    const shipPlaced5 = `placedship Carrier: ${board.placeShip(
+    );
+    board.placeShip(
       createdShipComputer,
       boardArr,
       4,
       3,
       false,
-    )}`;
+    );
 
     return [
       createdShipComputer,
