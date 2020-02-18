@@ -78,9 +78,13 @@ const display = (() => {
       if (turn === 0) {
         name = player.Name;
         if (board.checkShipsSunked(computerShips[0])) {
-          message.innerText =
-            'Game Finished !! Coputer Wins . Wait few seconds to start new game';
-          message.style.backgroundColor = 'rgba(255,0,0,0.6)';
+          name = 'Computer';
+          setTimeout(() => {
+            message.innerText =
+              'Game Finished !! Coputer Wins . Wait few seconds to start new game';
+            message.style.backgroundColor = 'rgba(255,0,0,0.6)';
+          }, 500);
+
           winner = true;
           for (let i = boxs.length / 2; i < boxs.length; i += 1) {
             boxs[i].click = '';
@@ -88,12 +92,15 @@ const display = (() => {
         }
       } else {
         //console.log(`Ships COmputer: ${JSON.stringify(computerShips[0])}`);
-        name = 'Computer';
-        if (board.checkShipsSunked(playerShips[0])) {
-          console.log('Coputer wins the Game');
 
-          message.innerHTML = `Game Finished !! ${name} Wins. Wait few seconds to start new game`;
-          message.style.backgroundColor = 'rgba(0,255,0,0.6)';
+        if (board.checkShipsSunked(playerShips[0])) {
+          name = player.Name;
+          console.log('Coputer wins the Game');
+          setTimeout(() => {
+            message.innerHTML = `Game Finished !! ${name} Wins. Wait few seconds to start new game`;
+            message.style.backgroundColor = 'rgba(0,255,0,0.6)';
+          }, 500);
+
           winner = true;
           for (let i = 100; i < 200; i += 1) {
             boxs[i].click = '';
@@ -223,7 +230,7 @@ const display = (() => {
             if (turn === 0) {
               player.Turn = 0;
               hit = player.Move(player.Turn, x, y, board, playerShips)[1];
-              checkWinner(turn);
+
               if (boxs[i].style.backgroundImage !== 'none') {
                 boxs[i].style.pointerEvents = 'none';
               }
@@ -237,7 +244,7 @@ const display = (() => {
               } else {
                 boxs[i].style.backgroundImage = "url('./img/ex.png')";
               }
-
+              checkWinner(turn);
               setTimeout(() => {
                 const computerCoordinatesAtack = player.Move(
                   player.Turn,
@@ -251,27 +258,21 @@ const display = (() => {
                   10
                 );
                 hit = computerCoordinatesAtack[2];
-                checkWinner(player.Turn);
                 // console.log(`HItted number ${number}`);
                 player.Turn = 0;
                 boxs[number].style.opacity = '1';
-                // console.log(
-                //   `Coputer Atack: ${number} Hit: ${hit} computerCoordinate:${
-                //     computerCoordinatesAtack[2]
-                //   } Board: ${JSON.stringify(board.Board)} \n Y: ${
-                //     computerCoordinatesAtack[1]
-                //   } X: ${computerCoordinatesAtack[0]}`
-                // );
                 if (hit) {
                   boxs[number].style.backgroundImage = "url('./img/hole.png')";
                   boxs[number].style.backgroundColor = 'rgba(26, 63, 40,0.7 )';
                 } else
                   boxs[number].style.backgroundImage = "url('./img/ex.png')";
                 player.computerMoves.push(number);
+                checkWinner(player.Turn);
               }, 150);
             }
             const clone = boxs[i].cloneNode(true);
             boxs[i].parentNode.replaceChild(clone, boxs[i]);
+            checkWinner(player.Turn);
           });
         }
 
