@@ -1,5 +1,6 @@
 import ship from './ships';
 import gameBoard from './GameBoard';
+
 let Moves = [];
 const Player = (name) => ({
   Name: name,
@@ -9,29 +10,21 @@ const Player = (name) => ({
     let hit = false;
 
     if (Turn === 0) {
-      // console.log(`CEll: X:${x} Y: ${y}   ${board.BoardComputer[y][x]}`);
       hit = board.receiveAtack(y, x, board.BoardComputer, createdShip);
-      // console.log(`Player Turn, Atacked on: X:${y} - Y: ${x}\nTo  Computer Board \n ${JSON.stringify(board.BoardComputer)}`);
       return [1, hit];
     }
 
     let ComputerMoveX = parseInt((0 + Math.random()) * (10 - 0), 10);
     let ComputerMoveY = parseInt((0 + Math.random()) * (10 - 0), 10);
     let number = parseInt(`${ComputerMoveY}${ComputerMoveX},10`);
-    // console.log(
-    //   `ìm computer number ${ComputerMoveY}-${ComputerMoveX} : ${number}`
-    // );
-    // console.log(`Number Generated:HIT? ${hit}  ${number}`);
 
     if (Moves.includes(number)) {
-      // console.log(`Number: ${number} is included...`);
       while (Moves.includes(number)) {
         if (Moves.length >= 98) break;
         ComputerMoveX = parseInt((0 + Math.random()) * (10 - 0), 10);
         ComputerMoveY = parseInt((0 + Math.random()) * (10 - 0), 10);
         number = parseInt(`${ComputerMoveY}${ComputerMoveX}`, 10);
         if (!Moves.includes(number)) {
-          // console.log(`Number Generated:  ${number} Not included:`);
           Moves.push(number);
           hit = board.receiveAtack(
             ComputerMoveX,
@@ -39,15 +32,10 @@ const Player = (name) => ({
             board.Board,
             createdShip
           );
-          // console.log(
-          //   `Atacked Board:HIT? ${hit} Y:${ComputerMoveY}-X:${ComputerMoveX} ${JSON.stringify(
-          //     createdShip
-          //   )} ${JSON.stringify(board.Board)}`
-          // );
+
           break;
         }
       }
-      // console.log(`New number Generated on PLayer: ${number}`);
     } else {
       Moves.push(number);
       hit = board.receiveAtack(
@@ -56,12 +44,6 @@ const Player = (name) => ({
         board.Board,
         createdShip
       );
-      // console.log(`Atacked Board: ${JSON.stringify(board.Board)}`);
-      // console.log(
-      //   `Computer Turn,Moves: ${Moves}  Atacked on: X:${ComputerMoveX} - Y: ${ComputerMoveY}\n To Player Board \n${JSON.stringify(
-      //     board.Board
-      //   )}`
-      // );
     }
 
     return [ComputerMoveX, ComputerMoveY, hit];
@@ -90,10 +72,6 @@ const Player = (name) => ({
     createdShip.ships[createdCruiser.Name] = arrCuiser;
     createdShip.ships[createdSubmarine.Name] = arrSubmarine;
     createdShip.ships[createdDestroyer.Name] = arrDestroyer;
-
-    // console.log(
-    //   `Soy PLayer Init function: ${JSON.stringify(createdShip.ships)}`
-    // );
 
     return [
       createdShip,
@@ -166,10 +144,6 @@ const Player = (name) => ({
       3,
       false
     )}`;
-
-    // console.log(
-    //   `Soy Computer Init function: ${JSON.stringify(createdShipComputer)}`
-    // );
 
     return [
       createdShipComputer,

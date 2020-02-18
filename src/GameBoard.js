@@ -45,7 +45,6 @@ const gameBoard = () => ({
         const checkEmptyVerticalCells = (Board) => {
           let answer = false;
           for (let i = 0; i < Ship.Lengths; i += 1) {
-            //console.log('answer: ' + answer + '  Board[x+' + i + '] : ' + Board[y][(x + i)]);
             if (Board[y + i][x] === '-') {
               answer = true;
             } else {
@@ -71,8 +70,6 @@ const gameBoard = () => ({
           for (let i = 0; i < Ship.Lengths; i += 1) {
             newBoard[y + i][x] = `${Ship.Name}${i}`;
           }
-        } else {
-          console.log('place your ship in a valid position');
         }
       }
     }
@@ -88,12 +85,10 @@ const gameBoard = () => ({
       board[y][x] = 'X';
       answer = false;
     } else {
-      // console.log(shipsArray);
       const shipName = board[y][x].split('');
       const name = shipName.splice(0, shipName.length - 1).join('');
       if (name !== '') {
         const hittedShipPosition = parseInt(shipName);
-        //console.log(`im hit name: ${JSON.stringify(name)}`);
         shipFactory.hit(shipsArray, hittedShipPosition, name);
         board[y][x] = `${name}X`;
         answer = true;
