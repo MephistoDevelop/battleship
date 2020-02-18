@@ -66,7 +66,7 @@ const display = (() => {
 
       if (turn === 0) {
         name = player.Name;
-        if (board.checkShipsSunked(playerShips[0])) {
+        if (board.checkShipsSunked(computerShips[0])) {
           message.innerHTML = `Game Finished !! ${name} Wins. Wait few seconds to start new game`;
           message.style.backgroundColor = 'rgba(0,255,0,0.6)';
           winner = true;
@@ -77,7 +77,7 @@ const display = (() => {
       } else {
         //console.log(`Ships COmputer: ${JSON.stringify(computerShips[0])}`);
         name = 'Computer';
-        if (board.checkShipsSunked(computerShips[0])) {
+        if (board.checkShipsSunked(playerShips[0])) {
           console.log('Coputer wins the Game');
           message.innerText = 'Game Finished !! Coputer Wins';
           message.style.backgroundColor = 'rgba(0,255,0,0.6)';
