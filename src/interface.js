@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-loop-func */
-/* eslint comma-dangle: ["error", "never"] */
+/* eslint comma-dangle:  0 */
 import Player from './players';
 import gameBoard from './GameBoard';
 
