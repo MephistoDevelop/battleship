@@ -36,7 +36,8 @@ const display = (() => {
     const computerShips = player.computerInit();
     const turn = player.Turn;
     board.Board = board.drawBoardPlayer();
-    board.BoardComputer = computerShips[5];
+    const position = 5;
+    board.BoardComputer = computerShips[position];
     let hit = false;
 
     message.innerHTML = 'Place your Ships and Press Start';
@@ -82,7 +83,7 @@ const display = (() => {
       ShipsArray,
       number,
       vertical,
-      board,
+      board
     ) => {
       try {
         const x = parseInt(txtx.value, 10) || txtx;
@@ -141,7 +142,7 @@ const display = (() => {
         playerShips,
         choosenShipNumber,
         vertical,
-        board,
+        board
       );
       txtx.innerText = '';
       txty.innerText = '';
@@ -223,7 +224,6 @@ const display = (() => {
               boxs[i].style.pointerEvents = 'none';
             }
 
-
             player.Turn = 1;
 
             if (hit) {
@@ -239,11 +239,11 @@ const display = (() => {
                 0,
                 0,
                 board,
-                computerShips,
+                computerShips
               );
               const number = parseInt(
                 `${computerCoordinatesAtack[1]}${computerCoordinatesAtack[0]}`,
-                10,
+                10
               );
               hit = computerCoordinatesAtack[2];
               checkWinner(turn);
