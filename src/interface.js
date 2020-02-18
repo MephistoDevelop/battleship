@@ -206,7 +206,8 @@ const display = (() => {
         boxs[i].addEventListener('click', () => {
           if (turn === 0) {
             player.Turn = 0;
-            hit = player.Move(player.Turn, x, y, board, playerShips)[1];
+            const position = 1;
+            hit = player.Move(player.Turn, x, y, board, playerShips)[position];
             checkWinner(turn);
             if (!winner) {
               lblmessage.innerText = 'Computer Turn';
@@ -241,11 +242,14 @@ const display = (() => {
                 board,
                 computerShips
               );
+              const zero = 0;
+              const one = 1;
+              const two = 2;
               const number = parseInt(
-                `${computerCoordinatesAtack[1]}${computerCoordinatesAtack[0]}`,
+                `${computerCoordinatesAtack[one]}${computerCoordinatesAtack[zero]}`,
                 10
               );
-              hit = computerCoordinatesAtack[2];
+              hit = computerCoordinatesAtack[two];
               checkWinner(turn);
               player.Turn = 0;
               boxs[number].style.opacity = '1';
