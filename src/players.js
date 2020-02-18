@@ -101,35 +101,35 @@ const Player = (name) => ({
     const board = gameBoard();
     const boardArr = board.drawBoardPlayer();
 
-    `placedship Submarine: ${board.placeShip(
+    const shipPlaced1 = `placedship Submarine: ${board.placeShip(
       createdSubmarine,
       boardArr,
       1,
       2,
       true,
     )} - `;
-    `placedship Battleship: ${board.placeShip(
+    const shipPlaced2 = `placedship Battleship: ${board.placeShip(
       createdBattleShip,
       boardArr,
       5,
       1,
       false,
     )} - `;
-    `placedship Cruiser: ${board.placeShip(
+    const shipPlaced3 = `placedship Cruiser: ${board.placeShip(
       createdCruiser,
       boardArr,
       2,
       6,
       true,
     )} - `;
-    `placedship Destroyer: ${board.placeShip(
+    const shipPlaced4 = `placedship Destroyer: ${board.placeShip(
       createdDestroyer,
       boardArr,
       6,
       6,
       false,
     )} - `;
-    `placedship Carrier: ${board.placeShip(
+    const shipPlaced5 = `placedship Carrier: ${board.placeShip(
       createdShipComputer,
       boardArr,
       4,
