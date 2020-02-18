@@ -158,7 +158,6 @@ const display = (() => {
       board.BoardComputer = board.drawBoardPlayer();
       board.BoardComputer = computerShips[5];
       boardUI = '';
-      console.log('Board Cleaned');
       for (let x = 0; x < 10; x += 1) {
         for (let y = 0; y < 10; y += 1) {
           boardUI += `<div data-position-x=${x} data-position-y=${y} class="box" id="box${x}${y}"></div>`;
@@ -200,7 +199,6 @@ const display = (() => {
       }
     };
     const startGame = () => {
-      console.log(`Start Clicked `);
       if (checkStartInit()) {
         renderships(board.BoardComputer, boxs);
         for (let i = boxs.length / 2; i < boxs.length; i += 1) {
@@ -255,6 +253,13 @@ const display = (() => {
                 // console.log(`HItted number ${number}`);
                 player.Turn = 0;
                 boxs[number].style.opacity = '1';
+                // console.log(
+                //   `Coputer Atack: ${number} Hit: ${hit} computerCoordinate:${
+                //     computerCoordinatesAtack[2]
+                //   } Board: ${JSON.stringify(board.Board)} \n Y: ${
+                //     computerCoordinatesAtack[1]
+                //   } X: ${computerCoordinatesAtack[0]}`
+                // );
                 if (hit) {
                   boxs[number].style.backgroundImage = "url('./img/hole.png')";
                   boxs[number].style.backgroundColor = 'rgba(26, 63, 40,0.7 )';
@@ -294,7 +299,6 @@ const display = (() => {
       board.Board = board.drawBoardPlayer();
       board.BoardComputer = computerShips[5];
       btnStart.click = '';
-      console.log(`Restart Clicked Board: ${JSON.stringify(board)}`);
     };
   };
   const renderships = (board, boxs) => {

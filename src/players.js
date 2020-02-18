@@ -10,7 +10,7 @@ const Player = (name) => ({
 
     if (Turn === 0) {
       // console.log(`CEll: X:${x} Y: ${y}   ${board.BoardComputer[y][x]}`);
-      hit = board.receiveAtack(y, x, board.BoardComputer, createdShip);
+      hit = board.receiveAtack(x, y, board.BoardComputer, createdShip);
       // console.log(`Player Turn, Atacked on: X:${y} - Y: ${x}\nTo  Computer Board \n ${JSON.stringify(board.BoardComputer)}`);
       return [1, hit];
     }
@@ -34,8 +34,8 @@ const Player = (name) => ({
           // console.log(`Number Generated:  ${number} Not included:`);
           Moves.push(number);
           hit = board.receiveAtack(
-            ComputerMoveY,
             ComputerMoveX,
+            ComputerMoveY,
             board.Board,
             createdShip
           );
@@ -57,7 +57,11 @@ const Player = (name) => ({
         createdShip
       );
       // console.log(`Atacked Board: ${JSON.stringify(board.Board)}`);
-      // console.log(`Computer Turn,Moves: ${Moves}  Atacked on: X:${ComputerMoveX} - Y: ${ComputerMoveY}\n To Player Board \n${JSON.stringify(board.Board)}`);
+      console.log(
+        `Computer Atacked on: Y:${ComputerMoveY} - X: ${ComputerMoveX}\n To Player Board \n${JSON.stringify(
+          board.Board
+        )}`
+      );
     }
 
     return [ComputerMoveX, ComputerMoveY, hit];
