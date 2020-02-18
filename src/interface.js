@@ -63,12 +63,24 @@ const display = (() => {
 
     const checkWinner = (turn) => {
       let name = '';
+      if (!winner) {
+        lblmessage.innerText = 'Computer Turn';
+        setTimeout(() => {
+          lblmessage.innerText = `${player.Name} Turn`;
+          lblmessage.style.backgroundColor = 'rgba(0,255,0,0.6)';
+        }, 500);
+      }
+      if (winner) {
+        document.querySelector('.board').style.pointerEvents = 'none';
+        setTimeout(window.location.reload.bind(window.location), 3000);
+      }
 
       if (turn === 0) {
         name = player.Name;
         if (board.checkShipsSunked(computerShips[0])) {
-          message.innerHTML = `Game Finished !! ${name} Wins. Wait few seconds to start new game`;
-          message.style.backgroundColor = 'rgba(0,255,0,0.6)';
+          message.innerText =
+            'Game Finished !! Coputer Wins . Wait few seconds to start new game';
+          message.style.backgroundColor = 'rgba(255,0,0,0.6)';
           winner = true;
           for (let i = boxs.length / 2; i < boxs.length; i += 1) {
             boxs[i].click = '';
@@ -79,10 +91,11 @@ const display = (() => {
         name = 'Computer';
         if (board.checkShipsSunked(playerShips[0])) {
           console.log('Coputer wins the Game');
-          message.innerText = 'Game Finished !! Coputer Wins';
+
+          message.innerHTML = `Game Finished !! ${name} Wins. Wait few seconds to start new game`;
           message.style.backgroundColor = 'rgba(0,255,0,0.6)';
           winner = true;
-          for (let i = boxs.length / 2; i < boxs.length; i += 1) {
+          for (let i = 100; i < 200; i += 1) {
             boxs[i].click = '';
           }
         }
@@ -211,18 +224,6 @@ const display = (() => {
               player.Turn = 0;
               hit = player.Move(player.Turn, x, y, board, playerShips)[1];
               checkWinner(turn);
-              if (!winner) {
-                lblmessage.innerText = 'Computer Turn';
-                setTimeout(() => {
-                  lblmessage.innerText = `${player.Name} Turn`;
-                  lblmessage.style.backgroundColor = 'rgba(0,255,0,0.6)';
-                }, 500);
-              }
-              if (winner) {
-                document.querySelector('.board').style.pointerEvents = 'none';
-                setTimeout(window.location.reload.bind(window.location), 3000);
-              }
-
               if (boxs[i].style.backgroundImage !== 'none') {
                 boxs[i].style.pointerEvents = 'none';
               }

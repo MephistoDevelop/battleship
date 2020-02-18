@@ -26,7 +26,7 @@ const Player = (name) => ({
     if (Moves.includes(number)) {
       // console.log(`Number: ${number} is included...`);
       while (Moves.includes(number)) {
-        if (Moves.length === 99) break;
+        if (Moves.length >= 98) break;
         ComputerMoveX = parseInt((0 + Math.random()) * (10 - 0), 10);
         ComputerMoveY = parseInt((0 + Math.random()) * (10 - 0), 10);
         number = parseInt(`${ComputerMoveY}${ComputerMoveX}`, 10);
