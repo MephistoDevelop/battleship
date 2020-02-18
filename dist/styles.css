@@ -1,9 +1,20 @@
 body {
-  color: whitesmoke;
+  color: red;
   font-weight: 800;
   background-image: url(./img/background.jpg);
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+button {
+  margin-left: 5px;
+  padding: 7px;
+  border-radius: 5px;
+  border:none;
+  cursor: pointer;
+}
+button:hover{
+  background-color: rgba(224, 220, 220, 0.904);
 }
 select {
   text-align: center;
@@ -22,6 +33,7 @@ input[type='text'] {
   justify-content: space-between;
   padding: 0 5px;
   margin: 0 10%;
+  color:red;
 }
 .grid-container {
   display: grid;

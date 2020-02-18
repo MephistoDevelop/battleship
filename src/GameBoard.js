@@ -93,7 +93,7 @@ const gameBoard = () => ({
       const name = shipName.splice(0, shipName.length - 1).join('');
       if (name !== '') {
         const hittedShipPosition = parseInt(shipName);
-        console.log(`im hit name: ${JSON.stringify(name)}`);
+        //console.log(`im hit name: ${JSON.stringify(name)}`);
         shipFactory.hit(shipsArray, hittedShipPosition, name);
         board[y][x] = `${name}X`;
         answer = true;

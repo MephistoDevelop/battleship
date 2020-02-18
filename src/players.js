@@ -9,21 +9,28 @@ const Player = (name) => ({
     let hit = false;
 
     if (Turn === 0) {
-      console.log(`CEll: X:${x} Y: ${y}   ${board.BoardComputer[y][x]}`);
+      // console.log(`CEll: X:${x} Y: ${y}   ${board.BoardComputer[y][x]}`);
       hit = board.receiveAtack(y, x, board.BoardComputer, createdShip);
       // console.log(`Player Turn, Atacked on: X:${y} - Y: ${x}\nTo  Computer Board \n ${JSON.stringify(board.BoardComputer)}`);
       return [1, hit];
     }
+
     let ComputerMoveX = parseInt((0 + Math.random()) * (10 - 0), 10);
     let ComputerMoveY = parseInt((0 + Math.random()) * (10 - 0), 10);
-    let number = parseInt(`${ComputerMoveX}${ComputerMoveY},10`);
+    let number = parseInt(`${ComputerMoveY}${ComputerMoveX},10`);
+    console.log(
+      `ìm computer number ${ComputerMoveY}-${ComputerMoveX} : ${number}`
+    );
+    console.log(`Number Generated:HIT? ${hit}  ${number}`);
 
     if (Moves.includes(number)) {
+      console.log(`Number: ${number} is included...`);
       while (Moves.includes(number)) {
         ComputerMoveX = parseInt((0 + Math.random()) * (10 - 0), 10);
         ComputerMoveY = parseInt((0 + Math.random()) * (10 - 0), 10);
-        number = parseInt(`${ComputerMoveX}${ComputerMoveY}`, 10);
+        number = parseInt(`${ComputerMoveY}${ComputerMoveX}`, 10);
         if (!Moves.includes(number)) {
+          console.log(`Number Generated:  ${number} Not included:`);
           Moves.push(number);
           hit = board.receiveAtack(
             ComputerMoveY,
@@ -31,18 +38,24 @@ const Player = (name) => ({
             board.Board,
             createdShip
           );
+          console.log(
+            `Atacked Board:HIT? ${hit} Y:${ComputerMoveY}-X:${ComputerMoveX} ${JSON.stringify(
+              createdShip
+            )} ${JSON.stringify(board.Board)}`
+          );
           break;
         }
       }
       // console.log(`New number Generated on PLayer: ${number}`);
     } else {
-      //   Moves.push(number);
+      Moves.push(number);
       hit = board.receiveAtack(
         ComputerMoveX,
         ComputerMoveY,
         board.Board,
         createdShip
       );
+      console.log(`Atacked Board: ${JSON.stringify(board.Board)}`);
       // console.log(`Computer Turn,Moves: ${Moves}  Atacked on: X:${ComputerMoveX} - Y: ${ComputerMoveY}\n To Player Board \n${JSON.stringify(board.Board)}`);
     }
 
