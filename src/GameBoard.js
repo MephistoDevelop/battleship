@@ -1,5 +1,3 @@
-import ship from './ships';
-
 const gameBoard = () => ({
   Board: [],
   BoardComputer: [],
@@ -55,17 +53,17 @@ const gameBoard = () => ({
           return answer;
         };
         if (
-          x + Ship.Lengths <= 10 &&
-          checkEmptyHorizontalCells(newBoard) &&
-          vertical === false
+          x + Ship.Lengths <= 10 
+          && checkEmptyHorizontalCells(newBoard)
+          && vertical === false
         ) {
           for (let i = 0; i < Ship.Lengths; i += 1) {
             newBoard[y][x + i] = `${Ship.Name}${i}`;
           }
         } else if (
-          y + Ship.Lengths <= 10 &&
-          checkEmptyVerticalCells(newBoard) &&
-          vertical === true
+          y + Ship.Lengths <= 10
+          && checkEmptyVerticalCells(newBoard) 
+          && vertical === true
         ) {
           for (let i = 0; i < Ship.Lengths; i += 1) {
             newBoard[y + i][x] = `${Ship.Name}${i}`;
@@ -88,7 +86,7 @@ const gameBoard = () => ({
       const shipName = board[y][x].split('');
       const name = shipName.splice(0, shipName.length - 1).join('');
       if (name !== '') {
-        const hittedShipPosition = parseInt(shipName);
+        const hittedShipPosition = parseInt(shipName, 10);
         shipFactory.hit(shipsArray, hittedShipPosition, name);
         board[y][x] = `${name}X`;
         answer = true;
@@ -107,13 +105,14 @@ const gameBoard = () => ({
     const shipBattleship = Obj.ships.Battleship;
 
     if (
-      Obj.isSunk(shipCruiser) &&
-      Obj.isSunk(shipSubmarine) &&
-      Obj.isSunk(shipCarrier) &&
-      Obj.isSunk(shipDestroyer) &&
-      Obj.isSunk(shipBattleship)
-    )
+      Obj.isSunk(shipCruiser)
+      && Obj.isSunk(shipSubmarine)
+      && Obj.isSunk(shipCarrier)
+      && Obj.isSunk(shipDestroyer)
+      && Obj.isSunk(shipBattleship)
+    ){
       answer = true;
+    }
     return answer;
   },
 });
