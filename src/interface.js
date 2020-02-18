@@ -88,52 +88,41 @@ const display = (() => {
         const x = parseInt(txtx.value, 10) || txtx;
         const y = parseInt(txty.value, 10) || txty;
         if (!board.placeShip(ShipsArray[number], board.Board, x, y, vertical)) {
-          message.style.backgroundColor = `rgba(255, 3, 0,0.5 )`;
+          message.style.backgroundColor = 'rgba(255, 3, 0,0.5 )';
           message.innerHTML = 'PLace Your Ship in a Valid Position';
         } else {
-          const choosenShip = ShipsArray[number];
           const size = ShipsArray[number].Lengths;
 
           for (let i = 0; i < size; i += 1) {
             let newnumber = 0;
             if (vertical) {
               if (y === 0) newnumber = i;
-              else newnumber = parseInt(`${y + i}${x}`);
+              else newnumber = parseInt(`${y + i}${x}`, 10);
             } else {
               if (y === 0) newnumber = i;
-              else newnumber = parseInt(`${y}${x + i}`);
-              // console.log(`Im new number ${y.value}${x.value} ${newnumber}`);
+              else newnumber = parseInt(`${y}${x + i}`, 10);
             }
-            // console.log(
-            //   `Im Size: ${size} i: ${i} newNumber : ${newnumber} \n Vertical: ${vertical}`
-            // );
             boxs[newnumber].innerText = ShipsArray[number].Name;
-            if (ShipsArray[number].Name === 'Submarine')
-              boxs[newnumber].style.backgroundColor = `rgba(226, 63, 40,1 )`;
-            if (ShipsArray[number].Name === 'Destroyer')
-              boxs[newnumber].style.backgroundColor = `rgba(26, 63, 180,1 )`;
-            if (ShipsArray[number].Name === 'Cruiser')
-              boxs[newnumber].style.backgroundColor = `rgba(26, 233, 20,1 )`;
-            if (ShipsArray[number].Name === 'Carrier')
-              boxs[newnumber].style.backgroundColor = `rgba(216, 146, 49,1 )`;
-            if (ShipsArray[number].Name === 'Battleship')
-              boxs[newnumber].style.backgroundColor = `rgba(132, 104, 106,1 )`;
-            //boxs[newnumber].style.backgroundColor = `rgba(${color}, ${color2}, ${color3},1)`;
+            if (ShipsArray[number].Name === 'Submarine') {
+              boxs[newnumber].style.backgroundColor = 'rgba(226, 63, 40,1 )';
+            }
+            if (ShipsArray[number].Name === 'Destroyer') {
+              boxs[newnumber].style.backgroundColor = 'rgba(26, 63, 180,1 )';
+            }
+            if (ShipsArray[number].Name === 'Cruiser') {
+              boxs[newnumber].style.backgroundColor = 'rgba(26, 233, 20,1 )';
+            }
+            if (ShipsArray[number].Name === 'Carrier') {
+              boxs[newnumber].style.backgroundColor = 'rgba(216, 146, 49,1 )';
+            }
+            if (ShipsArray[number].Name === 'Battleship') {
+              boxs[newnumber].style.backgroundColor = 'rgba(132, 104, 106,1 )';
+            }
           }
         }
-        console.log(
-          `X:${x} Y:${y}Choosen number: ${number}\n on: ${
-            ShipsArray[number].Name
-          }\n an  Boards: \n ${JSON.stringify(board.Board)}`
-        );
-
-        // console.log(
-        //   `im X: ${x} Y: ${y} : Choosen: ${JSON.stringify(ShipsArray)}`
-        // );
       } catch (error) {
         const message = document.getElementById('messages');
-        message.innerHTML =
-          'Place your ships  and press Start Game' + error.message;
+        message.innerHTML = 'Place your ships  and press Start Game  ${error.message}';
         message.style.backgroundColor = 'rgba(255,0,0,0.7)';
         setTimeout(() => {
           message.innerHTML = '';

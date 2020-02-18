@@ -27,7 +27,7 @@ const gameBoard = () => ({
       }
       if (existShiponBoard) {
         return false;
-      } 
+      }
       // else {
       const checkEmptyHorizontalCells = (Board) => {
         let answer = false;
