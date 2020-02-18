@@ -131,7 +131,8 @@ const display = (() => {
     });
 
     btnStart.addEventListener('click', () => {
-      if (checkStartInit() && txtname.value !== '') {
+      if (checkStartInit()) {
+        if (txtname.value !== '') player.Name = txtname.value;
         btnReStart.classList.remove('hide');
         btnStart.className = 'hide';
         startGame();
@@ -201,8 +202,6 @@ const display = (() => {
     const startGame = () => {
       console.log(`Start Clicked `);
       if (checkStartInit()) {
-        name = txtname.value;
-
         renderships(board.BoardComputer, boxs);
         for (let i = boxs.length / 2; i < boxs.length; i += 1) {
           const x = boxs[i].getAttribute('data-position-x');
