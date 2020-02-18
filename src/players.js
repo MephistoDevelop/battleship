@@ -76,7 +76,7 @@ const Player = (name) => ({
       createdBattleShip,
       createdCruiser,
       createdSubmarine,
-      createdDestroyer,
+      createdDestroyer
     ];
   },
   computerInit: () => {
@@ -117,7 +117,7 @@ const Player = (name) => ({
       createdCruiser,
       createdSubmarine,
       createdDestroyer,
-      boardArr,
+      boardArr
     ];
   },
   fillPlayerMoves: (playerBoard) => {
@@ -131,7 +131,7 @@ const Player = (name) => ({
       computerBoard[i] = i + 1;
     }
     return computerBoard;
-  },
+  }
 });
 
 Moves = Player('').computerMoves;

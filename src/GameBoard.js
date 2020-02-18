@@ -54,17 +54,17 @@ const gameBoard = () => ({
         return answer;
       };
       if (
-        x + Ship.Lengths <= 10
-        && checkEmptyHorizontalCells(newBoard)
-        && vertical === false
+        x + Ship.Lengths <= 10 &&
+        checkEmptyHorizontalCells(newBoard) &&
+        vertical === false
       ) {
         for (let i = 0; i < Ship.Lengths; i += 1) {
           newBoard[y][x + i] = `${Ship.Name}${i}`;
         }
       } else if (
-        y + Ship.Lengths <= 10
-        && checkEmptyVerticalCells(newBoard)
-        && vertical === true
+        y + Ship.Lengths <= 10 &&
+        checkEmptyVerticalCells(newBoard) &&
+        vertical === true
       ) {
         for (let i = 0; i < Ship.Lengths; i += 1) {
           newBoard[y + i][x] = `${Ship.Name}${i}`;
@@ -106,15 +106,15 @@ const gameBoard = () => ({
     const shipBattleship = Obj.ships.Battleship;
 
     if (
-      Obj.isSunk(shipCruiser)
-      && Obj.isSunk(shipSubmarine)
-      && Obj.isSunk(shipCarrier)
-      && Obj.isSunk(shipDestroyer)
-      && Obj.isSunk(shipBattleship)
+      Obj.isSunk(shipCruiser) &&
+      Obj.isSunk(shipSubmarine) &&
+      Obj.isSunk(shipCarrier) &&
+      Obj.isSunk(shipDestroyer) &&
+      Obj.isSunk(shipBattleship)
     ) {
       answer = true;
     }
     return answer;
-  },
+  }
 });
 export default gameBoard;
