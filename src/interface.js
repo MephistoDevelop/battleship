@@ -82,7 +82,7 @@ const display = (() => {
       ShipsArray,
       number,
       vertical,
-      board
+      board,
     ) => {
       try {
         const x = parseInt(txtx.value, 10) || txtx;
@@ -227,7 +227,6 @@ const display = (() => {
             player.Turn = 1;
 
             if (hit) {
-              const number = parseInt(`${x}${y}`, 10);
               boxs[i].style.backgroundImage = "url('./img/hole.png')";
               boxs[i].style.backgroundColor = 'rgba(225, 28, 28,1)';
             } else {
