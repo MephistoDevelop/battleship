@@ -217,7 +217,7 @@ const display = (() => {
                 setTimeout(() => {
                   lblmessage.innerText = `${player.Name} Turn`;
                   lblmessage.style.backgroundColor = 'rgba(0,255,0,0.6)';
-                }, 1000);
+                }, 500);
               }
               if (winner) {
                 document.querySelector('.board').style.pointerEvents = 'none';
@@ -263,6 +263,8 @@ const display = (() => {
                 player.computerMoves.push(number);
               }, 300);
             }
+            const clone = boxs[i].cloneNode(true);
+            boxs[i].parentNode.replaceChild(clone, boxs[i]);
           });
         }
 
