@@ -53,7 +53,7 @@ const gameBoard = () => ({
           return answer;
         };
         if (
-          x + Ship.Lengths <= 10 
+          x + Ship.Lengths <= 10
           && checkEmptyHorizontalCells(newBoard)
           && vertical === false
         ) {
@@ -62,7 +62,7 @@ const gameBoard = () => ({
           }
         } else if (
           y + Ship.Lengths <= 10
-          && checkEmptyVerticalCells(newBoard) 
+          && checkEmptyVerticalCells(newBoard)
           && vertical === true
         ) {
           for (let i = 0; i < Ship.Lengths; i += 1) {
@@ -110,7 +110,7 @@ const gameBoard = () => ({
       && Obj.isSunk(shipCarrier)
       && Obj.isSunk(shipDestroyer)
       && Obj.isSunk(shipBattleship)
-    ){
+    ) {
       answer = true;
     }
     return answer;

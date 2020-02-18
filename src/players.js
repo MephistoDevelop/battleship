@@ -16,7 +16,7 @@ const Player = (name) => ({
 
     let ComputerMoveX = parseInt((0 + Math.random()) * (10 - 0), 10);
     let ComputerMoveY = parseInt((0 + Math.random()) * (10 - 0), 10);
-    let number = parseInt(`${ComputerMoveY}${ComputerMoveX}`,10);
+    let number = parseInt(`${ComputerMoveY}${ComputerMoveX}`, 10);
 
     if (Moves.includes(number)) {
       while (Moves.includes(number)) {
@@ -57,9 +57,7 @@ const Player = (name) => ({
 
     // Create arrays from every ship from player
     const arr = createdShip.fill_ship(createdShip.Lengths);
-    const arrBattleship = createdBattleShip.fill_ship(
-      createdBattleShip.Lengths
-    );
+    const arrBattleship = createdBattleShip.fill_ship(createdBattleShip.Lengths);
     const arrCuiser = createdCruiser.fill_ship(createdCruiser.Lengths);
     const arrSubmarine = createdSubmarine.fill_ship(createdSubmarine.Lengths);
     const arrDestroyer = createdDestroyer.fill_ship(createdDestroyer.Lengths);
@@ -88,7 +86,7 @@ const Player = (name) => ({
 
     // Create arrays from every ship from player
     const arr = createdShipComputer.fill_ship(createdShipComputer.Lengths);
-    const arrBattleship = createdBattleShip.fill_ship( createdBattleShip.Lengths);
+    const arrBattleship = createdBattleShip.fill_ship(createdBattleShip.Lengths);
     const arrCuiser = createdCruiser.fill_ship(createdCruiser.Lengths);
     const arrSubmarine = createdSubmarine.fill_ship(createdSubmarine.Lengths);
     const arrDestroyer = createdDestroyer.fill_ship(createdDestroyer.Lengths);

@@ -1,6 +1,5 @@
 import GameBoard from '../src/GameBoard';
 import ship from '../src/ships';
-import player from '../src/players';
 
 test('draw board', () => {
   const board = GameBoard();
@@ -12,7 +11,7 @@ test('placeShip horizontally', () => {
   const board = GameBoard();
   const br = board.drawBoardPlayer();
   const shipElem = ship(2, 'Destroyer');
-  const place = board.placeShip(shipElem, br, 1, 1);
+  board.placeShip(shipElem, br, 1, 1);
   const newboard = br;
   expect(newboard[1][2]).toBe('Destroyer1');
 });
