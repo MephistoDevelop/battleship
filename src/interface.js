@@ -20,7 +20,7 @@ const display = (() => {
     const message = document.getElementById('messages');
     btnReStart.className = 'hide';
     let boardUI = '';
-    let name = 'Player 1';
+    const name = 'Player 1';
     const board = gameBoard();
     let check = false;
     let vertical = false;
@@ -75,12 +75,14 @@ const display = (() => {
           }
         }
       } else {
+        //console.log(`Ships COmputer: ${JSON.stringify(computerShips[0])}`);
         name = 'Computer';
         if (board.checkShipsSunked(computerShips[0])) {
+          console.log('Coputer wins the Game');
           message.innerText = 'Game Finished !! Coputer Wins';
           message.style.backgroundColor = 'rgba(0,255,0,0.6)';
           winner = true;
-          for (let i = 0; i < boxs.length / 2; i += 1) {
+          for (let i = boxs.length / 2; i < boxs.length; i += 1) {
             boxs[i].click = '';
           }
         }
@@ -194,9 +196,8 @@ const display = (() => {
 
       if (ship1 && ship2 && ship3 && ship4 && ship5) {
         return true;
-      } else {
-        return false;
       }
+      return false;
     };
     const startGame = () => {
       if (checkStartInit()) {
@@ -249,7 +250,7 @@ const display = (() => {
                   10
                 );
                 hit = computerCoordinatesAtack[2];
-                checkWinner(turn);
+                checkWinner(player.Turn);
                 // console.log(`HItted number ${number}`);
                 player.Turn = 0;
                 boxs[number].style.opacity = '1';
@@ -266,7 +267,7 @@ const display = (() => {
                 } else
                   boxs[number].style.backgroundImage = "url('./img/ex.png')";
                 player.computerMoves.push(number);
-              }, 300);
+              }, 150);
             }
             const clone = boxs[i].cloneNode(true);
             boxs[i].parentNode.replaceChild(clone, boxs[i]);
