@@ -27,49 +27,50 @@ const gameBoard = () => ({
       }
       if (existShiponBoard) {
         return false;
-      } else {
-        const checkEmptyHorizontalCells = (Board) => {
-          let answer = false;
-          for (let i = 0; i < Ship.Lengths; i += 1) {
-            if (Board[y][x + i] === '-') {
-              answer = true;
-            } else {
-              answer = false;
-              break;
-            }
-          }
-          return answer;
-        };
-        const checkEmptyVerticalCells = (Board) => {
-          let answer = false;
-          for (let i = 0; i < Ship.Lengths; i += 1) {
-            if (Board[y + i][x] === '-') {
-              answer = true;
-            } else {
-              answer = false;
-              break;
-            }
-          }
-          return answer;
-        };
-        if (
-          x + Ship.Lengths <= 10
-          && checkEmptyHorizontalCells(newBoard)
-          && vertical === false
-        ) {
-          for (let i = 0; i < Ship.Lengths; i += 1) {
-            newBoard[y][x + i] = `${Ship.Name}${i}`;
-          }
-        } else if (
-          y + Ship.Lengths <= 10
-          && checkEmptyVerticalCells(newBoard)
-          && vertical === true
-        ) {
-          for (let i = 0; i < Ship.Lengths; i += 1) {
-            newBoard[y + i][x] = `${Ship.Name}${i}`;
+      } 
+      // else {
+      const checkEmptyHorizontalCells = (Board) => {
+        let answer = false;
+        for (let i = 0; i < Ship.Lengths; i += 1) {
+          if (Board[y][x + i] === '-') {
+            answer = true;
+          } else {
+            answer = false;
+            break;
           }
         }
+        return answer;
+      };
+      const checkEmptyVerticalCells = (Board) => {
+        let answer = false;
+        for (let i = 0; i < Ship.Lengths; i += 1) {
+          if (Board[y + i][x] === '-') {
+            answer = true;
+          } else {
+            answer = false;
+            break;
+          }
+        }
+        return answer;
+      };
+      if (
+        x + Ship.Lengths <= 10
+        && checkEmptyHorizontalCells(newBoard)
+        && vertical === false
+      ) {
+        for (let i = 0; i < Ship.Lengths; i += 1) {
+          newBoard[y][x + i] = `${Ship.Name}${i}`;
+        }
+      } else if (
+        y + Ship.Lengths <= 10
+        && checkEmptyVerticalCells(newBoard)
+        && vertical === true
+      ) {
+        for (let i = 0; i < Ship.Lengths; i += 1) {
+          newBoard[y + i][x] = `${Ship.Name}${i}`;
+        }
       }
+      // }
     }
     return `X: ${y} - Y: ${x}, ${JSON.stringify(newBoard)} `;
   },
