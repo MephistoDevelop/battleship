@@ -133,6 +133,10 @@ after you will need to enter to [Stickler Page](https://stickler-ci.com/) and ac
 - Twitter: [@MephistoDevelop](https://twitter.com/MephistoDevelop)
 - Linkedin: [Cristian Hernandez](https://www.linkedin.com/in/cristian-hernandez1992/)
 
+- Github: [@ansaryergesh](https://github.com/ansaryergesh)
+- Twitter: [@ansaryergesh](https://twitter.com/ansaryergesh)
+- Linkedin: [Ansar Yergeshov](https://www.linkedin.com/in/ansaryergesh/)
+
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!
