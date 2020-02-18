@@ -122,7 +122,7 @@ const display = (() => {
         }
       } catch (error) {
         const message = document.getElementById('messages');
-        message.innerHTML = 'Place your ships  and press Start Game  ${error.message}';
+        message.innerHTML = `Place your ships  and press Start Game  ${error.message}`;
         message.style.backgroundColor = 'rgba(255,0,0,0.7)';
         setTimeout(() => {
           message.innerHTML = '';
