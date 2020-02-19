@@ -1,4 +1,5 @@
-import ship from './ships';
+/* eslint-disable radix */
+/* eslint-disable no-param-reassign */
 
 const gameBoard = () => ({
   Board: [],
@@ -15,8 +16,8 @@ const gameBoard = () => ({
     return board;
   },
 
-  placeShip: (ship, board, x, y, vertical = false) => {
-    const Ship = ship;
+  placeShip: (ships, board, x, y, vertical = false) => {
+    const Ship = ships;
     const newBoard = board;
     let existShiponBoard = false;
     if (Ship.Name) {
@@ -29,54 +30,54 @@ const gameBoard = () => ({
       }
       if (existShiponBoard) {
         return false;
-      } else {
-        const checkEmptyHorizontalCells = (Board) => {
-          let answer = false;
-          for (let i = 0; i < Ship.Lengths; i += 1) {
-            if (Board[y][x + i] === '-') {
-              answer = true;
-            } else {
-              answer = false;
-              break;
-            }
+      }
+      const checkEmptyHorizontalCells = (Board) => {
+        let answer = false;
+        for (let i = 0; i < Ship.Lengths; i += 1) {
+          if (Board[y][x + i] === '-') {
+            answer = true;
+          } else {
+            answer = false;
+            break;
           }
-          return answer;
-        };
-        const checkEmptyVerticalCells = (Board) => {
-          let answer = false;
-          for (let i = 0; i < Ship.Lengths; i += 1) {
-            if (Board[y + i][x] === '-') {
-              answer = true;
-            } else {
-              answer = false;
-              break;
-            }
+        }
+        return answer;
+      };
+      const checkEmptyVerticalCells = (Board) => {
+        let answer = false;
+        for (let i = 0; i < Ship.Lengths; i += 1) {
+          if (Board[y + i][x] === '-') {
+            answer = true;
+          } else {
+            answer = false;
+            break;
           }
-          return answer;
-        };
-        if (
-          x + Ship.Lengths <= 10 &&
-          checkEmptyHorizontalCells(newBoard) &&
-          vertical === false
-        ) {
-          for (let i = 0; i < Ship.Lengths; i += 1) {
-            newBoard[y][x + i] = `${Ship.Name}${i}`;
-          }
-        } else if (
-          y + Ship.Lengths <= 10 &&
-          checkEmptyVerticalCells(newBoard) &&
-          vertical === true
-        ) {
-          for (let i = 0; i < Ship.Lengths; i += 1) {
-            newBoard[y + i][x] = `${Ship.Name}${i}`;
-          }
+        }
+        return answer;
+      };
+      if (
+        x + Ship.Lengths <= 10
+          && checkEmptyHorizontalCells(newBoard)
+          && vertical === false
+      ) {
+        for (let i = 0; i < Ship.Lengths; i += 1) {
+          newBoard[y][x + i] = `${Ship.Name}${i}`;
+        }
+      } else if (
+        y + Ship.Lengths <= 10
+          && checkEmptyVerticalCells(newBoard)
+          && vertical === true
+      ) {
+        for (let i = 0; i < Ship.Lengths; i += 1) {
+          newBoard[y + i][x] = `${Ship.Name}${i}`;
         }
       }
     }
     return `X: ${y} - Y: ${x}, ${JSON.stringify(newBoard)} `;
   },
 
-  receiveAtack: (x, y, board, ships) => {
+  receiveAtack: (x, y, Board, ships) => {
+    const board = Board;
     const shipFactory = ships[0];
     let answer = '';
     const shipsArray = shipFactory.ships;
@@ -107,13 +108,12 @@ const gameBoard = () => ({
     const shipBattleship = Obj.ships.Battleship;
 
     if (
-      Obj.isSunk(shipCruiser) &&
-      Obj.isSunk(shipSubmarine) &&
-      Obj.isSunk(shipCarrier) &&
-      Obj.isSunk(shipDestroyer) &&
-      Obj.isSunk(shipBattleship)
-    )
-      answer = true;
+      Obj.isSunk(shipCruiser)
+      && Obj.isSunk(shipSubmarine)
+      && Obj.isSunk(shipCarrier)
+      && Obj.isSunk(shipDestroyer)
+      && Obj.isSunk(shipBattleship)
+    ) answer = true;
     return answer;
   },
 });

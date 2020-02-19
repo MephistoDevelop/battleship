@@ -16,7 +16,7 @@ const Player = (name) => ({
 
     let ComputerMoveX = parseInt((0 + Math.random()) * (10 - 0), 10);
     let ComputerMoveY = parseInt((0 + Math.random()) * (10 - 0), 10);
-    let number = parseInt(`${ComputerMoveY}${ComputerMoveX},10`);
+    let number = parseInt(`${ComputerMoveY}${ComputerMoveX}`, 10);
 
     if (Moves.includes(number)) {
       while (Moves.includes(number)) {
@@ -30,7 +30,7 @@ const Player = (name) => ({
             ComputerMoveX,
             ComputerMoveY,
             board.Board,
-            createdShip
+            createdShip,
           );
 
           break;
@@ -42,7 +42,7 @@ const Player = (name) => ({
         ComputerMoveX,
         ComputerMoveY,
         board.Board,
-        createdShip
+        createdShip,
       );
     }
 
@@ -55,12 +55,10 @@ const Player = (name) => ({
     const createdSubmarine = ship(3, 'Submarine');
     const createdDestroyer = ship(2, 'Destroyer');
 
-    const shipArr = createdShip.ships;
-
     // Create arrays from every ship from player
     const arr = createdShip.fill_ship(createdShip.Lengths);
     const arrBattleship = createdBattleShip.fill_ship(
-      createdBattleShip.Lengths
+      createdBattleShip.Lengths,
     );
     const arrCuiser = createdCruiser.fill_ship(createdCruiser.Lengths);
     const arrSubmarine = createdSubmarine.fill_ship(createdSubmarine.Lengths);
@@ -88,12 +86,10 @@ const Player = (name) => ({
     const createdSubmarine = ship(3, 'Submarine');
     const createdDestroyer = ship(2, 'Destroyer');
 
-    const shipArr = createdShipComputer.ships;
-
     // Create arrays from every ship from player
     const arr = createdShipComputer.fill_ship(createdShipComputer.Lengths);
     const arrBattleship = createdBattleShip.fill_ship(
-      createdBattleShip.Lengths
+      createdBattleShip.Lengths,
     );
     const arrCuiser = createdCruiser.fill_ship(createdCruiser.Lengths);
     const arrSubmarine = createdSubmarine.fill_ship(createdSubmarine.Lengths);
@@ -109,41 +105,11 @@ const Player = (name) => ({
     const board = gameBoard();
     const boardArr = board.drawBoardPlayer();
 
-    `placedship Submarine: ${board.placeShip(
-      createdSubmarine,
-      boardArr,
-      1,
-      2,
-      true
-    )} - `;
-    `placedship Battleship: ${board.placeShip(
-      createdBattleShip,
-      boardArr,
-      5,
-      1,
-      false
-    )} - `;
-    `placedship Cruiser: ${board.placeShip(
-      createdCruiser,
-      boardArr,
-      2,
-      6,
-      true
-    )} - `;
-    `placedship Destroyer: ${board.placeShip(
-      createdDestroyer,
-      boardArr,
-      6,
-      6,
-      false
-    )} - `;
-    `placedship Carrier: ${board.placeShip(
-      createdShipComputer,
-      boardArr,
-      4,
-      3,
-      false
-    )}`;
+    board.placeShip(createdSubmarine, boardArr, 1, 2, true);
+    board.placeShip(createdSubmarine, boardArr, 5, 1, false);
+    board.placeShip(createdSubmarine, boardArr, 2, 6, true);
+    board.placeShip(createdSubmarine, boardArr, 6, 6, false);
+    board.placeShip(createdSubmarine, boardArr, 4, 3, true);
 
     return [
       createdShipComputer,
@@ -155,16 +121,18 @@ const Player = (name) => ({
     ];
   },
   fillPlayerMoves: (playerBoard) => {
+    const board = playerBoard;
     for (let i = 0; i < 100; i += 1) {
-      playerBoard[i] = i + 1;
+      board[i] = i + 1;
     }
-    return playerBoard;
+    return board;
   },
   fillComputerMoves: (computerBoard) => {
+    const board = computerBoard;
     for (let i = 0; i < 100; i += 1) {
-      computerBoard[i] = i + 1;
+      board[i] = i + 1;
     }
-    return computerBoard;
+    return board;
   },
 });
 
