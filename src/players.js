@@ -108,7 +108,7 @@ const Player = (name) => ({
 
     const board = gameBoard();
     const boardArr = board.drawBoardPlayer();
-
+    
     `placedship Submarine: ${board.placeShip(
       createdSubmarine,
       boardArr,
@@ -153,6 +153,7 @@ const Player = (name) => ({
       createdDestroyer,
       boardArr,
     ];
+
   },
   fillPlayerMoves: (playerBoard) => {
     for (let i = 0; i < 100; i += 1) {
