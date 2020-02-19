@@ -188,7 +188,7 @@ const display = (() => {
                   computerShips,
                 );
                 const number = parseInt(
-                  `${computerCoordinatesAtack[1]}${computerCoordinatesAtack[0]}`, 10
+                  `${computerCoordinatesAtack[1]}${computerCoordinatesAtack[0]}`, 10,
                 );
                 const two = 2;
                 hit = computerCoordinatesAtack[two];
