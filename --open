@@ -1,16 +1,14 @@
 [34mℹ[39m [90m｢wds｣[39m: Project is running at http://localhost:8080/
 [34mℹ[39m [90m｢wds｣[39m: webpack output is served from /
 [34mℹ[39m [90m｢wds｣[39m: Content not from webpack is served from /home/mephistodevelop/Develop/Microverse/javascript/battleship
-[34mℹ[39m [90m｢wdm｣[39m: Hash: 9527ebe1eb008adf2db8
+[34mℹ[39m [90m｢wdm｣[39m: Hash: 16b506e52639cc2919ed
 Version: webpack 4.41.5
-Time: 580ms
-Built at: 01/31/2020 10:02:44 AM
+Time: 570ms
+Built at: 02/07/2020 6:49:21 AM
   Asset     Size  Chunks             Chunk Names
-main.js  364 KiB    main  [emitted]  main
+main.js  383 KiB    main  [emitted]  main
 Entrypoint main = main.js
 [0] multi (webpack)-dev-server/client?http://localhost:8080 ./src 40 bytes {main} [built]
-[./node_modules/ansi-html/index.js] 4.16 KiB {main} [built]
-[./node_modules/ansi-regex/index.js] 135 bytes {main} [built]
 [./node_modules/webpack-dev-server/client/index.js?http://localhost:8080] (webpack)-dev-server/client?http://localhost:8080 4.29 KiB {main} [built]
 [./node_modules/webpack-dev-server/client/overlay.js] (webpack)-dev-server/client/overlay.js 3.51 KiB {main} [built]
 [./node_modules/webpack-dev-server/client/socket.js] (webpack)-dev-server/client/socket.js 1.53 KiB {main} [built]
@@ -20,18 +18,57 @@ Entrypoint main = main.js
 [./node_modules/webpack-dev-server/client/utils/sendMessage.js] (webpack)-dev-server/client/utils/sendMessage.js 402 bytes {main} [built]
 [./node_modules/webpack-dev-server/node_modules/strip-ansi/index.js] (webpack)-dev-server/node_modules/strip-ansi/index.js 161 bytes {main} [built]
 [./node_modules/webpack/hot sync ^\.\/log$] (webpack)/hot sync nonrecursive ^\.\/log$ 170 bytes {main} [built]
-[./src/GameBoard.js] 221 bytes {main} [built]
-[./src/index.js] 1.75 KiB {main} [built]
+[./src/GameBoard.js] 3.25 KiB {main} [built]
+[./src/index.js] 8.35 KiB {main} [built]
+[./src/interface.js] 2.67 KiB {main} [built]
+[./src/players.js] 4.27 KiB {main} [built]
 [./src/ships.js] 670 bytes {main} [built]
-    + 20 hidden modules
+    + 22 hidden modules
 [34mℹ[39m [90m｢wdm｣[39m: Compiled successfully.
 [Browsersync] Access URLs:
- -------------------------------------
+ ------------------------------------
        Local: http://localhost:3001
-    External: http://192.168.0.30:3001
- -------------------------------------
+    External: http://192.168.0.3:3001
+ ------------------------------------
           UI: http://localhost:3002
  UI External: http://localhost:3002
- -------------------------------------
+ ------------------------------------
 [Browsersync] Serving files from: dist
 [Browsersync] Watching files...
+[34mℹ[39m [90m｢wdm｣[39m: Compiling...
+[34mℹ[39m [90m｢wdm｣[39m: Hash: 16b506e52639cc2919ed
+Version: webpack 4.41.5
+Time: 21ms
+Built at: 02/07/2020 6:49:32 AM
+ 1 asset
+Entrypoint main = main.js
+[./src/interface.js] 2.67 KiB {main} [built]
+    + 36 hidden modules
+[34mℹ[39m [90m｢wdm｣[39m: Compiled successfully.
+[Browsersync] Reloading Browsers...
+[Browsersync] Reloading Browsers...
+[34mℹ[39m [90m｢wdm｣[39m: Compiling...
+[34mℹ[39m [90m｢wdm｣[39m: Hash: 16b506e52639cc2919ed
+Version: webpack 4.41.5
+Time: 29ms
+Built at: 02/07/2020 6:49:33 AM
+ 1 asset
+Entrypoint main = main.js
+[./src/interface.js] 2.67 KiB {main} [built]
+    + 36 hidden modules
+[34mℹ[39m [90m｢wdm｣[39m: Compiled successfully.
+[Browsersync] Reloading Browsers...
+[Browsersync] Reloading Browsers...
+[34mℹ[39m [90m｢wdm｣[39m: Compiling...
+[34mℹ[39m [90m｢wdm｣[39m: Hash: 15aab28c9e802210ac8f
+Version: webpack 4.41.5
+Time: 54ms
+Built at: 02/07/2020 6:49:44 AM
+  Asset     Size  Chunks             Chunk Names
+main.js  383 KiB    main  [emitted]  main
+Entrypoint main = main.js
+[./src/players.js] 4.27 KiB {main} [built]
+    + 36 hidden modules
+[34mℹ[39m [90m｢wdm｣[39m: Compiled successfully.
+[Browsersync] Reloading Browsers...
+[Browsersync] Reloading Browsers...

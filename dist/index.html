@@ -12,19 +12,55 @@
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@MephistoDevelop" />
   <meta name="twitter:creator" content="@MephistoDevelop" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
   <title>Battleship Game</title>
 
 </head>
 
 <body>
-  <div id="main-container">
-    <div id="messages">Messages</div>
-    <input type="text" id="text-action" placeholder="0:Carr 1:Battle 2:Sub 3:Cruis 4:Destro">
-    <input type="text" id="text-x" placeholder="X">
-    <input type="text" id="text-y" placeholder="Y"><br>
-    <button id="btn-start">Start Game</button><br>
-    <button id="btn-action">Atack</button><br>
-    <button id="btn-place">Place Ship</button><input type="radio" id="checkbox">Vertical ?</input><br>
+  <div class="row">
+    <div id="main-container">
+      <div id="tittle-header">
+        BATTLESHIP GAME
+      </div>
+      <div id="messages">Messages</div>
+      <div id="content-hide">
+        <div id="form-container">
+          <div id="select-container">
+            <input type="text" id="txt-name" placeholder="Player Name">
+            <select id="text-action">
+              <option value=null class="null">Choose Ship</option>
+              <option value="0">Carrier (5 Cells)</option>
+              <option value="1">Battleship (4 Cells)</option>
+              <option value="3">Submarine (3 Cells)</option>
+              <option value="2">Cruiser (3 Cells)</option>
+              <option value="4">Destroyer (2 Cells)</option>
+            </select>
+          </div>
+          <div>
+            <input type="text" id="text-y" placeholder="Y">
+            <input type="text" id="text-x" placeholder="X"><br>
+          </div>
+        </div>
+        <div id="buttons-container">
+          <button id="btn-clean">Clean Board</button><button id="btn-place">Place Ship</button><input type="radio" id="checkbox"> Vertical ?</input> <button
+            id="btn-random">Place Random</button>
+        </div>
+      </div>
+      <div id="start-container"><button id="btn-start">Start Game</button><button id="btn-restart">New Game</button></div>
+    </div>
+
+    <div class="board">
+      <div id="human-container">
+        <div class="human grid-container"></div>
+      </div>
+
+<div id="computer-container">
+  <div class="computer grid-container"></div>
+</div>
+
+    </div>
 
   </div>
   <script src="main.js"></script>

@@ -1,7 +1,9 @@
 # Battleship JavaScript Game
 
 > Project taked from Microverse Curriculum from [The Odin Page project Site](https://www.theodinproject.com/courses/javascript/lessons/battleship).
+
 ### Screenshot
+
 ![screenshot](./dist/img/desktop.png)
 
 Javascript with Webpack project testes with Jest Library from [The Odin Project curriculum](https://www.theodinproject.com/courses/javascript/lessons/working-with-apis)
@@ -105,6 +107,7 @@ To deploy the application and see it on the browser you can use npm to do that t
 ''
 
 ```
+
 To Run the Linter files you will need to run this commands on the terminal :
 
 ```
@@ -132,6 +135,12 @@ after you will need to enter to [Stickler Page](https://stickler-ci.com/) and ac
 - Github: [@MephistoDevelop](https://github.com/MephistoDevelop)
 - Twitter: [@MephistoDevelop](https://twitter.com/MephistoDevelop)
 - Linkedin: [Cristian Hernandez](https://www.linkedin.com/in/cristian-hernandez1992/)
+
+👤 **Ansar Yergeshov**
+
+- Github: [@ansaryergesh](https://github.com/ansaryergesh)
+- Twitter: [@ansaryergesh](https://twitter.com/ansaryergesh)
+- Linkedin: [Ansar Yergeshov](https://www.linkedin.com/in/ansaryergesh/)
 
 ## 🤝 Contributing
 

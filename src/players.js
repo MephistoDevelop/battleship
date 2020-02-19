@@ -1,27 +1,52 @@
 import ship from './ships';
 import gameBoard from './GameBoard';
 
+let Moves = [];
 const Player = (name) => ({
   Name: name,
   Turn: 0,
-  playerBoard: {
-    name,
-    Board: [],
-  },
-  computerBoard: {
-    Board: [],
-  },
+  computerMoves: [],
   Move: (Turn, x, y, board, createdShip) => {
+    let hit = false;
+
     if (Turn === 0) {
-      board.receiveAtack(x, y, board.BoardComputer, createdShip);
-      console.log(`Player Turn, Atacked on: X:${x} - Y: ${y}\nTo  Computer Board \n ${JSON.stringify(board.BoardComputer)}`);
-      return 1;
+      hit = board.receiveAtack(y, x, board.BoardComputer, createdShip);
+      return [1, hit];
     }
-    const ComputerMoveX = parseInt((0 + Math.random()) * (10 - 0), 10);
-    const ComputerMoveY = parseInt((0 + Math.random()) * (10 - 0), 10);
-    board.receiveAtack(ComputerMoveX, ComputerMoveY, board.Board, createdShip);
-    console.log(`Computer Turn, Atacked on: X:${ComputerMoveX} - Y: ${ComputerMoveY}\n To Player Board \n${JSON.stringify(board.Board)}`);
-    return 0;
+
+    let ComputerMoveX = parseInt((0 + Math.random()) * (10 - 0), 10);
+    let ComputerMoveY = parseInt((0 + Math.random()) * (10 - 0), 10);
+    let number = parseInt(`${ComputerMoveY}${ComputerMoveX}`, 10);
+
+    if (Moves.includes(number)) {
+      while (Moves.includes(number)) {
+        if (Moves.length >= 98) break;
+        ComputerMoveX = parseInt((0 + Math.random()) * (10 - 0), 10);
+        ComputerMoveY = parseInt((0 + Math.random()) * (10 - 0), 10);
+        number = parseInt(`${ComputerMoveY}${ComputerMoveX}`, 10);
+        if (!Moves.includes(number)) {
+          Moves.push(number);
+          hit = board.receiveAtack(
+            ComputerMoveX,
+            ComputerMoveY,
+            board.Board,
+            createdShip,
+          );
+
+          break;
+        }
+      }
+    } else {
+      Moves.push(number);
+      hit = board.receiveAtack(
+        ComputerMoveX,
+        ComputerMoveY,
+        board.Board,
+        createdShip,
+      );
+    }
+
+    return [ComputerMoveX, ComputerMoveY, hit];
   },
   playerInit: () => {
     const createdShip = ship(5, 'Carrier');
@@ -30,25 +55,25 @@ const Player = (name) => ({
     const createdSubmarine = ship(3, 'Submarine');
     const createdDestroyer = ship(2, 'Destroyer');
 
-    const shipArr = createdShip.ships;
-
-    // Create arrays from every ship from player
     const arr = createdShip.fill_ship(createdShip.Lengths);
     const arrBattleship = createdBattleShip.fill_ship(createdBattleShip.Lengths);
     const arrCuiser = createdCruiser.fill_ship(createdCruiser.Lengths);
     const arrSubmarine = createdSubmarine.fill_ship(createdSubmarine.Lengths);
     const arrDestroyer = createdDestroyer.fill_ship(createdDestroyer.Lengths);
 
-    // Push ship arrays on hash of ships from player
     createdShip.ships[createdShip.Name] = arr;
     createdShip.ships[createdBattleShip.Name] = arrBattleship;
     createdShip.ships[createdCruiser.Name] = arrCuiser;
     createdShip.ships[createdSubmarine.Name] = arrSubmarine;
     createdShip.ships[createdDestroyer.Name] = arrDestroyer;
 
-    console.log(`Soy PLayer Init function: ${JSON.stringify(createdShip.ships)}`);
-
-    return [createdShip, createdBattleShip, createdCruiser, createdSubmarine];
+    return [
+      createdShip,
+      createdBattleShip,
+      createdCruiser,
+      createdSubmarine,
+      createdDestroyer,
+    ];
   },
   computerInit: () => {
     const createdShipComputer = ship(5, 'Carrier');
@@ -57,16 +82,12 @@ const Player = (name) => ({
     const createdSubmarine = ship(3, 'Submarine');
     const createdDestroyer = ship(2, 'Destroyer');
 
-    const shipArr = createdShipComputer.ships;
-
-    // Create arrays from every ship from player
     const arr = createdShipComputer.fill_ship(createdShipComputer.Lengths);
     const arrBattleship = createdBattleShip.fill_ship(createdBattleShip.Lengths);
     const arrCuiser = createdCruiser.fill_ship(createdCruiser.Lengths);
     const arrSubmarine = createdSubmarine.fill_ship(createdSubmarine.Lengths);
     const arrDestroyer = createdDestroyer.fill_ship(createdDestroyer.Lengths);
 
-    // Push ship arrays on hash of ships from player
     createdShipComputer.ships[createdShipComputer.Name] = arr;
     createdShipComputer.ships[createdBattleShip.Name] = arrBattleship;
     createdShipComputer.ships[createdCruiser.Name] = arrCuiser;
@@ -75,42 +96,38 @@ const Player = (name) => ({
 
     const board = gameBoard();
     const boardArr = board.drawBoardPlayer();
-    const positionedShips = [
-      {
-        Submarine: [0, 2, true],
-        Battleship: [3, 2, true],
-        Cruiser: [5, 1, false],
-        Destroyer: [0, 0, false],
-        Carrier: [0, 8, false],
-      }, {
-        Submarine: [0, 0, true],
-        Battleship: [3, 2, true],
-        Cruiser: [3, 0, true],
-        Destroyer: [3, 0, true],
-        Carrier: [5, 8, true],
-      }];
-    // console.log('im the  board:  ' + boardArr);
-    `placedship Submarine: ${board.placeShip(createdSubmarine, boardArr, positionedShips[0].Submarine[0], positionedShips[0].Submarine[1], positionedShips[0].Submarine[2])} - `;
-    `placedship Battleship: ${board.placeShip(createdBattleShip, boardArr, positionedShips[0].Battleship[0], positionedShips[0].Battleship[1], positionedShips[0].Battleship[2])} - `;
-    `placedship Battleship: ${board.placeShip(createdCruiser, boardArr, positionedShips[0].Cruiser[0], positionedShips[0].Cruiser[1], positionedShips[0].Cruiser[2])} - `;
-    `placedship Battleship: ${board.placeShip(createdDestroyer, boardArr, positionedShips[0].Destroyer[0], positionedShips[0].Destroyer[1], positionedShips[0].Destroyer[2])} - `;
-    `placedship Battleship: ${board.placeShip(createdShipComputer, boardArr, positionedShips[0].Carrier[0], positionedShips[0].Carrier[1], positionedShips[0].Carrier[2])} - `;
-    console.log(`Soy Computer Init function: ${JSON.stringify(createdShipComputer.ships)}`);
 
-    return [createdShipComputer, createdBattleShip, createdCruiser, createdSubmarine, createdDestroyer, boardArr];
+    board.placeShip(createdShipComputer, boardArr, 1, 2, true);
+    board.placeShip(createdBattleShip, boardArr, 5, 1, false);
+    board.placeShip(createdCruiser, boardArr, 2, 6, true);
+    board.placeShip(createdSubmarine, boardArr, 6, 6, false);
+    board.placeShip(createdDestroyer, boardArr, 4, 3, true);
+
+    return [
+      createdShipComputer,
+      createdBattleShip,
+      createdCruiser,
+      createdSubmarine,
+      createdDestroyer,
+      boardArr,
+    ];
   },
   fillPlayerMoves: (playerBoard) => {
+    const board = playerBoard;
     for (let i = 0; i < 100; i += 1) {
-      playerBoard[i] = i + 1;
+      board[i] = i + 1;
     }
-    return playerBoard;
+    return board;
   },
   fillComputerMoves: (computerBoard) => {
+    const board = computerBoard;
     for (let i = 0; i < 100; i += 1) {
-      computerBoard[i] = i + 1;
+      board[i] = i + 1;
     }
-    return computerBoard;
+    return board;
   },
 });
+
+Moves = Player('').computerMoves;
 
 export default Player;

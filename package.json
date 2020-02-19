@@ -4,22 +4,22 @@
   "description": "Battleship game made with Webpack and testing with Jest library",
   "main": "index.js",
   "dependencies": {
-    "browser-sync": "^2.26.7",
-    "webpack": "^4.41.5"
+    "browser-sync": "^2.26.7"
   },
   "devDependencies": {
-    "@babel/core": "^7.8.3",
+    "@babel/core": "^7.8.4",
     "@babel/preset-env": "^7.8.3",
     "babel-jest": "^25.1.0",
     "browser-sync-webpack-plugin": "^2.2.2",
     "eslint": "^6.8.0",
-    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-airbnb": "^18.0.1",
     "eslint-loader": "^3.0.3",
-    "eslint-plugin-import": "^2.20.0",
+    "eslint-plugin-import": "^2.20.1",
     "jest": "^25.1.0",
     "jest-webpack": "^0.5.1",
-    "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.10.1"
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
   },
   "scripts": {
     "test": "jest --watch",
