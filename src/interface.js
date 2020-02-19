@@ -62,11 +62,6 @@ const display = (() => {
     // }
 
     const checkWinner = () => {
-      console.log(
-        `Im check winner ${JSON.stringify(playerShips[0])} \n  ${JSON.stringify(
-          board.BoardComputer
-        )}`
-      );
       name = '';
       if (!winner) {
         lblmessage.innerText = 'Computer Turn';
