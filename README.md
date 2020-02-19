@@ -17,7 +17,7 @@ Javascript with Webpack project testes with Jest Library from [The Odin Project 
 
 ## Live Demo
 
-[Live Demo Link]()
+[Live Demo Link](https://mephistodevelop.github.io/battleship/)
 
 ## Getting Started
 
