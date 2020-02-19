@@ -55,14 +55,12 @@ const Player = (name) => ({
     const createdSubmarine = ship(3, 'Submarine');
     const createdDestroyer = ship(2, 'Destroyer');
 
-    // Create arrays from every ship from player
     const arr = createdShip.fill_ship(createdShip.Lengths);
     const arrBattleship = createdBattleShip.fill_ship(createdBattleShip.Lengths);
     const arrCuiser = createdCruiser.fill_ship(createdCruiser.Lengths);
     const arrSubmarine = createdSubmarine.fill_ship(createdSubmarine.Lengths);
     const arrDestroyer = createdDestroyer.fill_ship(createdDestroyer.Lengths);
 
-    // Push ship arrays on hash of ships from player
     createdShip.ships[createdShip.Name] = arr;
     createdShip.ships[createdBattleShip.Name] = arrBattleship;
     createdShip.ships[createdCruiser.Name] = arrCuiser;
@@ -84,14 +82,12 @@ const Player = (name) => ({
     const createdSubmarine = ship(3, 'Submarine');
     const createdDestroyer = ship(2, 'Destroyer');
 
-    // Create arrays from every ship from player
     const arr = createdShipComputer.fill_ship(createdShipComputer.Lengths);
     const arrBattleship = createdBattleShip.fill_ship(createdBattleShip.Lengths);
     const arrCuiser = createdCruiser.fill_ship(createdCruiser.Lengths);
     const arrSubmarine = createdSubmarine.fill_ship(createdSubmarine.Lengths);
     const arrDestroyer = createdDestroyer.fill_ship(createdDestroyer.Lengths);
 
-    // Push ship arrays on hash of ships from player
     createdShipComputer.ships[createdShipComputer.Name] = arr;
     createdShipComputer.ships[createdBattleShip.Name] = arrBattleship;
     createdShipComputer.ships[createdCruiser.Name] = arrCuiser;
