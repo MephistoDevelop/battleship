@@ -30,7 +30,7 @@ const Player = (name) => ({
             ComputerMoveX,
             ComputerMoveY,
             board.Board,
-            createdShip
+            createdShip,
           );
 
           break;
@@ -42,7 +42,7 @@ const Player = (name) => ({
         ComputerMoveX,
         ComputerMoveY,
         board.Board,
-        createdShip
+        createdShip,
       );
     }
 
@@ -57,9 +57,7 @@ const Player = (name) => ({
 
     // Create arrays from every ship from player
     const arr = createdShip.fill_ship(createdShip.Lengths);
-    const arrBattleship = createdBattleShip.fill_ship(
-      createdBattleShip.Lengths
-    );
+    const arrBattleship = createdBattleShip.fill_ship(createdBattleShip.Lengths);
     const arrCuiser = createdCruiser.fill_ship(createdCruiser.Lengths);
     const arrSubmarine = createdSubmarine.fill_ship(createdSubmarine.Lengths);
     const arrDestroyer = createdDestroyer.fill_ship(createdDestroyer.Lengths);
@@ -76,7 +74,7 @@ const Player = (name) => ({
       createdBattleShip,
       createdCruiser,
       createdSubmarine,
-      createdDestroyer
+      createdDestroyer,
     ];
   },
   computerInit: () => {
@@ -88,9 +86,7 @@ const Player = (name) => ({
 
     // Create arrays from every ship from player
     const arr = createdShipComputer.fill_ship(createdShipComputer.Lengths);
-    const arrBattleship = createdBattleShip.fill_ship(
-      createdBattleShip.Lengths
-    );
+    const arrBattleship = createdBattleShip.fill_ship(createdBattleShip.Lengths);
     const arrCuiser = createdCruiser.fill_ship(createdCruiser.Lengths);
     const arrSubmarine = createdSubmarine.fill_ship(createdSubmarine.Lengths);
     const arrDestroyer = createdDestroyer.fill_ship(createdDestroyer.Lengths);
@@ -117,7 +113,7 @@ const Player = (name) => ({
       createdCruiser,
       createdSubmarine,
       createdDestroyer,
-      boardArr
+      boardArr,
     ];
   },
   fillPlayerMoves: (playerBoard) => {
@@ -133,7 +129,7 @@ const Player = (name) => ({
       board[i] = i + 1;
     }
     return board;
-  }
+  },
 });
 
 Moves = Player('').computerMoves;

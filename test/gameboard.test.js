@@ -12,7 +12,7 @@ test('placeShip horizontally', () => {
   const board = GameBoard();
   const br = board.drawBoardPlayer();
   const shipElem = ship(2, 'Destroyer');
-  const place = board.placeShip(shipElem, br, 1, 1);
+  board.placeShip(shipElem, br, 1, 1);
   const newboard = br;
   expect(newboard[1][2]).toBe('Destroyer1');
 });
@@ -20,9 +20,9 @@ test('placeShip horizontally', () => {
 test('placeShip vertically', () => {
   const board = GameBoard();
   const br = board.drawBoardPlayer();
-  const pl = player('Ansar');
+  player('Ansar');
   const shipElem = ship(2, 'Destroyer');
-  const place = board.placeShip(shipElem, br, 1, 1, true);
+  board.placeShip(shipElem, br, 1, 1, true);
   const newboard = br;
   expect(newboard[2][1]).toBe('Destroyer1');
 });
@@ -31,7 +31,7 @@ test('receiveAttack for empty cell', () => {
   const board = GameBoard();
   const br = board.drawBoardPlayer();
   const shipElem = ship(2, 'Destroyer');
-  let ships = [];
+  const ships = [];
   ships.push(shipElem);
   const attackEmpty = board.receiveAtack(1, 1, br, ships);
   expect(attackEmpty).toBe(false);
@@ -39,7 +39,6 @@ test('receiveAttack for empty cell', () => {
 
 test('receiveAttack for cell with ship', () => {
   const shipElem = ship(2, 'Destroyer');
-  const shipArray = shipElem.ships;
   const arr = shipElem.fill_ship(shipElem.Lengths);
   shipElem.ships[shipElem.Name] = arr;
   const board = GameBoard();
