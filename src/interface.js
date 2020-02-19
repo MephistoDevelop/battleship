@@ -72,8 +72,7 @@ const display = (() => {
         if (board.checkShipsSunked(playerShips[0])) {
           name = 'Computer';
           setTimeout(() => {
-            message.innerText = 'Game Finished !! ' +
-              player.Name + ' Wins . Wait few seconds to start new game';
+            message.innerText = `Game Finished !! ${player.Name} Wins . Wait few seconds to start new game`;
             message.style.backgroundColor = 'rgba(0,255,0,0.6)';
           }, 500);
 
@@ -149,7 +148,6 @@ const display = (() => {
         for (let y = 0; y < 10; y += 1) {
           if (Board[x][y] !== '-') {
             const number = parseInt(`${x}${y}`, 10);
-            //  boxs[number + 100].innerText = board[x][y];
             Boxes[number + 100].style.backgroundColor = 'rgba(26, 63, 40,0.98 )';
           }
         }
@@ -187,7 +185,7 @@ const display = (() => {
                   0,
                   0,
                   board,
-                  computerShips
+                  computerShips,
                 );
                 const number = parseInt(
                   `${computerCoordinatesAtack[1]}${computerCoordinatesAtack[0]}`, 10
@@ -200,7 +198,8 @@ const display = (() => {
                   boxs[number].style.backgroundImage = "url('./img/hole.png')";
                   boxs[number].style.backgroundColor = 'rgba(26, 63, 40,0.7 )';
                 } else {
-                    boxs[number].style.backgroundImage = "url('./img/ex.png')";}
+                  boxs[number].style.backgroundImage = "url('./img/ex.png')";
+                }
                 player.computerMoves.push(number);
                 checkWinner(player.Turn);
               }, 150);
@@ -258,7 +257,7 @@ const display = (() => {
           for (let i = 0; i < size; i += 1) {
             let newnumber = 0;
             if (Vertical) {
-              if (y === 0)  newnumber = i;
+              if (y === 0) newnumber = i;
               else newnumber = parseInt(`${y + i}${x}`, 10);
             } else if (y === 0) {
               newnumber = i;
