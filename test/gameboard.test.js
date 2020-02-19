@@ -60,6 +60,5 @@ test('check if sunked', () => {
   board.receiveAtack(1, 1, br, [shipElem, 1]);
   board.receiveAtack(1, 2, br, [shipElem, 1]);
   board.receiveAtack(1, 3, br, [shipElem, 1]);
-  console.log('Soy Arr of sunked test:' + JSON.stringify(shipArray));
   expect(shipElem.isSunk(shipArray[shipElem.Name])).toBe(true);
 });

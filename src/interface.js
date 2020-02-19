@@ -52,15 +52,7 @@ const display = (() => {
       const y = i % 10;
       boxs[i].innerText = `${x}-${y}`;
     }
-
-    // const unclick = () => {
-    //   for (let i=0;i<200;i+=1){
-    //     if boxs[i].style.backgroundImage !== 'none' {
-    //       boxs[i].style.pointerEvents='none';
-    //     }
-    //   }
-    // }
-
+    
     const checkWinner = () => {
       name = '';
       if (!winner) {
