@@ -62,6 +62,11 @@ const display = (() => {
     // }
 
     const checkWinner = () => {
+      console.log(
+        `Im check winner ${JSON.stringify(playerShips[0])} \n  ${JSON.stringify(
+          board.BoardComputer
+        )}`
+      );
       name = '';
       if (!winner) {
         lblmessage.innerText = 'Computer Turn';
@@ -77,11 +82,14 @@ const display = (() => {
 
       if (turn === 0) {
         name = player.Name;
-        if (board.checkShipsSunked(computerShips[0])) {
+        if (board.checkShipsSunked(playerShips[0])) {
           name = 'Computer';
           setTimeout(() => {
-            message.innerText = 'Game Finished !! Coputer Wins . Wait few seconds to start new game';
-            message.style.backgroundColor = 'rgba(255,0,0,0.6)';
+            message.innerText =
+              'Game Finished !! ' +
+              player.Name +
+              ' Wins . Wait few seconds to start new game';
+            message.style.backgroundColor = 'rgba(0,255,0,0.6)';
           }, 500);
 
           winner = true;
@@ -89,11 +97,11 @@ const display = (() => {
             boxs[i].click = '';
           }
         }
-      } else if (board.checkShipsSunked(playerShips[0])) {
+      } else if (board.checkShipsSunked(computerShips[0])) {
         name = player.Name;
         setTimeout(() => {
-          message.innerHTML = `Game Finished !! ${name} Wins. Wait few seconds to start new game`;
-          message.style.backgroundColor = 'rgba(0,255,0,0.6)';
+          message.innerHTML = `Game Finished !! Computer Wins. Wait few seconds to start new game`;
+          message.style.backgroundColor = 'rgba(255,0,0,0.6)';
         }, 500);
 
         winner = true;
@@ -157,7 +165,8 @@ const display = (() => {
           if (Board[x][y] !== '-') {
             const number = parseInt(`${x}${y}`, 10);
             //  boxs[number + 100].innerText = board[x][y];
-            Boxes[number + 100].style.backgroundColor = ' rgba(26, 63, 40,0.98 )';
+            Boxes[number + 100].style.backgroundColor =
+              ' rgba(26, 63, 40,0.98 )';
           }
         }
       }
@@ -194,11 +203,11 @@ const display = (() => {
                   0,
                   0,
                   board,
-                  computerShips,
+                  computerShips
                 );
                 const number = parseInt(
                   `${computerCoordinatesAtack[1]}${computerCoordinatesAtack[0]}`,
-                  10,
+                  10
                 );
                 const two = 2;
                 hit = computerCoordinatesAtack[two];
@@ -207,7 +216,8 @@ const display = (() => {
                 if (hit) {
                   boxs[number].style.backgroundImage = "url('./img/hole.png')";
                   boxs[number].style.backgroundColor = 'rgba(26, 63, 40,0.7 )';
-                } else boxs[number].style.backgroundImage = "url('./img/ex.png')";
+                } else
+                  boxs[number].style.backgroundImage = "url('./img/ex.png')";
                 player.computerMoves.push(number);
                 checkWinner(player.Turn);
               }, 150);
@@ -222,7 +232,8 @@ const display = (() => {
         message.style.backgroundColor = 'rgba(0,255,0,0.6)';
         document.getElementById('content-hide').className = 'hide';
       } else {
-        message.innerHTML = 'Write your name Place your ships and then press Start';
+        message.innerHTML =
+          'Write your name Place your ships and then press Start';
         message.style.backgroundColor = 'rgba(255,0,0,0.6)';
       }
     };
@@ -251,7 +262,7 @@ const display = (() => {
       ShipsArray,
       number,
       Vertical,
-      Board,
+      Board
     ) => {
       try {
         const x = parseInt(Txtx.value, 10) || Txtx;
@@ -267,14 +278,21 @@ const display = (() => {
             if (Vertical) {
               if (y === 0) newnumber = i;
               else newnumber = parseInt(`${y + i}${x}`, 10);
-            } else if (y === 0) { newnumber = i; } else newnumber = parseInt(`${y}${x + i}`, 10);
+            } else if (y === 0) {
+              newnumber = i;
+            } else newnumber = parseInt(`${y}${x + i}`, 10);
 
             Boxs[newnumber].innerText = ShipsArray[number].Name;
-            if (ShipsArray[number].Name === 'Submarine') Boxs[newnumber].style.backgroundColor = 'rgba(226, 63, 40,1 )';
-            if (ShipsArray[number].Name === 'Destroyer') Boxs[newnumber].style.backgroundColor = 'rgba(26, 63, 180,1 )';
-            if (ShipsArray[number].Name === 'Cruiser') Boxs[newnumber].style.backgroundColor = 'rgba(26, 233, 20,1 )';
-            if (ShipsArray[number].Name === 'Carrier') Boxs[newnumber].style.backgroundColor = 'rgba(216, 146, 49,1 )';
-            if (ShipsArray[number].Name === 'Battleship') Boxs[newnumber].style.backgroundColor = 'rgba(132, 104, 106,1 )';
+            if (ShipsArray[number].Name === 'Submarine')
+              Boxs[newnumber].style.backgroundColor = 'rgba(226, 63, 40,1 )';
+            if (ShipsArray[number].Name === 'Destroyer')
+              Boxs[newnumber].style.backgroundColor = 'rgba(26, 63, 180,1 )';
+            if (ShipsArray[number].Name === 'Cruiser')
+              Boxs[newnumber].style.backgroundColor = 'rgba(26, 233, 20,1 )';
+            if (ShipsArray[number].Name === 'Carrier')
+              Boxs[newnumber].style.backgroundColor = 'rgba(216, 146, 49,1 )';
+            if (ShipsArray[number].Name === 'Battleship')
+              Boxs[newnumber].style.backgroundColor = 'rgba(132, 104, 106,1 )';
             // Boxs[newnumber].style.backgroundColor = `rgba(${color}, ${color2}, ${color3},1)`;
           }
         }
@@ -297,7 +315,7 @@ const display = (() => {
         playerShips,
         choosenShipNumber,
         vertical,
-        board,
+        board
       );
       txtx.innerText = '';
       txty.innerText = '';
@@ -349,7 +367,6 @@ const display = (() => {
       cleanBoard();
     });
   };
-
 
   return { render };
 })();
