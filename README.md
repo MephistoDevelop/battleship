@@ -4,7 +4,7 @@
 
 ### Screenshot
 
-![screenshot](./dist/img/desktop.png)
+![screenshot](./battleship.gif)
 
 Javascript with Webpack project testes with Jest Library from [The Odin Project curriculum](https://www.theodinproject.com/courses/javascript/lessons/working-with-apis)
 
