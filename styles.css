@@ -5,7 +5,14 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
 }
-
+.btn-colors {
+  background-color: rgba(0, 0, 255, 0.8);
+  color: whitesmoke;
+  font-weight: 800;
+}
+.btn-colors:hover {
+  color: rgba(0, 0, 255, 0.8);
+}
 button {
   margin-left: 5px;
   padding: 7px;
@@ -19,6 +26,11 @@ button:hover {
 select {
   text-align: center;
   width: 70%;
+  background-color: rgba(0, 0, 255, 0.7);
+  border: none;
+  border-radius: 5%;
+  color: whitesmoke;
+  font-weight: 800;
 }
 #select-container {
   display: flex;
