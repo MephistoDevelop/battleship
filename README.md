@@ -98,13 +98,12 @@ server: { baseDir: ['dist'] },
 To deploy the application and see it on the browser you can use npm to do that task on the server provider by webpack. to run the live server you will need to open your project folder terminal and run this commands:
 
 ```
-`npm install`
-`npm i -D webpack-dev-server`
-`npm i browser-sync --save`
-`npm install --save-dev browser-sync-webpack-plugin`
-`npm install --save-dev jest-webpack`
-`npm run build`
-''
+npm install
+npm i -D webpack-dev-server
+npm i browser-sync --save
+npm install --save-dev browser-sync-webpack-plugin
+npm install --save-dev jest-webpack
+npm run build
 
 ```
 
