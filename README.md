@@ -19,6 +19,13 @@ Javascript with Webpack project testes with Jest Library from [The Odin Project 
 
 [Live Demo Link](https://mephistodevelop.github.io/battleship/)
 
+## Future Features
+
+- Add level game from AI.
+- 10 diferents random positon to Player and Computer.
+- Images from ships to specific position
+- Drag and drop feature
+
 ## Getting Started
 
 ### Prerequisites
