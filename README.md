@@ -6,7 +6,7 @@
 
 ![screenshot](./battleship.gif)
 
-Javascript with Webpack project testes with Jest Library from [The Odin Project curriculum](https://www.theodinproject.com/courses/javascript/lessons/working-with-apis)
+Javascript with Webpack project using Test  Driven Development with Jest tests following the instructions from [The Odin Project web page](https://www.theodinproject.com/courses/javascript/lessons/working-with-apis)
 
 ## Built With:
 
