@@ -1,6 +1,6 @@
 # Battleship JavaScript Game
 
-> Project taken from Microverse Curriculum from [The Odin Page project Site](https://www.theodinproject.com/courses/javascript/lessons/battleship).
+> Battleship Game made with Javascript and Webpack with Jest library with deploy on Git Pages using Git Flow
 
 ### Screenshot
 
@@ -8,7 +8,7 @@
 
 Javascript with Webpack project testes with Jest Library from [The Odin Project curriculum](https://www.theodinproject.com/courses/javascript/lessons/working-with-apis)
 
-## Built With Javascript, Webpack, Jest Library
+## Built With:
 
 - Html,CSS,JavaScript
 - Webpack
@@ -30,7 +30,8 @@ Javascript with Webpack project testes with Jest Library from [The Odin Project 
 
 ### Prerequisites
 
--before running this project you will need to install before webpack and configure the live server on your webpac.config file. you can check more about it on this [page](https://webpack.js.org/guides/installation/).
+-Before running this project you will need to install webpack and configure the live server on your webpack.config file. You can learn more about it on this [page](https://webpack.js.org/guides/installation/).
+
 [npm install and config: ](https://docs.npmjs.com/cli/install)
 
 ### Setup
@@ -40,10 +41,10 @@ run this commands to install webpack:
 `npm install --save-dev webpack`
 `npm install --save-dev webpack-cli`
 
-To use this project you will need to download this repository and put it in on your computer.
-after you will need to install a webpack and npm to run correctly this project.
+To use this project you will need to download this repository onto your computer. Afterwards, you will need to install webpack and npm to correctly run this project. In the package.json file.
+In package.json file on the rules we are going to put this:
 
-in `package.json` file on the rules we are going to put this:
+
 
 ```
  "scripts": {
@@ -102,37 +103,19 @@ server: { baseDir: ['dist'] },
 
 ### Deployment
 
-To deploy the application and see it on the browser you can use npm to do that task on the server provider by webpack. to run the live server you will need to open your project folder terminal and run these commands:
+To deploy the application and view it on your browser, open your project folder terminal and run these command:" ; "To run the linter files you will need to run these command on the terminal
 
-```
-npm install
-npm i -D webpack-dev-server
-npm i browser-sync --save
-npm install --save-dev browser-sync-webpack-plugin
-npm install --save-dev jest-webpack
-npm run build
+`npm install`
+`npm run build`
+`npm i -D webpack-dev-server`
+`npm i browser-sync --save`
 
-```
-
-To Run the Linter files you will need to run these commands on the terminal :
-
-```
 `npm install eslint eslint-config-airbnb --save-dev`
 `npx eslint --init`
-`npx eslint`
-```
+`npx client`
 
-after you will need to enter to [Stickler Page](https://stickler-ci.com/) and activate your repository.
+after you will need to enter to Stickler Page and activate your repository.
 
-To Run the Linter files you will need to run these commands on the terminal :
-
-```
-`npm install eslint eslint-config-airbnb --save-dev`
-`npx eslint --init`
-`npx eslint`
-```
-
-after you will need to enter to [Stickler Page](https://stickler-ci.com/) and activate your repository.
 
 ## Authors
 
