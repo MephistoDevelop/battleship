@@ -4,7 +4,7 @@
 
 ### Screenshot
 
-![screenshot](./battleship.gif)
+![screenshot](./screenshotbattleship.gif)
 
 Javascript with Webpack project using Test  Driven Development with Jest tests following the instructions from [The Odin Project web page](https://www.theodinproject.com/courses/javascript/lessons/working-with-apis)
 
