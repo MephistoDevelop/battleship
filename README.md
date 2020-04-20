@@ -10,7 +10,7 @@ Javascript with Webpack project using Test  Driven Development with Jest tests f
 
 ## Built With:
 
-- Html,CSS,JavaScript
+- Html, CSS, JavaScript
 - Webpack
 - npm manager
 - Jest library
@@ -21,10 +21,10 @@ Javascript with Webpack project using Test  Driven Development with Jest tests f
 
 ## Future Features
 
-- Add level game from AI.
-- 10 different random positon to Player and Computer.
-- Images from ships to specific position
-- Drag and drop feature
+- Add additional levels to the game AI.
+- Allow up to 10 random positions for Player and Computer.
+- Adjust ship images based on specific positions.
+- Drag and drop feature.
 
 ## Getting Started
 
@@ -41,9 +41,11 @@ run this commands to install webpack:
 `npm install --save-dev webpack`
 `npm install --save-dev webpack-cli`
 
-To use this project you will need to download this repository onto your computer. Afterwards, you will need to install webpack and npm to correctly run this project. In the package.json file.
-In package.json file on the rules we are going to put this:
+To use this project you will need to download this repository onto your computer
 
+Afterwards, you will need to install webpack and npm to correctly run this project.
+
+In the webpack.config.js file we are going to input this config in order to use live-sync browser reloaded automatically using npm run start:
 
 
 ```
@@ -103,7 +105,9 @@ server: { baseDir: ['dist'] },
 
 ### Deployment
 
-To deploy the application and view it on your browser, open your project folder terminal and run these command:" ; "To run the linter files you will need to run these command on the terminal
+To deploy the application and view it on your browser, open your project folder terminal and run `npm run start`.
+
+To run the linter files you will need to run these commands on the terminal:
 
 `npm install`
 `npm run build`
@@ -114,8 +118,7 @@ To deploy the application and view it on your browser, open your project folder 
 `npx eslint --init`
 `npx client`
 
-after you will need to enter to Stickler Page and activate your repository.
-
+Afterwards, open the Stickler Page and activate your repository
 
 ## Authors
 
