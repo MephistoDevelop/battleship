@@ -4,7 +4,7 @@
   "description": "Battleship game made with Webpack and testing with Jest library",
   "main": "index.js",
   "dependencies": {
-    "browser-sync": "^2.26.7"
+    "browser-sync": "^2.27.10"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
